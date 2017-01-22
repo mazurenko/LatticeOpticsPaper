@@ -1,0 +1,289 @@
+% -*- mode: Latex -*-
+% Time-stamp: "2015-02-18 17:55:40 sb"
+
+\documentclass[twocolumn,aps,pra,showpacs,preprintnumbers,bibnotes]{revtex4-1}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{amsmath}
+
+%% Keep track of changes
+%\usepackage[final]{changes}
+\usepackage[draft]{changes}
+\definechangesauthor[color=green]{AM}
+\definechangesauthor[color=blue]{SB}
+
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+
+\newcommand\avg[1]{\left\langle#1\right\rangle}
+
+\newcommand\unit[2]{\ensuremath{#1~\mathrm{{#2}}}}
+
+\newcommand\Ket[1]{\ensuremath{|{#1}\rangle}}
+\newcommand\Bra[1]{\ensuremath{\langle{#1}|}}
+
+\newcommand\Isotope[2]{\ensuremath{^{#1}\mathrm{#2}}}
+\newcommand\Li{\Isotope{6}{Li}}
+\newcommand\K{\Isotope{40}{K}}
+\newcommand\Rb{\Isotope{87}{Rb}}
+\newcommand\Sr{\Isotope{87}{Sr}}
+\newcommand\Yb{\Isotope{171}{Yb}}
+\newcommand\Er{\Isotope{167}{Er}}
+\newcommand\Dy{\Isotope{161}{Dy}}
+
+\renewcommand{\vec}[1]{\ensuremath{\bm{#1}}}
+
+\newcommand\NA{\ensuremath{\mathrm{NA}}}
+\newcommand{\osim}{\ensuremath{\mathord{\sim}}}
+\newcommand{\Erecl}{\ensuremath{E_\mathrm{rec}}}
+\newcommand{\Ereca}{\ensuremath{E_\mathrm{rec}^\mathrm{(a)}}}
+\newcommand\FIXME{{\color{red}\ensuremath{\mathrm{FIXME}}}}
+
+\newcommand\TrapFreq{\ensuremath{\nu_t}}
+\newcommand\RecoilEnergy{\ensuremath{E_\mathrm{rec}}}
+
+
+\begin{document}
+
+\title{Optical lattices with low decoherence for ultracold \Li{}}
+
+
+\author{Li Microscope Collective}
+\author{M. Greiner}
+\affiliation{
+  Department of Physics, Harvard University,
+  Cambridge, Massachusetts, 02138, USA}
+
+\date{\today}
+\begin{abstract}
+We describe the design of a stable high power 1064 nm laser for use in optical lattice experiments. The system is based on a high quality mephisto NPRO seeding an array of four heavily modified fiber amplifiers. The intensity of every beam is stabilized with a low noise, nonlinear feedback system, and the waist can be smoothly controlled. 
+\end{abstract}
+\maketitle
+\section{Introduction}
+Trapping atoms in an array of optical lattices is a powerful technique for manipulation and control of quantum many-body systems. 
+The use of neutral atoms trapped in an optical lattice has facilitated precision measurements, creation of interesting many body states, and implementation of quantum gates in neutral atoms. CITATIONS.
+However, a dominant trend in cold atom experiments has been the need to attain colder temperatures at energy scales approaching the Hz level.
+Such experiments are limited by heating rates arising from positional, phase and intensity noise of the optical lattice. 
+
+By FIGURE - high level block diagram of system
+
+\begin{itemize}
+	\item requirements 
+	\item what have we built
+\end{itemize}
+
+We demonstrate high power lattice 
+
+
+\section{Mephisto}
+The lattice laser system is seeded by an Innolight Mephisto laser, which provides approximately 2 W of 1064 nm light. 
+This commercial laser utilizes a non-planar ring oscillator (NPRO) design that ensures superb phase and intensity stability. This source is split into four fibers (Thorlabs XXX) by means of polarizing beam splitters. Figure 1 shows the mechanical layout of this system, as well as the intensity noise performance (see supplementary material).
+
+\section{Nufern Fiber Amplifiers}
+Quantum gas microscopy of Li requires single site trap frequencies of approximately 1 MHz. 
+Such trap frequencies may only be attained using tightly focused high power beams, which requires that the seed power be amplified to approximately 30 W per lattice axis, which is done using  
+
+\section{Measuring Intensity Noise}
+\subsection{Photodiodes}
+FIGURE: Transimpedance amplifier, with our parameters
+\begin{itemize}
+	\item Transimpedance amplifier - typical parameters
+	\item design criteria, part numbers, typical voltage levels
+	\item cutting off windows
+	\item thermal stuff (inGas)
+	\item lens or no
+	\item using photodiodes for looking at these thing
+\end{itemize}
+
+\subsection{Residual Intensity Noise}
+RIN:
+\begin{itemize}
+\item what is it and how do you measure it
+\item easy to measure, enters into parametric heating effects
+\end{itemize}
+
+\subsection{Heating Effects}
+\begin{itemize}
+	\item Trap shaking, parametric heating
+\end{itemize}
+
+
+
+\section{Mephisto Seed Laser}
+
+Mephisto:
+\begin{itemize}
+	\item Mephisto basics - what is it and how does it work
+	\item noise coming out of laser (w,w/0 noiseeater)
+	\item noise coming out of a fiber (into nufern)
+	\item Schematic of beam splitting
+\end{itemize}
+
+\begin{figure}
+    \caption{(a) Layout of the seed source of the high power laser system, (b) Noise spectra of the Mephisto laser in various configurations}\label{fig:seed}
+\end{figure}
+
+The high power laser system is seeded by a single Innolight Mephisto 1064 nm, ultra-narrow, low noise, non-planar-ring-oscillator (NPRO) laser. Figure \ref{fig:seed} shows the basic layout of the system. Polarizing beam splitters and half wave plates are used to split the light into five beams. One is for general purpose use, while four are split between four fiber amplifiers. It is important that individual lattices do not interfere at timescales relevant to our experiments. Typical experiments in our systems are insensitive to frequencies above $\approx 10$ MHz. For this reason, acousto-optic modulators (AOM) are used to shift the four beams away from each other by the AOM carrier frequencies (typically $\approx 80$ MHz). 
+
+The relative intensity noise of the mephisto seed laser was also studied, both to verify that the laser performed as specified, and that the measurement procedure was sound. The RIN curves shown in figure \ref{fig:seed} closely match the specified values. The mephisto has a relaxation oscillation that causes a substantial increase in the noise near \FIXME 0.6 MHz. An internal ``noise-eater'' can suppress this noise. Unless otherwise specified, we oprate the laser with the noise eater on.
+
+\section{Fiber Amplifier Modifications}
+We chose to use \textit{Nufern} 50 W fiber amplifier systems (part number \FIXME), due to their inexpensive price and relatively high performance in terms of power and intensity noise. In their default configuration, however, the fiber amplifiers suffer from several severe problems:
+\begin{enumerate}
+    \item A large number of noise spurs at low frequencies.
+    \item A 30 \FIXME dB noise spur at the switching power supply frequency.
+    \item A built in power supply containing a cooling fan that vibrationally couples to the gain fiber.
+    \item An inconvenient USB digital interface.
+\end{enumerate}
+
+In order to address these problems, the fiber amplifier had to be heavily modified. First, the two power supplies required by the fiber amplifier were moved outside its immediate enclosure an connected with 15 foot long AWG \FIXME cables. The pump diode driver, part number \FIXME was unmodified, but the general purpose power supply was replaced with a low noise switching supply from Acopian Corporation, part number \FIXME. A high power line filter, part number \FIXME, was added to reduce the switching supply spike on the fiber amplifier by \FIXME dB.
+
+Further, the control of the fiber amplifiers is done by a pair of printed circuit boards, where one primarily handles the USB communications, and the other communicates the power supplies and interlocks. The USB board was replaced by a custom board compatible with out experimental control system.
+
+\section{Lattice Beam Optics}
+Each fiber amplifier can output a maximum of 50 W of optical power into a single gaussian mode out of the large mode field diameter output fiber. Collimating this high power beam presents a challenge - the light intensity is sufficient to trap dust particles, and bring them towards the fiber tip. For this reason, a custom, stable, monolithic mount was designed for the collimation stage, which holds the collimation lens and fiber tip in a fully enclosed chamber. The collimating lens is a \FIXME 20 mm focal length, air spaced, fused silica triplet from optosigma \FIXME part number. The fiber is held at an angle, to compensate for the angle of the cleave.
+
+
+
+
+\begin{itemize}
+\item How to collimate and reject cladding modes - no dust in hp areas, 
+\item FC compensate for cleave
+\item mechanical stable
+
+\item evidence of fiber tip shaking if there were fans inside
+changing collimator dist wrt fiber - focus about 80 cm - focus through aom - no movable optics between AOM and chuck
+\item mode quality - quote $m^2$
+\item mode shape changes dramatically with pump current (output power)
+\item thermal settling - run at full power continuously
+\item dump cladding modes
+\item optics have to handle full power - BK7 bad, fused silica good
+\item high quality IBS sputtered optics if you care
+\item brewster polarizers - glued cubes are terrible (contacted cubes expensive, supression ratio not as good) - 10k:1
+\item brewster plates walk the beam
+\end{itemize}
+
+\subsection{Isolation}
+\begin{itemize}
+\item backreflections are bad,
+\item retroreflection -> 2 stages
+\item as seen in ligo Yttg isolation decreases with optical intensity - coupling between optical effects and faraday
+\item not as bad as ligo, since not in vacuum.
+\item thorlabs -> high power 5mm aperture -> BK7 bad
+\item waveplate ibs coating
+\item Can of mumetal for physics reasons
+\item attenuation of field is XXXXX
+\item watercooling
+\item stack 2x
+\end{itemize}
+
+DUMPING
+-watercooled beamdumps far removed from the optics for thermal reasons
+\subsection{Intensity Control}
+2 Step intensity control
+
+\subsubsection{Berek Compensator}
+\begin{itemize}
+\item high dyn range actuator
+\item berek compensator
+\end{itemize}
+
+custom coating quartz plate that is z-cut mounted on camtech galvo
+can act as translates rotation into polarization rotation
+with brewster polarizers can act as variable attenuation
+bias with waveplates
+BW = XXX
+attenuation = XXX
+induces walkoff
+
+BEAM with well defined polarization on optical table 
+$M^2$ = this, waist focused 80cm to a 650um, which is consistent with ABCD tracing
+
+\subsubsection{AcoustoOptic Modulation}
+
+\begin{itemize}
+    \item AOM is this 80MHZ, TeO2
+    \item large active area AOM to reduce intenisty going through
+    \item thermal problems
+    \item watercooled
+    \item custom flexure mount to minimize motional degrees of freedom.
+    \item obtain a diffraction efficiency of $M^2$
+    \item 20cm in front of AOM - diffraction process changes this - characterize this
+    \item AOM's thermal effects pointing noise mostly. BW is traveling wave such and such speed of sound.
+    \item shut off time is 500ns
+    \item polarization is negligible
+    \item POINTING is stable.
+\end{itemize}
+
+\section{Feedback}
+\begin{itemize}
+    \item galvo
+    \item aom
+    \item AR pickoff
+    \item PD - lenses and imaging
+    \item Loop filter sqrt
+    \item Exponential
+    \item Pump current
+\end{itemize}
+
+
+
+\section{Feedback}
+
+
+\subsection{Acousto-optic Modulation}
+
+FIGURE - RIN OF MEPHISTO, driven by difft oscillators
+Mephisto+oscillators
+\begin{itemize}
+	\item how does the RIN spectrum change as a function of oscillators
+\end{itemize}
+\section{Fiber Amplifier system}
+FIGURE - BLOCK DIAGRAM OF FIB AMP SYSTEM
+
+\subsection{Fiber Amplifier Modifications}
+FIGURE - SBS DATA
+\begin{itemize}
+	\item Mephisto+Fiber amplifiers
+\item fiber amplifiers work like so so
+\item schematic what it looks like and does
+\item Modifications
+	\begin{itemize}
+		\item electronics control board,
+		\item PSU's
+		\item filters
+		\item switching spikes removed
+		\item fan noise stopped
+	\end{itemize}
+\item Two stage amplifier
+	\begin{itemize}
+		\item second stage has this special fiber 
+		\item large mode area fibers
+		\item leakage into cladding modes 
+		\item sbs (cut off)
+	\end{itemize}
+\item SBS data
+\end{itemize}
+\section{Telescope}
+-beam parameters such and such
+
+\section{Alignment Tricks}
+
+\section{Waist Control}
+\section{Appendix: Fourier Transforms and Power Spectral Densities}
+\begin{itemize}
+	\item FT
+	\item PSD
+	\item FFT? 
+	\item Window functions, discretization effects
+\end{itemize}
+\section{Appendix: Feedback Theory}
+mini feedback tutorial
+
+
+\end{document}
