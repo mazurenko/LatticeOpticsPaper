@@ -110,9 +110,32 @@ The large-diameter fiber tip is mounted in a monolithic, oxygen-depleted copper 
 Then, the polarization is cleaned up using an IBS coated Brewster plate polarizer, which has the added benefit of rejecting the undesired cladding modes. 
 The fact that the lattice is retro-reflected, combined with the observation that optical isolation falls with applied optical power\cite{LIGO} means that two stages of optical isolators must be used. The optical isolators are based on the 5 mm diameter Faraday rotators from Thorlabs. 
 The optical isolators are located approximately 1 m away from the ultracold atomic system, meaning that undesired stray fields can have a dramatic effect.
-To overcome this problem the isolators are enclosed in mu-metal shielding.
+To overcome this problem the isolators are enclosed in mu-metal shielding, reducing the field outside the can by an estimated factor of XXX.
 
-\section{Berek Compensator}
+\section{Feedback}
+
+With an appropriately shaped and isolated beam, it is now important to consider two aspects of the desired experiment: (1) the lattice power must be continuously tunable from around 10 $\mu$W to around 20 W, (2) the location of the minimum gaussian beam waist must be accurately positioned to overlap the other lattices and dipole traps present in the experiment, and must remain there for the duration of the collection process (typically hours).
+To appease the first of these requirements, a two-stage feedback system is implemented. The reason for the two stages is simple: the experiment typically operates in one of two regimes, which we will term \textit{detection} and \textit{interaction}. 
+In the interaction phase of the experiment, the lattice is relatively shallow (depths of $\approx 10 E_R$, where $E_R$ is the geometric recoil of the lattice), allowing atoms to tunnel and interact with other atoms. 
+In this regime, fine and potentially fast control is required.
+In the detection phase, the depth of the lattice is dramatically raised ($\approx 2000 E_R$), isolating atoms in their individual wells so that Raman sideband imaging can be performed \cite{parsons2015}.
+In this regime, the control need not be fast, and the passive stability of the Mephisto laser ensures that noise is low at relevant frequency scales.
+Thus, two loops are utilized, a fast loop that uses an acousto-optic modulator to actuate the laser power at low powers, and a slow loop which uses a Berek compensator, to actuate in the high power mode.
+
+After the isolation stage, we use the sequence of optical elements shown in figure \ref{fig1}, consisting of a polarizer, half-wave plate (HWP), Berek compensator mounted on a precision galvo (Thorlabs XXX) half-wave plate, and polarizer. The berek compensator is a simple $z$-cut quartz plate coated to be anti-reflecting at 1064 nm. 
+By tilting the plate about its vertical axis, the extraordinary axis is mixed into the propagation of the beam, leading to a tilt-dependent bi-refringence that can be tuned from a zero-wave plate past a half-wave plate.
+Combined with the surrounding polarization optics, rotation of the Berek compensator changes the transmitted power with perfect contrast and transmitted power as a function of the tilt angle is shown in figure \ref{fig2}.
+If the half-wave plates in the Berek compensator are tuned to precisely 45 degrees from the angle of the tilt, the modulation contrast of the transmission is perfect, however, we purposefully detune from this configuration such that the minimum power transmitted through this system is approximately 1 W for each lattice axis. 
+Thus, when the system is in \textit{interaction} mode, tilt noise on the Berek compensator is strongly suppressed by positioning the system at the minimum.
+
+Past the Berek compensator we use a water-cooled, high power TeO$_2$ AOM (part number XXXX), where the power of the RF supplied to the AOM is used to actuate the fast, low power feedback loop.
+The local oscillator (LO) RF source is a custom-built printed circuit board (PCB) using a phase locked loop (PLL) based on the ADF4002 IC and XXX voltage controlled oscillator (VCO), preamplified with the XXX low noise amplifier. 
+This RF power is actuated using a mixer (Minicircuits XXX), which functions down to DC and a high-isolation RF switch (Minicircuits XXX), followed by a power amplifier stage (RF-bay XXX). After the AOM, the beam is sampled twice using a single beam sampler (Thorlabs BSF-10C), by taking the reflections from the front and rear facets of the optic, which are conveniently angled away from each other by XXX.
+One of the sampled beams is further attenuated by a factor of approximately 4\% by reflecing off an uncoated fused-silica plate, and the two sampled beams are directed toward a pair of identical photo-diodes. 
+
+The design of the photodiodes is exceedingly important for both the continued successful operation of the feedback loops as well as the characterization of the performance. The typical feedback loop used in the experiment is based on a simple trans-impedance amplifier design, combined with a low noise, linear, small active area photodiode. MORE DESIGN STUFF HERE
+
+
 
 \section{Photodiodes}
 FIGURE: Transimpedance amplifier, with our parameters
@@ -200,7 +223,6 @@ $M^2$ = this, waist focused 80cm to a 650um, which is consistent with ABCD traci
 
 \section{Feedback}
 \begin{itemize}
-    \item galvo
     \item aom
     \item AR pickoff
     \item PD - lenses and imaging
@@ -211,7 +233,6 @@ $M^2$ = this, waist focused 80cm to a 650um, which is consistent with ABCD traci
 
 
 
-\section{Feedback}
 
 
 \subsection{Acousto-optic Modulation}
