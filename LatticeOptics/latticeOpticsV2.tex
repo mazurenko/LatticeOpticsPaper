@@ -50,7 +50,7 @@
 
 \begin{document}
 
-\title{Design and Implementation of Low }
+\title{Design and Implementation of Stable High Power Optical Lattices for Quantum Gas Microscopy}
 
 
 \author{Li Microscope Collective}
@@ -268,6 +268,26 @@ FIGURE - SBS DATA
 	\end{itemize}
 \item SBS data
 \end{itemize}
+\section{Beam Monitoring}
+A major recent direction of ultracold atoms experiments is the ability to use very few, individually-addressible atoms\cite{AFM paper, quantum walks few body} that are simultaneously held by several lattice axes in addition to auxilliary traps.
+Unfortunately, such experiments require superb stability, where the underlying harmonic confinement does not shift by more than approximately 2-3 micron from experiment to experiment. 
+
+The required positional stability is acheived through a combination of passive stability and active monitoring. 
+Passive stability is ensured by using stable optomechanics (largely from the Thorlabs Polaris line), mounted on short posts, ensuring a low (2 inch) beam height relative to the optical table, which is floating to minimze vibrations.
+In order to further improve stability, the beam is enclosed with 1 inch beam tubes wherever possible throughtout its path, and the entire setup is covered by an aluminum plate, sanded to prevent undesired specular reflections.
+To isolate the experimental setup from the environment the entire optical table is contained within an aluminum enclosure, however, opening this enclosure has been observed to change the thermal state of the system and induce misalignment. 
+For this reason, each lattice axis is fitted with a remotely actuated mirror, controlled over the ethernet network, allowing for non-invasive realignment of the system.
+
+Passive stability, while critical, has been found to be insufficient to ensure smoothe operation over many hours. Changes in weather conditions, load on the water-cooling systems and other external effects can lead to a slow drift in the pointing of the laser beams. 
+To prevent external influences from contaminating large data sets, we have implemented an independent monitoring system to verify appropriate pointing of both lattice laser beams.
+This system is based on picking off a small portion of the beam shortly before it reaches the atomic system and imaging it onto a camera in the same plane as the atoms. 
+While the position of the atoms is dictated by the potential generated from the ingoing and retro-reflected laser beams and the monitoring camera only observes the position of the ingoing beam.
+In order to verify that the monitor camera \dots
+purposeful misalignment of the ingoing beam shows a clear correlation between the monitor camera signal and the 
+
+Typical operation of the experiment involves repeated realizations of the ultracold atomic system, with a cycle time of 10s of seconds, with a lattice duty cycle of about 10\%.
+
+
 \section{Telescope}
 -beam parameters such and such
 
