@@ -65,24 +65,21 @@ We describe the design of a stable high power 1064 nm laser for use in optical l
 \end{abstract}
 \maketitle
 \section{Introduction}
-Trapping ultracold atoms in an array of optical traps, known as an optical lattice, is a powerful technique for manipulation and control of quantum many-body systems. 
-It has facilitated precision measurements, engineering of interesting many body states, and is a possible quantum computing platform.
-However, a dominant trend in cold atom experiments has been the need to attain colder temperatures at energy scales approaching the Hz level.
-Such experiments are limited by heating rates arising from positional, phase and intensity noise of the optical lattice. 
+Ultracold atoms in optical lattices have become a powerful platform for experiments ranging from investigations of strongly correlated systems, quantum state engineering, quantum computing architectures and precision metrology, among others.
+Further, the recent advent of quantum gas microscopy has enabled studies that exhibit unprecedented control over few atom systems that function at extremely low energy scales, down to the Hz level and below.
+Unfortunately, this rapid progress places ever more stringent technical constraints on the lasers used to trap and manipulate the atomic systems.
+Specifically, in experiments taking place at low temperatures, heating due to intensity noise on a lattice cannot be allowed to approach the thermalization timescales.
+Similarly, in experiments that rely on a small number of atoms contained by multiple traps cannot proceed until all traps are stable relative to each other down to a few-site leve.
+We demonstrate a high power lattice system that exhibits levels of intensity noise below -120 dBc between 1 kHz and 3 MHz, and is positionally stable at the XXX site level. 
+This system has been successfully used in a Fermi gas microscope to investigate the charge and spin sectors of the Hubbard model with unprecedented control and fidelity. 
 
-By FIGURE - high level block diagram of system
 
-\begin{itemize}
-	\item requirements 
-	\item what have we built
-\end{itemize}
-
-We demonstrate high power lattice 
-
+\section{The atoms}
 
 \section{Mephisto}
 The lattice laser system is seeded by an Innolight Mephisto laser, which provides approximately 2 W of 1064 nm light. 
 This commercial laser utilizes a non-planar ring oscillator (NPRO) design that ensures superb phase and intensity stability. This source is split into four fibers (Thorlabs XXX) by means of polarizing beam splitters, where two of the fibers are detuned from each other by XXX MHz, to prevent interference of the lattice beams. Figure 1 shows the mechanical layout of this system, as well as the intensity noise performance (see supplementary material).
+
 
 \section{Nufern Fiber Amplifiers}
 Quantum gas microscopy of Li requires single site trap frequencies of approximately 1 MHz \cite{single site paper}.
@@ -106,15 +103,18 @@ a few microns from shot to shot, (3) by construction, the beam is retroreflected
 To condition the beam into a desired shape, a train of optical elements is used, shown in figure \ref{fig:opticalelements}, which shapes the beam. 
 Due to the high laser power, fused silica glass is used everywhere but in the acousto-optic modulator, Berek compensator and optical isolators, to minimze thermal lensing.
 For the same reason, IBS coatings are used wherever possible, due to the higher damage thresholds.
+Further, even small reflections pose both a danger to the users and the thermal equillibrium of the system.
+To alleviate this danger, all undesired beams above a 100 mW are directed to water cooled beam-dumps that are removed from the beam paths as far as possible.
+
 The large-diameter fiber tip is mounted in a monolithic, oxygen-depleted copper mount, and the beam is collimated using an XXX 20 mm fused-sileca triplet collimator from Opto-Sigma, which produces a beam with $m^2 = XXX(X)$.
 Then, the polarization is cleaned up using an IBS coated Brewster plate polarizer, which has the added benefit of rejecting the undesired cladding modes. 
 The fact that the lattice is retro-reflected, combined with the observation that optical isolation falls with applied optical power\cite{LIGO} means that two stages of optical isolators must be used. The optical isolators are based on the 5 mm diameter Faraday rotators from Thorlabs. 
 The optical isolators are located approximately 1 m away from the ultracold atomic system, meaning that undesired stray fields can have a dramatic effect.
 To overcome this problem the isolators are enclosed in mu-metal shielding, reducing the field outside the can by an estimated factor of XXX.
 
-\section{Feedback}
+\section{High power feedback}
 
-With an appropriately shaped and isolated beam, it is now important to consider two aspects of the desired experiment: (1) the lattice power must be continuously tunable from around 10 $\mu$W to around 20 W, (2) the location of the minimum gaussian beam waist must be accurately positioned to overlap the other lattices and dipole traps present in the experiment, and must remain there for the duration of the collection process (typically hours).
+After the beam has been cleaned up and isolated, it is important to consider two aspects of the desired experiment: (1) the lattice power must be continuously tunable from around 10 $\mu$W to around 20 W, (2) the location of the minimum gaussian beam waist must be accurately positioned to overlap the other lattices and dipole traps present in the experiment, and must remain there for the duration of the collection process (typically hours).
 To appease the first of these requirements, a two-stage feedback system is implemented. The reason for the two stages is simple: the experiment typically operates in one of two regimes, which we will term \textit{detection} and \textit{interaction}. 
 In the interaction phase of the experiment, the lattice is relatively shallow (depths of $\approx 10 E_R$, where $E_R$ is the geometric recoil of the lattice), allowing atoms to tunnel and interact with other atoms. 
 In this regime, fine and potentially fast control is required.
@@ -127,14 +127,13 @@ By tilting the plate about its vertical axis, the extraordinary axis is mixed in
 Combined with the surrounding polarization optics, rotation of the Berek compensator changes the transmitted power with perfect contrast and transmitted power as a function of the tilt angle is shown in figure \ref{fig2}.
 If the half-wave plates in the Berek compensator are tuned to precisely 45 degrees from the angle of the tilt, the modulation contrast of the transmission is perfect, however, we purposefully detune from this configuration such that the minimum power transmitted through this system is approximately 1 W for each lattice axis. 
 Thus, when the system is in \textit{interaction} mode, tilt noise on the Berek compensator is strongly suppressed by positioning the system at the minimum.
+Naturally, rotation of a parallel plate in the beam path induces a shift of the beam, but this is acceptable because the Berek compensator is only active during the imaging phase of the experiment, when the position of the underlying harmonic trap is largely irrelevant.
 
-Past the Berek compensator we use a water-cooled, high power TeO$_2$ AOM (part number XXXX), where the power of the RF supplied to the AOM is used to actuate the fast, low power feedback loop.
+Past the Berek compensator we high power TeO$_2$ AOM (part number XXXX), where the power of the RF supplied to the AOM is used to actuate the fast, low power feedback loop.
+The AOM material is chosen for its ultra-low thermal lensing and easily-accessible required RF powers, and the AOM itself is mounted on a custom-built, monolithic, water-cooled flexure mount that allows optimization of the AOM efficiency, but that has been found to be stable over approximately two years of operation.
 The local oscillator (LO) RF source is a custom-built printed circuit board (PCB) using a phase locked loop (PLL) based on the ADF4002 IC and XXX voltage controlled oscillator (VCO), preamplified with the XXX low noise amplifier. 
 This RF power is actuated using a mixer (Minicircuits XXX), which functions down to DC and a high-isolation RF switch (Minicircuits XXX), followed by a power amplifier stage (RF-bay XXX). After the AOM, the beam is sampled twice using a single beam sampler (Thorlabs BSF-10C), by taking the reflections from the front and rear facets of the optic, which are conveniently angled away from each other by XXX.
 One of the sampled beams is further attenuated by a factor of approximately 4\% by reflecing off an uncoated fused-silica plate, and the two sampled beams are directed toward a pair of identical photo-diodes. 
-
-The design of the photodiodes is exceedingly important for both the continued successful operation of the feedback loops as well as the characterization of the performance. The typical feedback loop used in the experiment is based on a simple trans-impedance amplifier design, combined with a low noise, linear, small active area photodiode. MORE DESIGN STUFF HERE
-
 
 
 \section{Photodiodes}
@@ -153,15 +152,24 @@ The electronic assembly is housed in a metal enclosure to minimize interference 
 Light is focused onto the photodiode using a 25.4 mm lens such that the beam at the photodiode is significantly smaller than the photodiode diameter, to prevent pointing fluctuations from registering as positional fluctuations. 
 An iris and interference filter (Semrock XXX) are used to elimnate stray sources of light. 
 
-FIGURE: Transimpedance amplifier, with our parameters
-\begin{itemize}
-	\item Transimpedance amplifier - typical parameters
-	\item design criteria, part numbers, typical voltage levels
-	\item cutting off windows
-	\item thermal stuff (inGas)
-	\item lens or no
-	\item using photodiodes for looking at these thing
-\end{itemize}
+\section{Loop Filter}
+Having covered the actuation and monitoring mechanisms of the feedback system, the only remaining part is the loop filter component of the feedback circuit, which compares the \textit{setpoint} signal supplied by the experimental control system, $v_s(t)$ and the monitoring signals $v_m(t)$, to adjust the actuation accordingly.
+We use a simple, purely integrating design based on the XXX opamp, in three stages, as seen in figure XXX.
+The first stage computes an error signal, $e(t)=v_m(t)-v_s(t)$, which is integrated by the second stage, with a manually tunable gain, set by a low-drift trimpot (digikey xxx). 
+The third stage is used to accomodate the fact that the actuation arm is in nonlinear - the optical power transmitted by the AOM is proportional to the RF power incident on it $P_{\mathrm{rf}}\propto v_{if}^2$, where $v_{if}$ is the actuation signal supplied to the IF port of the mixer.
+In effect, if the rest of the feedback system was linear, this would correspond to a quadratically increasing gain until the AOM is saturated, which could lead to slow behavior at low signal levels and ringing at higher signal levels.
+Thus, the third amplification stage primarily serves to approximately linearize the response of the feedback system by increasing the gain at low signal levels and suppress it at high signal levels, which is accomplished by adding a diode (Digi-Key XXX) in series with a resistor $R_h$ in parallel to the usual gain resistor $R_l$ in the feedback arm of the operational amplifier. 
+This can be clearly seen to acheive the desired effect in two exreme cases - far below the diode drop, the diode is an open circuit and the gain is set by $R_l$, where above the diode drop it is a closed circuit where the gain is set by the resistor $R_h$.
+Naturally, the voltage drop over the diode is chosen such that it is approximately half the maximum desired signal level of the photodiode (3.3 V).
+Another function of the last stage is to clamp the voltage to zero, in order to prevent an unstable positive feedback behavior due to the quadratic nature of the mixer.
+Last of all, since the mixer is a current driven device the last stage of the feedback loop uses an OPA627 (Digi-Key XXX) as a current buffer. 
+
+A common behavior of analog feedback systems with integration components is termed \textit{integrator wind-up}, and occurs when the feedback loop is manually broken, and the actuator can no longer adjust the state of the controlled parameter. 
+In this regime, the integrator accumulates a large positive or negative value, such that when control is restored, the system is uncontrolled until the integrator reaches the desired value.
+In this case, \textit{integrator wind-up} occurs when the high-isolation RF switch is open during the initial cooling procedure, and closed when the lattice is desired. 
+Since the lattice must usually be applied adiabatically, fast transients due to integrator windup are highly destructive.
+To solve this system, a bypass switch (Digi-Key XXX) is placed accross the capacitor of the second stage of the feedback circut, which bleeds the charge off the capacitor when the lattice is inactive.
+
 
 \subsection{Residual Intensity Noise}
 RIN:
@@ -178,36 +186,9 @@ RIN:
 \section{Lattice Beam Optics}
 
 
-\begin{itemize}
-\item evidence of fiber tip shaking if there were fans inside
-changing collimator dist wrt fiber - focus about 80 cm - focus through aom - no movable optics between AOM and chuck
-\item mode shape changes dramatically with pump current (output power)
-\end{itemize}
-
-\subsection{Isolation}
-\begin{itemize}
-\item backreflections are bad,
-\item retroreflection -> 2 stages
-\item as seen in ligo Yttg isolation decreases with optical intensity - coupling between optical effects and faraday
-\item not as bad as ligo, since not in vacuum.
-\item thorlabs -> high power 5mm aperture -> BK7 bad
-\item waveplate ibs coating
-\item Can of mumetal for physics reasons
-\item attenuation of field is XXXXX
-\item watercooling
-\item stack 2x
-\end{itemize}
-
-DUMPING
--watercooled beamdumps far removed from the optics for thermal reasons
 \subsection{Intensity Control}
-2 Step intensity control
 
-\subsubsection{Berek Compensator}
-\begin{itemize}
-\item high dyn range actuator
-\item berek compensator
-\end{itemize}
+2 Step intensity control
 
 custom coating quartz plate that is z-cut mounted on camtech galvo
 can act as translates rotation into polarization rotation
@@ -245,9 +226,6 @@ $M^2$ = this, waist focused 80cm to a 650um, which is consistent with ABCD traci
     \item Exponential
     \item Pump current
 \end{itemize}
-
-
-
 
 
 \subsection{Acousto-optic Modulation}
