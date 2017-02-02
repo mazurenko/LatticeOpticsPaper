@@ -66,15 +66,20 @@ We describe the design of a stable high power 1064 nm laser for use in optical l
 \maketitle
 \section{Introduction}
 Ultracold atoms in optical lattices have become a powerful platform for experiments ranging from investigations of strongly correlated systems, quantum state engineering, quantum computing architectures and precision metrology, among others.
-Further, the recent advent of quantum gas microscopy has enabled studies that exhibit unprecedented control over few atom systems that function at extremely low energy scales, down to the Hz level and below.
-Unfortunately, this rapid progress places ever more stringent technical constraints on the lasers used to trap and manipulate the atomic systems.
-Specifically, in experiments taking place at low temperatures, heating due to intensity noise on a lattice cannot be allowed to approach the thermalization timescales.
-Similarly, in experiments that rely on a small number of atoms contained by multiple traps cannot proceed until all traps are stable relative to each other down to a few-site leve.
+Further, the recent advent of quantum gas microscopy has enabled studies that exhibit unprecedented control over few atom systems that function at extremely low energy scales.
+However, this rapid progress places ever more stringent technical constraints on the lasers used to trap and manipulate the atomic systems.
+For example, in experiments at low temperatures, heating due to the intensity noise of a lattice cannot be allowed to approach the thermalization timescales lest the system fail to thermalize at the required temperature.
+Similarly, experiments that rely on a small number of atoms held by multiple traps places stringent requirements on the relative stability of the traps.
 We demonstrate a high power lattice system that exhibits levels of intensity noise below -120 dBc between 1 kHz and 3 MHz, and is positionally stable at the XXX site level. 
-This system has been successfully used in a Fermi gas microscope to investigate the charge and spin sectors of the Hubbard model with unprecedented control and fidelity. 
+This system has been successfully used in a Fermi gas microscope to investigate the charge and spin sectors of the Hubbard model with unprecedented control. 
 
 
-\section{The atoms}
+\section{High level Overview}
+The system requirements:
+
+The architecture of the system is based on a single low-power, low-noise seed laser that supplies light to an array of four high-power fiber amplifiers.
+These amplifiers provide a sufficient amount of light but also substantially increase the noise of the light and degrade the mode shape. 
+The fiber amplifier output provides light is controlled to two feedback 
 
 \section{Mephisto}
 The lattice laser system is seeded by an Innolight Mephisto laser, which provides approximately 2 W of 1064 nm light. 
@@ -94,7 +99,13 @@ There are two power supplies in the fiber amplifier - a general purpose supply f
 Further, despite the presence of a water-cooled coldplate to cool the fiber and pump diodes, the high power supply is air cooled using a fan approximately 20 cm away from the gain fiber and has been thought to lead to increased noise at acoustic frequencies.
 To reduce acoustic coupling and reduce switching power supply noise, both power supplies were removed from the fiber amplifier enclosure, the low power supply was replaced by acopian XXXX PSU and the high power supply was filtered using an XXX line filter.
 Combined, these changes serve to suppress certain noise spurs measured in the relative intensity noise (RIN) of the fiber amplifier, as seen in figure 1. 
-The measurements were carried out on two fiber amplifiers from the same manufacturing batch, one with the modifications and one without.
+The measurements were carried out on a single fiber amplifier, prior to and after the modifications. The initial and final noise spectra were verified to be consistent between amplifiers coming from the same manufacturing batch.
+
+(WARNING: THIS SECTION IS BEING BUILT) The operation of the Nufern fiber amplifiers can be further optimized by finely controlling the cooling water required, by tuning the waveleng of the light supplied by the diodes that optically pump the gain fiber.
+Optimizing the temperature is advantageous because (1) the maximum output power of the fiber amplifier is increased due to the improved efficiency of the pump light and (2) the lifetime of the device is increased because less stray pump light needs to be absorbed when the pump light is separated from the desired light, reducing the thermal load. 
+This is possible because the pump diodes are fixed directly to the water-cooling plate without temperature regulation.
+Adding a Peltier TEC and regulating to the optimal wavelength is possible, but is technically difficult as it requires large cooling power of $\approx100$ W per each of the three pump diodes and the associated complexity of three feedback loops.
+We use a single XXX heat exchanger to supply cooling water to an array of four fiber amplifiers and tune the temperature such that the average power supplied by the amplifiers supplying the $X$ and $Y$ lattices is optimized.
 
 
 \section{Mode and beam shaping}
