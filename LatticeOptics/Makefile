@@ -4,7 +4,7 @@
 #  file       Makefile
 #  copyright  (c) Sebastian Blatt 2015
 
-project := latticelifetime
+project := latticeOpticsV2
 targets := $(project).pdf $(project).dvi
 subs := figures
 paper := letter #a4
