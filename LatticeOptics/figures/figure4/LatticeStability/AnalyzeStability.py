@@ -414,8 +414,8 @@ def analyze_affine_transformation():
     scans = [57, 59, 61, 62, 63, 64]
     affine = AffineAnalysis(date, scans)
 
-    #stability_scans = [52]
-    stability_scans = [57]
+    stability_scans = [52]
+    #stability_scans = [57]
     for scan in stability_scans:
         print "analyzing scan %s" % scan
         hdf_dir = HdfDirHandler(date, scan, base_directory='Y:Runlog')
@@ -450,8 +450,8 @@ def apply_transform(transform, data_dict):
     camera_data = map(lambda x: (x[1], x[2]), camera_data)
     transformed = []
     for data_pt in camera_data:
-        #transformed.append(transform.Transform(data_pt))
-        transformed.append(data_pt)
+        transformed.append(transform.Transform(data_pt))
+        #transformed.append(data_pt)
     transformed = np.array(zip(*transformed))
     ss_moments = np.array(ss_moments)
 
