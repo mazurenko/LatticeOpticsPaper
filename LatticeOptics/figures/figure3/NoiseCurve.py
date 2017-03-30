@@ -112,7 +112,8 @@ def make_rin_plot(nc_dict, x_window=[.8e3, 3e6], y_window=[-155,-85],
 
 class NoiseCurve(object):
     def __init__(self, data_dir, pd_dc_voltage, lo_filename=None, med_filename=None, hi_filename=None,
-                 optical_power = None, lo_rbw=62.5, med_rbw=500, hi_rbw=10):
+                 optical_power = None, lo_rbw=62.5, med_rbw=500, hi_rbw=10, is_freq_normalized_SA=False,
+                 is_freq_normalized_FFTM=False, offset=(0, 0, 0)):
         self.data_dir = data_dir
         self.lo_filename = "%s\\%s"%(data_dir, lo_filename) if lo_filename is not None else None
         self.med_filename = "%s\\%s"%(data_dir, med_filename) if med_filename is not None else None
@@ -123,6 +124,9 @@ class NoiseCurve(object):
         self.lo_rbw = lo_rbw
         self.med_rbw = med_rbw
         self.hi_rbw = hi_rbw
+        self.is_freq_normalized_SA=is_freq_normalized_SA
+        self.is_freq_normalized_FFTM=is_freq_normalized_FFTM
+        self.offset = offset
         
         self.lo_mat = None
         self.med_mat = None
@@ -130,6 +134,7 @@ class NoiseCurve(object):
         self.mat = None
         self.load_traces()
         self.concatenate_traces()
+
     
     @staticmethod
     def parse_fft_machine_trace(filename):
@@ -148,16 +153,26 @@ class NoiseCurve(object):
     def load_traces(self):
         if self.lo_filename is not None:
             self.lo_mat = self.parse_fft_machine_trace(self.lo_filename)
-            self.lo_mat[:, 1] = self.lo_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(self.lo_rbw) - 10*np.log10(1e3 * self.pd_dc_power)
+            if self.is_freq_normalized_FFTM:
+                self.lo_mat[:, 1] = self.lo_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[0]
+            else:
+                self.lo_mat[:, 1] = self.lo_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(self.lo_rbw) - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[0]
 
         if self.med_filename is not None:
             self.med_mat = self.parse_fft_machine_trace(self.med_filename)
-            self.med_mat[:, 1] = self.med_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(self.med_rbw) - 10*np.log10(1e3 * self.pd_dc_power)
+
+            if self.is_freq_normalized_FFTM:
+                self.med_mat[:, 1] = self.med_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[1]
+            else:
+                self.med_mat[:, 1] = self.med_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(self.med_rbw) - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[1]
 
         if self.hi_filename is not None:
             self.hi_mat = self.parse_spectrum_analyzer_csv(self.hi_filename)
-            self.hi_mat[:,1] = self.hi_mat[:,1] - 10 *np.log10(self.hi_rbw) - 10*np.log10(1e3 * self.pd_dc_power)
-    
+            if self.is_freq_normalized_SA:
+                self.hi_mat[:, 1] = self.hi_mat[:, 1] - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[2]
+            else:
+                self.hi_mat[:, 1] = self.hi_mat[:, 1] - 10 *np.log10(self.hi_rbw) - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[2]
+
     def concatenate_traces(self):
         if self.lo_mat is not None and self.med_mat is not None:
             max_f_lo = np.max(self.lo_mat[:,0])
