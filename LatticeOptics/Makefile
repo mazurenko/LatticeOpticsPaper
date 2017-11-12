@@ -4,8 +4,8 @@
 #  file       Makefile
 #  copyright  (c) Sebastian Blatt 2015
 
-project := latticeOpticsV2
-targets := $(project).pdf $(project).dvi
+project := latticeOpticsV4
+targets := $(project).pdf
 subs := figures
 paper := letter #a4
 pdfquality := default #screen
@@ -16,32 +16,21 @@ pdfpermissions := -4
 # 16 copy text and graphics
 # 32 add/modify annotations
 
-all : $(targets) $(subs)
+all: $(targets) $(subs)
 
-%.pdf: %.ps
-	@echo "ps2pdf: $< -> $@"
-	@ps2pdf14 "-sPAPERSIZE=$(paper)" "-dPDFSETTINGS=/$(pdfquality)" "-dPermissions#$(pdfpermissions)" $<
 
-%.ps: %.dvi
-	@echo "dvips: $< -> $@"
-	@dvips -t $(paper) -Ppdf -G0 $< -o $@
-
-%.dvi: %.tex $(subs)
-	@echo "latex: $< -> $@"
-	@latex $<
-	@if [ -f $(<:.tex=.bib) ]; then bibtex $(<:.tex=); fi
-	@if [ grep '\printindex' $< ]; then \
-			makeindex -s $(HOME)/elisp/latex/style/mkidx.ist -g $(<:.tex=.idx); fi
-	@latex $<
-	@latex $<
+%.pdf: %.tex $(subs)
+	@echo "pdflatex: $< -> $@"
+	@pdflatex $<
+	@bibtex $(project)
+	@pdflatex $<
+	@pdflatex $<
 	@-rm $(foreach t,aux log blg ilg ind bbl idx loc soc,$(<:.tex=.$(t))) \
 			$(project)Notes.bib
 
 .PHONY: clean $(subs)
 
-$(subs):
-	@$(MAKE) -C $@ all
 
 clean :
 	@-rm $(targets)
-	@for i in $(subs) ; do $(MAKE) -C $$i clean ; done
+	

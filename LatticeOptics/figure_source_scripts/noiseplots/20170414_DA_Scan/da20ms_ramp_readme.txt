@@ -1,0 +1,1 @@
+1.75 dc signal with a 15% modulated 20 ms period triangle wave on top of it.
