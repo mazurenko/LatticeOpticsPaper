@@ -42,7 +42,7 @@ def sample_cmap(cmap, n_pts, bottom=0.0, top=1.0, gamma=1):
     return map(cmap, bottom + rng*np.power(np.linspace(0, 1, n_pts), 1))
 
 
-def make_rin_plot(nc_dict, x_window=[.8e3, 3e6], y_window=[-155,-85],
+def make_rin_plot(nc_dict, x_window=[.8e3, 3.0e6], y_window=[-155,-85], #[-155,-85]
                   x_label='Frequency (Hz)', y_label="Rin (dBc/Hz)",
                   colors=cb.get_map('Set1', 'Qualitative', 4, reverse=True).mpl_colors, linewidth=1,
                   is_save=False, save_name='RIN', save_dir='plots', is_show=False):
@@ -82,12 +82,11 @@ def make_rin_plot(nc_dict, x_window=[.8e3, 3e6], y_window=[-155,-85],
     ax = fig.add_subplot(1, 1, 1)
 
     for idx, (label, nc) in enumerate(nc_dict.iteritems()):
-        print idx
         ax.plot(nc.mat[:, 0], nc.mat[:, 1], linewidth=linewidth, color=colors[idx], label=label, zorder=idx)
 
     ax.set_xlim(x_window)
     ax.set_ylim(y_window)
-    ax.grid(zorder=-1, color=color_grey)
+    ax.grid(zorder=-1, color=color_grey, linestyle = (4,(2,6)), linewidth = 0.5)
 
     ax.legend()
 
@@ -100,7 +99,8 @@ def make_rin_plot(nc_dict, x_window=[.8e3, 3e6], y_window=[-155,-85],
     # fig.tight_layout()
 
     if is_save:
-        out_name = '%s\\%s' % (save_dir, save_name)
+        # out_name = '%s\\%s' % (save_dir, save_name)
+        out_name = os.path.join('%s', '%s') % (save_dir, save_name)
 
         pp = PdfPages('%s.pdf' % out_name)
         plt.savefig(pp, format='pdf')
@@ -115,9 +115,11 @@ class NoiseCurve(object):
                  optical_power = None, lo_rbw=62.5, med_rbw=500, hi_rbw=10, is_freq_normalized_SA=False,
                  is_freq_normalized_FFTM=False, offset=(0, 0, 0)):
         self.data_dir = data_dir
-        self.lo_filename = "%s\\%s"%(data_dir, lo_filename) if lo_filename is not None else None
-        self.med_filename = "%s\\%s"%(data_dir, med_filename) if med_filename is not None else None
-        self.hi_filename = "%s\\%s"%(data_dir, hi_filename) if hi_filename is not None else None
+
+        self.lo_filename = os.path.join('%s', '%s')%(data_dir, lo_filename) if lo_filename is not None else None
+        self.med_filename = os.path.join('%s', '%s')%(data_dir, med_filename) if med_filename is not None else None
+        self.hi_filename = os.path.join('%s', '%s')%(data_dir, hi_filename) if hi_filename is not None else None
+
         self.pd_dc_voltage = pd_dc_voltage
         self.pd_dc_power = np.square(self.pd_dc_voltage/2.0)/50 # the factor of 2 is for impedance, the factor of 50 is ohms
         
@@ -156,6 +158,7 @@ class NoiseCurve(object):
             if self.is_freq_normalized_FFTM:
                 self.lo_mat[:, 1] = self.lo_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[0]
             else:
+                print self.lo_rbw
                 self.lo_mat[:, 1] = self.lo_mat[:, 1] - 10*np.log10(4) + 10*np.log10(20) - 10*np.log10(self.lo_rbw) - 10*np.log10(1e3 * self.pd_dc_power) + self.offset[0]
 
         if self.med_filename is not None:
