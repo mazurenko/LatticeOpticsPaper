@@ -54,7 +54,7 @@
 \maketitle
 
 Optical lattices holding an array of ultracold atoms have become a powerful experimental platform for a wide variety of investigations into various forms of quantum simulation~\cite{Friedenauer2008, Kim2010, Struck2011, Simon2011, Yan2013, Drewes2016, Murmann2015}.
-The recent advent of quantum gas microscopy~\cite{Bakr2009, Sherson2010, Haller2015, Cheuk2015, Parsons2015, Edge2015, Omran2015, Greif2016, Cheuk2016, Parsons2016, Boll2016, Cheuk2016a, Brown2016} has enabled studies that exhibit unprecedented control over individual atoms at extremely low energy scales, particularly those governed by the Hubbard Hamiltonian~\cite{Hubbard1963}.
+The recent advent of quantum gas microscopy~\cite{Bakr2009, Sherson2010, Haller2015, Cheuk2015, Parsons2015, Edge2015, Omran2015, Greif2016, Cheuk2016, Parsons2016, Boll2016, Cheuk2016a, Brown2017} has enabled studies that exhibit unprecedented control over individual atoms at extremely low energy scales, particularly those governed by the Hubbard Hamiltonian~\cite{Hubbard1963}.
 However, this progress has placed ever more stringent technical constraints on the lasers used to trap and manipulate the atomic systems.
 For example, heating due to the intensity noise cannot be allowed to approach the longest thermalization timescales, lest the system fail to thermalize~\cite{Savard1997}.
 Even if the system thermalizes, heating rates can limit the interrogation time available to probe a low-temperature state.
@@ -206,7 +206,7 @@ This contrast can be reduced by varying $\theta$, to the limiting case where $\t
 \begin{figure}
   \begin{center}
     \includegraphics[width=\columnwidth]{Figure5.pdf}
-    \caption{\textbf{Berek compensator based feedback loop}. This Berek compensator based feedback loop is used to vary the beam intensity at relatively high power. (a) Shows the small signal impulse response and (b-c) show the corresponding Bode plots.}\label{fig:berek_step_response}
+    \caption{\textbf{Berek compensator based feedback loop}. This Berek compensator based feedback loop is used to vary the beam intensity at relatively high power. (a) Shows the small signal impulse response and (b-c) show the corresponding Bode plots of the transfer function $G$.}\label{fig:berek_step_response}
   \end{center}
 \end{figure}
 A key point, as seen in Fig.~\ref{fig:berek}, is that if the waveplates are rotated together, the maximum transmitted power is fixed, while the minimum can be raised.
@@ -315,7 +315,7 @@ We use a simple, purely integrating design based in three stages, as seen in Fig
 The first stage computes and amplifies an error signal, $e(t)=v_m(t)-v_s(t)$, which is integrated by the second stage.
 The integral gain is set using a low-drift trim-pot.
 This is the case because within relevant frequency ranges, the AOM can be coarsely approximated by a pure time delay process (with delay given by the RF travel time across the crystal $\approx 1 \mu\mathrm{s}$).
-In this scenario, the $P$ term must be small to avoid instability at the $\pi$ phase shift point, and a pure $I$ controller is optimal~\cite{Skogestad2001}.
+In this scenario, the $P$ term must be small to avoid instability at the $\pi$ phase shift point, and a pure $I$ controller is optimal~\cite{Skogestad2003}.
 For debugging purposes, the loop filter features buffered photodiode monitor and error signal monitor outputs.
 
 The third stage of the loop filter is used to accommodate the fact that the actuation arm is nonlinear - the optical power transmitted by the AOM is proportional to the RF power incident on it $P_{\mathrm{rf}}\propto v_{if}^2$, where $v_{if}$ is the actuation signal supplied to the IF port of the mixer.
