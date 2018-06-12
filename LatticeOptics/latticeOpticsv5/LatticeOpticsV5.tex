@@ -195,7 +195,7 @@ Figure~\ref{fig:berek} shows the transmitted power as a function of retardation 
 \begin{figure}
   \begin{center}
     \includegraphics{Figure4.pdf}
-    \caption{\textbf{Berek compensator} transmission as a function of the Berek compensator's tilt angle $\phi$ and waveplate rotation angles $\theta$.}
+    \caption{\textbf{Berek compensator} transmission as a function of the Berek compensator's retardation angle $\phi$ and waveplate rotation angles $\theta$.}
     \label{fig:berek}
   \end{center}
 \end{figure}
@@ -205,7 +205,7 @@ This contrast can be reduced by varying $\theta$, to the limiting case where $\t
 
 \begin{figure}
   \begin{center}
-    \includegraphics[width=\columnwidth]{fig/step_response.pdf}
+    \includegraphics[width=\columnwidth]{Figure5.pdf}
     \caption{\textbf{Berek compensator based feedback loop}. This Berek compensator based feedback loop is used to vary the beam intensity at relatively high power. (a) Shows the small signal impulse response and (b-c) show the corresponding Bode plots.}\label{fig:berek_step_response}
   \end{center}
 \end{figure}
@@ -236,7 +236,7 @@ It is mounted on a custom-built, monolithic, water-cooled flexure mount that all
 
 \begin{figure}
   \begin{center}
-    \includegraphics{fig/circuits.pdf}
+    \includegraphics{Figure6.pdf}
     \caption{\textbf{Feedback circuits.} (a) The reverse-biased photodiode. (b) Externally referenced phase-locked loop. (c) Nonlinear loop filter. (d) RF power modulation using a mixer.}\label{fig:circuits}
   \end{center}
 \end{figure}
@@ -261,7 +261,7 @@ Elimination of the carrier drift is worth the added phase noise, however, becaus
 
 \begin{figure}
   \begin{center}
-    \includegraphics{fig/pll.pdf}
+    \includegraphics{Figure7.pdf}
     \caption{\textbf{PLL performance} (a) The spectrum of the PLL, exhibiting phase noise of better than $-90$ dBc/Hz at $100$~kHz away from the carrier. (b) The RIN of the local oscillator based on the PLL. The noise level is seen to be at or below the noise floor of the measurement device.}\label{fig:pll}
   \end{center}
 \end{figure}
@@ -270,7 +270,7 @@ Elimination of the carrier drift is worth the added phase noise, however, becaus
 
 \begin{figure}
   \begin{center}
-    \includegraphics[width=\columnwidth]{fig/cut_photodiode.jpg}
+    \includegraphics[width=\columnwidth]{Figure8.jpg}
     \caption{\textbf{Photodiode photo} showing that the ``can'' of the photodiode has been cut, to prevent etalon-like behavior.}\label{fig:cut_pd}
   \end{center}
 \end{figure}
@@ -302,7 +302,7 @@ The transient noise, while unfortunate, is mitigated by two factors: (1) it is o
 
 \begin{figure}
   \begin{center}
-    \includegraphics{fig/da_rin_scan.pdf}
+    \includegraphics{Figure9.pdf}
     \caption{\textbf{Relative intensity noise of the digital to analog converter} at a fixed output voltage and while changing values. To measure the transient RIN, a $20$ ms, triangle wave with a DC offset and modulation depth of $15$\% of the DC offset was produced by the device. The triangle wave accounts for the series of spurs at low frequencies that fall with increasing frequencies. At frequencies above approximately $4$ kHz, the spectrum is dominated by noise due to transient ``glitches'' that emerge when the device changes its output state.}\label{fig:da_rin}
   \end{center}
 \end{figure}
@@ -331,14 +331,14 @@ Last of all, since the mixer is a current driven device, the last stage of the f
 
 \begin{figure}
   \begin{center}
-    \includegraphics{fig/low_power_bandwidths.pdf}
+    \includegraphics{Figure10.pdf}
     \caption{\textbf{Loop bandwidth dependence on the set-point}. (a) shows the $3$ dB and $\pi$ phase shift points for the $X$ lattice. (b) shows the same for the $Y$ lattice.}\label{fig:bandwidth}
   \end{center}
 \end{figure}
 
 \begin{figure*}
   \begin{center}
-    \includegraphics{fig/low_pass_filters.pdf}
+    \includegraphics{Figure11.pdf}
     \caption{\textbf{Laser noise of the lattice system with and without additional low pass filters} (a) Closed loop laser made a fiber amplifier (different than the one in figure~\ref{fig:noises}. (b) Noise on the same system as (a), but with extra filters.}\label{fig:low_pass_noises}
   \end{center}
 \end{figure*}
@@ -385,7 +385,7 @@ We have characterized the phase stability of the optical lattice by looking at a
 
 \begin{figure*}
   \begin{center}
-    \includegraphics{fig/AveragedMI.pdf}
+    \includegraphics{Figure12.pdf}
     \caption{\textbf{Averaged images of Mott insulators}. a) Several Mott insulators were created over the course of approximately one hour, and the average image is shown\cite{Greif2016}. If the lattice fluctuated across more than a small fraction of a lattice site, the modulation contrast would be washed out. The absence of this effect means that the phase of the optical lattice is stable. b) shows an individual image of a Mott insulator.}\label{fig:averaged_mott}
   \end{center}
 \end{figure*}
@@ -424,7 +424,7 @@ Once this correlation is taken into account, we estimate a drift of $8(1)\times 
 
 \begin{figure*}
   \begin{center}
-    \includegraphics{fig/pointing_figure.pdf}
+    \includegraphics{Figure13.pdf}
     \caption{\textbf{Short term positional stability.} (a) A histogram of shot-to-shot step sizes along the transverse and longitudinal directions, with a Gaussian fit. (b) Correlations between the step size of subsequent shots. (c) Calibration data for the ``affine fit'' of the conversion from camera pixels to lattice dimentions. (d) Predicted location versus measured location along the transverse and longitudinal directions. (e,f) The measured position and predicted position of the atomic cloud, based on refitting the offset every $20$ experimental realizations.}\label{fig:stability}
   \end{center}
 \end{figure*}
@@ -447,7 +447,7 @@ Naturally, the transfer function of any such loop would have to be carefully eng
 
 \begin{figure}
 \begin{center}
-    \includegraphics[width=\columnwidth]{fig/lattice_stability.pdf}
+    \includegraphics[width=\columnwidth]{Figure14.pdf}
     \caption{\textbf{Long term stability over approximately nine months.} The lattice spacing $|\mathrm{v}_x|$ and $|\mathrm{v}_y|$ and the lattice angles $\theta_x$ and $\theta_y$ along the two lattice axes $x$ and $y$ are shown over the duration of almost 1 year. }\label{fig:long_term_stability}
   \end{center}
 \end{figure}
