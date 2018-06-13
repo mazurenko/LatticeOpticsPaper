@@ -9,16 +9,6 @@
 \usepackage{amsmath}
 
 \newcommand\unit[2]{\ensuremath{#1~\mathrm{{#2}}}}
-
-\newcommand\Ket[1]{\ensuremath{|{#1}\rangle}}
-\newcommand\Bra[1]{\ensuremath{\langle{#1}|}}
-
-\newcommand\Isotope[2]{\ensuremath{^{#1}\mathrm{#2}}}
-\newcommand\Li{\Isotope{6}{Li}}
-
-\renewcommand{\vec}[1]{\ensuremath{\bm{#1}}}
-
-\newcommand\NA{\ensuremath{\mathrm{NA}}}
 \newcommand\FIXME{{\color{red}\ensuremath{\mathrm{FIXME}}}}
 
 
@@ -28,7 +18,7 @@
 
 \author{A. Mazurenko}
 \altaffiliation{
-  Present address: FIXME}
+  Present address: \FIXME{}}
 \author{S. Blatt}
 \altaffiliation{
   Present address: Max-Planck-Institut f{\"u}r Quantenoptik,
@@ -38,7 +28,7 @@
   Present address: IPG Photonics Corporation, Oxford, MA 01540}
 \author{M. F. Parsons}
 \altaffiliation{
-  Present address: FIXME TOO}
+  Present address: \FIXME{} TOO}
 \author{C. S. Chiu}
 \author{G. Ji}
 \author{D. Greif}
@@ -49,19 +39,18 @@
 
 \date{\today}
 \begin{abstract}
- We describe the design of a stable high power \unit{1064}{nm} laser system for practical use in optical lattice experiments. The system is based on a low noise laser amplified by an array of four heavily modified, high-power fiber amplifiers. The beam intensity is stabilized with a nonlinear feedback loop. The position of the produced optical lattice is monitored in real time and its stability is characterized.
+  We describe the design and implementation of a stable high-power \unit{1064}{nm} laser system for use in experiments with ultracold atoms trapped in optical lattices. The system is based on a low-noise laser amplified by an array of four heavily modified, high-power fiber amplifiers. The beam intensity is stabilized and controlled with a nonlinear feedback loop. Using real-time monitoring of the resulting optical lattice, we demonstrate a shot-to-shot stability of the lattice position at 1\% of the lattice spacing and a long-term (six month) relative stability of 0.5\% RMS of the lattice spacing.
 \end{abstract}
 \maketitle
 
-Optical lattices holding an array of ultracold atoms have become a powerful experimental platform for a wide variety of investigations into various forms of quantum simulation~\cite{Friedenauer2008, Kim2010, Struck2011, Simon2011, Yan2013, Drewes2016, Murmann2015}.
-The recent advent of quantum gas microscopy~\cite{Bakr2009, Sherson2010, Haller2015, Cheuk2015, Parsons2015, Edge2015, Omran2015, Greif2016, Cheuk2016, Parsons2016, Boll2016, Cheuk2016a, Brown2017} has enabled studies that exhibit unprecedented control over individual atoms at extremely low energy scales, particularly those governed by the Hubbard Hamiltonian~\cite{Hubbard1963}.
+Optical lattices holding arrays of ultracold atoms have become a powerful experimental platform for quantum simulations~\cite{Friedenauer2008, Kim2010, Struck2011, Simon2011, Yan2013, Drewes2016, Murmann2015}.
+The recent advent of quantum gas microscopy~\cite{Bakr2009, Sherson2010, Haller2015, Cheuk2015, Parsons2015, Edge2015, Omran2015, Greif2016, Cheuk2016, Parsons2016, Boll2016, Cheuk2016a, Brown2017} has enabled studies with unprecedented control over individual atoms in many-body systems governed by the Hubbard Hamiltonian~\cite{Hubbard1963}, resulting in extremely low energy scales~\cite{Mazurenko2017}.
 However, this progress has placed ever more stringent technical constraints on the lasers used to trap and manipulate the atomic systems.
-For example, heating due to the intensity noise cannot be allowed to approach the longest thermalization timescales, lest the system fail to thermalize~\cite{Savard1997}.
-Even if the system thermalizes, heating rates can limit the interrogation time available to probe a low-temperature state.
-Similarly, experiments that rely on a small number of atoms held by multiple traps place stringent requirements on the relative positional stability of the traps, to ensure that the operations performed by the traps have adequate fidelity.
+Even if the systems thermalize, heating rates can limit the interrogation time available to probe low-temperature states~\cite{Blatt2015}.
+In particular, experiments that rely on a small number of atoms held by multiple traps~\cite{Preiss2015, Choi2016, Mazurenko2017} place stringent requirements on the relative positional stability of the traps, to ensure that the operations performed by the traps have adequate fidelity.
 
-In this work we discuss major improvements to our high power optical lattice system~\cite{Blatt2015} and show levels of intensity noise below \unit{-120}{dBc/Hz} between \unit{1}{kHz} and \unit{3}{MHz} Fourier frequency.
-The stability of the lattice position is below the single site level (over a few hours) and the stability of the harmonic confinement is at the few site level (over nine months).
+In this work we discuss major improvements to our high power optical lattice system~\cite{Blatt2015} and show levels of intensity noise below \unit{-115}{dBc/Hz} between \unit{1}{kHz} and \unit{3}{MHz} Fourier frequency.
+In addition to the intensity stability, we demonstrate a short-term (shot-to-shot) stability of the lattice position at 1\% of the optical lattice spacing, and a long-term (six month) relative stability of 0.5\% RMS of the lattice spacing itself.
 
 \begin{figure}[t]
   \begin{center}
@@ -70,7 +59,7 @@ The stability of the lattice position is below the single site level (over a few
   \end{center}
 \end{figure}
 
-The architecture of the system is shown in Fig.~\ref{fig:high_level} and is based on a single low-power, low-noise seed laser that supplies light to an array of four high-power fiber amplifiers (one for a transport beam~\cite{Huber2014}, and one each for the $X,Y,Z$ lattices~\cite{Blatt2015,Parsons2016}).
+The architecture of the system, shown in Fig.~\ref{fig:high_level}, is based on a single low-power, low-noise seed laser that supplies light to an array of four high-power fiber amplifiers (one for a transport beam~\cite{Huber2014}, and one each for the $X,Y,Z$ lattices~\cite{Blatt2015,Parsons2016}).
 These amplifiers generate enough light to perform site resolved imaging~\cite{Parsons2015}, but also substantially increase the level of intensity and pointing noise.
 The fiber amplifier output is controlled by two feedback loops, which stabilize the light in low power and high power regimes, respectively, as discussed later.
 After intensity stabilization, the laser beam is mode-shaped to a desired waist.
@@ -81,7 +70,7 @@ In the following we give an in-depth technical description of the optical lattic
 \section{Laser system}
 \subsection{Seed laser system}
 The lattice laser system is seeded by an Innolight Mephisto laser, which provides approximately \unit{2}{W} of \unit{1064}{nm} light.
-This commercial laser utilizes a non-planar ring oscillator (NPRO) design that ensures superb phase and intensity stability.
+This commercial laser uses a non-planar ring oscillator (NPRO) design that ensures superb phase and intensity stability.
 This source is split and coupled into four single-mode, polarization-maintaining fibers (Thorlabs PM980-XP), each connected to the input of a fiber amplifier.
 Three of these fiber amplifiers are used to produce the 3D optical lattice~\cite{Blatt2015,Parsons2016}, and a fourth is used for transport~\cite{Huber2014}.
 To avoid interference of the lattice beams, two of the beam paths pass through acousto-optic modulators (AOMs), which detune the lattice frequencies from each other.
@@ -89,22 +78,21 @@ To avoid interference of the lattice beams, two of the beam paths pass through a
 \begin{figure*}
   \begin{center}
     \includegraphics{Figure2.pdf}
-    \caption{\textbf{Laser noise of the lattice system.} (a) Shows the laser noise of unmodified Nufern fiber amplifiers and the Mephisto seed, as well as an independent Mephisto MOPA 55W (not used for the optical lattice presented in this manuscript). (b) Shows the open (OL) and closed (CL) loop behavior of the high power feedback loop. (c) Shows open loop behavior of the low power feedback loop after making the modifications. (d) Closed loop behavior of the loop system without additional filtering, measured on the same setup as panel (c).}\label{fig:noises}
+    \caption{\textbf{Laser noise of the lattice system.} (a) Shows the laser noise of unmodified and free-running Nufern fiber amplifiers and the Mephisto seed, as well as an independent Mephisto MOPA 55W (not used for the optical lattice presented in this manuscript). (b) Shows the open-loop and closed-loop behavior of the high-power feedback loop using the  modified fiber amplifiers, as described in the main text. (c) Shows the open-loop behavior of the low-power feedback loop using the modified fiber amplifiers, including an additional low-pass filtering stage to limit the loop bandwidth. (d) Closed-loop behavior of the low-power feedback loop without additional low-pass filtering, measured on the same setup as panel (c).}\label{fig:noises}
   \end{center}
 \end{figure*}
 
 \subsection{Fiber amplifier system}
-Quantum gas microscopy of \Li{} requires single site trap frequencies of approximately \unit{1}{MHz}~\cite{Parsons2015} to be in the Lamb-Dicke regime necessary for Raman sideband cooling.
+Quantum gas microscopy of Li$^6$ requires single site trap frequencies of approximately \unit{1}{MHz}~\cite{Parsons2015} to be in the Lamb-Dicke regime necessary for Raman sideband cooling.
 Such trap frequencies may only be attained using tightly focused, high-power beams.
-In practical terms, this requires approximately $30\,$W per lattice axis, which we attain using Nufern fiber amplifiers (NuAmp SUB1174-34).
-These amplifiers can amplify $150\,$mW of seed light to up to approximately $45\,$W. They use a length of doped fiber pumped with $808\,$nm light from fiber coupled diode sources to amplify $1064\,$nm light.
-The amplification is performed using a two stage design, where the stages are controlled and powered using separate power supplies and electronics.
+In practical terms, this requires approximately \unit{30}{W} per lattice axis, which we attain using Yb-doped fiber amplifiers (Nufern NuAmp SUB1174-34).
+These amplifiers can amplify \unit{150}{mW} of seed light to up to approximately \unit{45}{W}. They use a length of doped fiber pumped with \unit{808}{nm} light from fiber coupled diode sources to amplify the \unit{1064}{nm} seed light.
+The amplification is performed using a two-stage design, where the stages are controlled and powered using separate power supplies and electronics.
 
 \begin{figure*}[t]
   \begin{center}
     \includegraphics{Figure3.pdf}
-    \caption{\textbf{Optical layout} of the optical lattice system for beam shaping and modulation.}
-    \label{fig:optical_layout}
+    \caption{\textbf{Optical layout} of the optical lattice system for beam shaping and modulation.}\label{fig:optical_layout}
   \end{center}
 \end{figure*}
 
@@ -121,24 +109,24 @@ This added noise can be seen in Fig.~\ref{fig:noises}, where the fiber-amplified
 We solve this problem by replacing the USB control board with a custom-designed solution  that is compatible with our laboratory control system and engineered to avoid ground loops.
 
 
-Further sources of technical noise arise from the design of the amplifier. There are two power supplies in the fiber amplifier: (1) a general purpose power supply (PSU) for the control electronics and the first, low-power amplification stage and (2) a high-power supply for the second, high-power stage.
-Despite the presence of a water-cooled cold-plate for the gain fiber and pump diodes, the high power PSU is air cooled by an internal fan with variable frequency.
+Further sources of technical noise arise from the design of the amplifier. There are two power supplies in the fiber amplifier: (1) a general purpose power supply for the control electronics and the first, low-power amplification stage and (2) a high-power supply for the second, high-power stage.
+Despite the presence of a water-cooled cold-plate for the gain fiber and pump diodes, the high power supply is air cooled by an internal fan with variable frequency.
 This fan adds noise at acoustic frequencies and degrades pointing stability by increasing vibrations on the output fiber tip.
-To reduce acoustic coupling and reduce switching power supply noise, both power supplies were removed from the fiber amplifier chassis, and the low-power supply was replaced by a linear PSU (Acopian A24MT350M).
-Further, a high current low-pass filter (MPE DS26387) was added to the high-power PSU (Lumina LDD-600-60-10-5VP/M).
+To reduce acoustic coupling and reduce switching power supply noise, both power supplies were removed from the fiber amplifier chassis, and the low-power supply was replaced by a linear power supply (Acopian A24MT350M).
+Further, a high current low-pass filter (MPE DS26387) was added to the high-power supply (Lumina LDD-600-60-10-5VP/M).
 
 
 These upgrades serve to suppress many of the noise spurs measured in the fiber amplifier RIN.
-The effects can be as seen by comparing Fig.~\ref{fig:noises} (a) and (b), particularly in the region of approximately \unit{10}{kHz} Fourier frequency.
+The effects can be seen when comparing Fig.~\ref{fig:noises}(a) and (b), particularly in the region of approximately \unit{10}{kHz} Fourier frequency.
 The measurements in panels (a)-(d) were carried out on a single fiber amplifier, prior to and following the modifications. The initial and final noise spectra were verified to be consistent between amplifiers coming from the same manufacturing batch.
-The figure is based on fiber amplifiers from a relatively new batch, which, even in its unmodified configuration does not exhibit a large switching supply spur.
+The figure is based on fiber amplifiers from a relatively new batch, which even in its unmodified configuration does not exhibit a large switching supply spur.
 This is not the case for certain older batches, where the spur is approximately \unit{30}{dB} above the background.
 
-The SBS noise is fundamental to the fiber amplifier architecture and cannot be entirely avoided. However, since it is a function of fiber length and optical power, it can be minimized. To this end, we use custom-ordered amplifiers with a \unit{50}{cm} long output fiber, compared to the standard length of a few meters.
+The SBS noise is fundamental to the fiber amplifier architecture and cannot be entirely avoided. However, since it is a function of fiber length and optical power~\cite{Agrawal2013}, it can be minimized. To this end, we use custom-ordered amplifiers with a \unit{50}{cm} long output fiber, compared to the standard length of a few meters.
 In addition, we use the lowest pump diode current that yields enough power to perform imaging.
 The rise of the noise floor as a function of the pump diode current can be seen in Fig.~\ref{fig:noises}(a) at Fourier frequencies above \unit{100}{kHz}.
 
-The operation of the Nufern fiber amplifiers can be further optimized by finely controlling the cooling water.
+The operation of the Nufern fiber amplifiers can be further optimized by finely controlling the cooling water temperature.
 The water temperature tunes the wavelength of the light supplied by the diodes that optically pump the gain fiber.
 Optimizing the temperature is advantageous because (1) the maximum output power of the fiber amplifier is increased due to the improved efficiency of pump light conversion and (2) the lifetime of the amplifier is increased because less stray pump light needs to be absorbed when the pump light is separated from the output, reducing the thermal load.
 
@@ -167,7 +155,7 @@ The large-diameter fiber tip at the output of the fiber amplifier is mounted in 
 The beam is collimated using an $f=\unit{20}{mm}$ fused-silica, air-spaced triplet collimator (Opto-Sigma HFTLSQ-15-20PF1) angled with respect to and centered on the angle-cleaved fiber tip.
 The polarization is set using an IBS coated thin-film plate polarizer (Precision photonics PO1056-FY), which has the added benefit of rejecting the undesired cladding modes of the fiber, which carry about \unit{1}{W} of light.
 The fact that the lattice is retro-reflected, combined with the observation that optical isolation falls with applied optical power~\cite{Yoshida1999} means that two stages of optical isolators must be used.
-The optical isolators are based on \unit{5}{mm} aperture terbium gallium garnet (TGG) isolators (Thorlabs IO-5-1064-VHP), where we replaced the default polarizers (BK7 Brewster plates) by IBS-coated fused silica plate polarizers.
+The optical isolators are based on \unit{5}{mm} aperture Tb$_3$Ga$_5$O$_12$ (TGG) isolators (Thorlabs IO-5-1064-VHP), where we replaced the default polarizers (BK7 Brewster plates) by IBS-coated fused silica plate polarizers.
 The isolators are located approximately \unit{1}{m} away from the ultracold atoms which are susceptible to stray magnetic fields.
 To overcome this problem the isolators are enclosed in mu-metal shielding.
 Actuation of the power is performed after the optical isolators, such that the full fiber amplifier output continuously passes through them, minimizing thermal transients during the experimental sequence.
@@ -180,7 +168,7 @@ After the beam has been cleaned up and isolated, it is important to consider two
 \item The location of the minimum Gaussian beam waist must be accurately positioned to overlap the other lattices and dipole traps present in the experiment, and must remain aligned for the duration of the data collection process (hours to days).
 \end{enumerate}
 To satisfy the first of these requirements, a two-stage feedback system is implemented.
-Two stages are used because the experiment typically operates in one of two regimes, which we term \textit{detection} and \textit{interaction}.
+Two stages are used because the experiment typically operates in one of two regimes, which we term \emph{detection} and \emph{interaction}.
 In the interaction phase of the experiment, the lattice is relatively shallow ($\approx \unit{100}{mW}$, corresponding to depths of $\approx 10 E_R$), which allows atoms to tunnel and interact with each other.
 In this regime, precise and potentially fast control is required.
 In the detection phase, the depth of the lattice is dramatically raised (to $\approx 2000 E_R$), which isolates atoms in their individual wells so that Raman sideband imaging can be performed~\cite{Parsons2015}.
@@ -189,14 +177,13 @@ Thus, two control loops are used, a fast loop based on an acousto-optic modulato
 
 After the isolation stage, we use the sequence of optical elements shown in Fig.~\ref{fig:optical_layout}, consisting of a polarizer, half-wave plate (HWP), Berek compensator mounted on a precision galvo (Thorlabs GVS002, or Camtech 8320K, depending on the beam path) half-wave plate, and polarizer.
 The Berek compensator is a $z$-cut quartz plate anti-reflection-coated at \unit{1064}{nm}.
-By tilting the plate about its vertical axis by a few degrees, the extraordinary axis is mixed into the propagation of the beam, leading to  tilt-dependent birefringence that can be tuned from a zero-wave plate past a half-wave plate, represented by a retardation angle $\phi$.
+By tilting the plate about its vertical axis by a few degrees, the extraordinary axis is mixed into the propagation of the beam, leading to tilt-dependent birefringence that can be tuned from a zero-wave plate past a half-wave plate, represented by a retardation angle $\phi$.
 Combined with the subsequent polarization optics, rotation of the Berek compensator can vary the transmitted power with a contrast of $\sim$1000:1.
 Figure~\ref{fig:berek} shows the transmitted power as a function of retardation angle $\phi$ and fast-axis angle $\theta$ of the waveplates surrounding the compensator.
 \begin{figure}
   \begin{center}
     \includegraphics{Figure4.pdf}
-    \caption{\textbf{Berek compensator} transmission as a function of the Berek compensator's retardation angle $\phi$ and waveplate rotation angles $\theta$.}
-    \label{fig:berek}
+    \caption{\textbf{Berek compensator} transmission as a function of the Berek compensator's retardation angle $\phi$ and waveplate rotation angles $\theta$.}\label{fig:berek}
   \end{center}
 \end{figure}
 
@@ -210,29 +197,30 @@ This contrast can be reduced by varying $\theta$, to the limiting case where $\t
   \end{center}
 \end{figure}
 A key point, as seen in Fig.~\ref{fig:berek}, is that if the waveplates are rotated together, the maximum transmitted power is fixed, while the minimum can be raised.
-The waveplates are detuned such that the maximum power needed in \textit{interaction} mode is the minimum power transmitted by the Berek compensator system, strongly suppressing fluctuations due to angle positioning noise of the Berek compensator.
+The waveplates are detuned such that the maximum power needed in \emph{interaction} mode is the minimum power transmitted by the Berek compensator system, strongly suppressing fluctuations due to angle positioning noise of the Berek compensator.
 Naturally, rotation of a parallel plate in the beam path induces a shift of the beam, but this is acceptable because the Berek compensator is only active during the imaging phase of the experiment, when the position of the underlying harmonic trap is largely irrelevant.
 Fortunately, the spatial phase of the optical lattice is set by the retro-reflector mirror, which does not move, and is not affected by the rotation of the Berek compensator.
-This system functions as the actuator arm of a digital feedback loop, where the power of the beam is measured using a low noise photodiode. This feedback loop regulates the lattice between $1$ W of optical power and its maximum value (which depends on the amplifier, but is $\approx20$ W).
+This system functions as the actuator arm of a digital feedback loop, where the power of the beam is measured using a low noise photodiode. This feedback loop regulates the lattice between \unit{1}{W} of optical power and its maximum value (which depends on the amplifier, but is $\approx$\unit{20}{W}).
 The step response and corresponding Bode plots~\cite{Bechhoefer2005} are shown in Fig.~\ref{fig:berek_step_response}.
 A polarization rotation by $2 \pi$ is produced by approximately $3^\circ$ of axial rotation of the quartz plate.
 Since we never need to rotate the plate outside this range, the position is constrained to this window in software.
-Since two feedback loops are present in the system (the second one detailed in the next section), care must be taken so that they do not function simultaneously.
-To accomplish this, the low power loop is always manually railed to its high extreme when the high power loop is active, and the digital high power loop is disabled when the low power loop is active.
 
-\subsection{Low power feedback}
-The high power feedback used in the \textit{imaging} phase of the experiment is exceedingly robust because the heating rate from scattered resonant imaging light far exceeds any technical heating from the loop.
+Because two feedback loops are present in the system (the second one detailed in the next section), care must be taken so that they do not function simultaneously.
+To accomplish this, the low-power loop is always manually railed to its high extreme when the high-power loop is active, and the digital high-power loop is disabled when the low-power loop is active.
+
+\subsection{Low-power feedback}
+The high-power feedback used in the \emph{imaging} phase of the experiment is exceedingly robust because the heating rate from scattered resonant imaging light far exceeds any technical heating from the loop~\cite{Blatt2015}.
 Even if the loop was exceedingly noisy, the heating would be entirely compensated by the simultaneous Raman cooling~\cite{Parsons2015}.
 
-In contrast, the low power loop that controls the lattice laser during the \textit{interaction} phase of the experiment is critically important:
+In contrast, the low-power loop that controls the lattice laser during the \emph{interaction} phase of the experiment is critically important:
 \begin{enumerate}
-  \item Its RIN can limit the system temperature.
+  \item Its effect on the RIN can limit the system temperature.
   \item It can affect the pointing.
-  \item It must have closed loop bandwidths of $\geq1\mathrm{\,kHz}$, and open loop modulation bandwidths $\geq 100\mathrm{\,kHz}$.
+  \item It must have closed-loop bandwidths of $\geq\unit{1}{kHz}$, and open-loop modulation bandwidths $\geq \unit{100}{kHz}$.
 \end{enumerate}
-To this end, we use an all-custom loop based on a TeO$_2$ AOM (Gooch \& Housego AOMO 3080-198), where the power of the RF supplied to the AOM is used to actuate the fast, low power feedback loop.
+To this end, we use an all-custom loop based on a TeO$_2$ AOM (Gooch \& Housego AOMO 3080-198), where the power of the RF supplied to the AOM is used to actuate the fast, low-power feedback loop.
 The AOM was chosen for its low thermal lensing and easily-accessible RF powers.
-It is mounted on a custom-built, monolithic, water-cooled flexure mount that allows optimization of the AOM efficiency, that has been found to remain stable over years of operation.
+It is mounted on a monolithic, water-cooled flexure mount that allows optimization of the AOM efficiency, while remaining stable over years of operation.
 
 \begin{figure}
   \begin{center}
@@ -240,23 +228,24 @@ It is mounted on a custom-built, monolithic, water-cooled flexure mount that all
     \caption{\textbf{Feedback circuits.} (a) The reverse-biased photodiode. (b) Externally referenced phase-locked loop. (c) Nonlinear loop filter. (d) RF power modulation using a mixer.}\label{fig:circuits}
   \end{center}
 \end{figure}
-The feedback circuit is shown in Fig.~\ref{fig:circuits}a. As seen in Fig.~\ref{fig:optical_layout}, a pair of low noise photodiodes measures the optical power of the beam sampled with a weakly reflective optic (Thorlabs BSF10-C).
+The feedback circuit is shown in Fig.~\ref{fig:circuits}(c). As seen in Fig.~\ref{fig:optical_layout}, a pair of low-noise photodiodes [Fig.~\ref{fig:circuits}(a)] measures the optical power of the beam sampled with a weakly reflective optic (Thorlabs BSF10-C).
 The beam sampler is wedged in such a way that the two reflections diverge from one another, allowing us to illuminate both photodiodes.
-One of the sampled beams is attenuated by an additional factor of $20\times$ by reflection off of an uncoated fused silica glass plate, such that the dynamic range of its photodiode covers $0-20$ W of the beam directed at the atoms, and controls the Berek compensator based, high-power feedback loop.
-The other beam is not attenuated, save by the beam sampler, and its dynamic range covers $0-1$ W.
-To prevent damage to the low power photodiode when the system is at its highest powers, a shutter (Stanford Research Systems SR475) blocks the light when the high power loop is in use.
-The low power photodiode passes its signal $V_{\mathrm{pd}}$ to a loop filter circuit, which compares it to the control system's set-point, generated by digital to analog converter.
-The loop filter's output controls the IF port of a microwave mixer (Minicircuits ZFM-2-S+), effectively modulating the RF power supplied by a low noise phase-locked loop (PLL).
+One of the sampled beams is attenuated by an additional factor of 20 by reflection off of an uncoated fused silica glass plate, such that the dynamic range of its photodiode covers \unit{0-20}{W} of the beam directed at the atoms, and controls the Berek-compensator-based, high-power feedback loop.
+The other beam is not attenuated, save by the beam sampler, and its dynamic range covers \unit{0-1}{W}.
+To prevent damage to the low-power photodiode when the system is at its highest powers, a shutter (Stanford Research Systems SR475) blocks the light when the high-power loop is in use.
+The low-power photodiode passes its signal $V_{\mathrm{pd}}$ to a loop filter circuit [Fig.~\ref{fig:circuits}(c)], which compares it to the control system's set-point, generated by a digital-to-analog converter.
+The loop filter's output controls the IF port of a microwave mixer [Minicircuits ZFM-2-S+, see Fig.~\ref{fig:circuits}(d)], to modulate the RF power supplied by a low-noise phase-locked loop [PLL, see Fig.~\ref{fig:circuits}(b)].
 The resulting RF signal is then amplified and sent to the AOM.
 Let us now consider every part of this signal chain individually.
 
 \subsubsection{Phase-locked loop (PLL)}
-The local oscillator (LO) RF source is a custom-built printed circuit board (PCB) implementing a phase locked loop (PLL) based on the ADF4002 IC and Crystek's CVCO55CL-0060-0110 voltage controlled oscillator (VCO), preamplified with a low noise amplifier (Minicircuits PSA4-5043+).
-To ensure frequency stability (which translates directly into beam pointing of the laser), the PLL is locked to the $10$ MHz clock distributed around the lab.
-In addition to PLL functionality, the board also contains two digitally-controlled, high-isolation RF switches, giving a total isolation exceeding $90$ dB.
+The local oscillator (LO) RF source is a custom-built printed circuit board (PCB), schematically shown in Fig.~\ref{fig:circuits}(b), that implements a phase locked loop (PLL) based on the ADF4002 IC and a low-phase-noise voltage-controlled oscillator (VCO, Crystek CVCO55CL-0060-0110), preamplified with a low-noise amplifier (Minicircuits PSA4-5043+).
+To ensure frequency stability (which translates directly into beam pointing of the laser), the PLL is locked to the \unit{10}{MHz} frequency reference distributed around the lab.
+In addition to PLL functionality, the board also contains two digitally-controlled, high-isolation RF switches, giving a total isolation exceeding \unit{90}{dB}.
 
+We need to maintain the relatively low phase-noise characteristics of the VCO to prevent phase- to amplitude-noise conversion in the AOM, which partially downconverts the VCO phase noise to RIN at acoustic frequencies.
 The spectrum and relative intensity noise of the PLL can be found in Fig.~\ref{fig:pll}.
-Vitally, the spectrum of the PLL exhibits phase noise comparable to (albeit worse than) that of a typical VCO, without the slow frequency drift characteristic to these devices.
+Vitally, the spectrum of the PLL exhibits phase noise comparable to that of a typical VCO, without the slow frequency drift characteristic to these devices.
 Elimination of the carrier drift is worth the added phase noise, however, because any drift of the frequency affects the pointing of the laser beam passing through the AOM, which would misalign the optical lattice.
 
 \begin{figure}
@@ -271,184 +260,182 @@ Elimination of the carrier drift is worth the added phase noise, however, becaus
 \begin{figure}
   \begin{center}
     \includegraphics[width=\columnwidth]{Figure8.jpg}
-    \caption{\textbf{Photodiode photo} showing that the ``can'' of the photodiode has been cut, to prevent etalon-like behavior.}\label{fig:cut_pd}
+    \caption{\textbf{Photodiode photo} showing that the ``can'' of the photodiode has been cut, to suppress etalon-like behavior between the cover glass and the sensor.}\label{fig:cut_pd}
   \end{center}
 \end{figure}
 
 Fast, low-noise photodiodes are required both to provide the monitoring arm of the feedback loop and to characterize the RIN of the system.
-An ideal device would have a bandwidth up to approximately 3 MHz (since trap frequencies in the system are $\approx1.5\,$MHz), with a noise floor below approximately -150 dBc over that range.
-To approach these specifications, we use a custom designed PCB that implements a simple trans-impedance amplifier~\cite{Graeme1995} in a convenient physical package, providing a bandwidths in the 0.1-10 MHz range, depending on the trans-impedance gain set by a resistor.
-The photodiode can be safely operated up to incident powers of approximately 10 mW, which sets a -164 dBc/Hz shot noise limit on the RIN that can be detected.
-In practice, we typically operate the photodiodes with $\approx 1-5$ mW of incident power.
-A photodiode with a bandwidth (BW) of 6 MHz is used to characterize the system, while photodiodes with a bandwidth of 330 kHz (and correspondingly higher gain) are used to perform the feedback.
+An ideal device would have a bandwidth up to approximately \unit{3}{MHz} (since trap frequencies in the system are \unit{1.5}{MHz}), with a noise floor below approximately \unit{-150}{dBc/Hz} over that range~\cite{Blatt2015}.
+To approach these specifications, we use a custom-designed PCB that implements a simple transimpedance amplifier~\cite{Graeme1995} in a convenient physical package, providing a bandwidths in the \unit{0.1-10}{MHz} range, depending on the transimpedance gain set by a resistor.
+The photodiode can be safely operated up to incident powers of approximately \unit{10}{mW}, which sets a \unit{-164}{dBc/Hz} shot noise limit on the RIN that can be detected.
+In practice, we typically operate the photodiodes with $\approx$\unit{1-5}{mW} of incident power.
+A photodiode with a bandwidth (BW) of \unit{6}{MHz} is used to characterize the system, while photodiodes with a bandwidth of \unit{330}{kHz} (and correspondingly higher gain) are used to perform the feedback.
 
-The chosen photodiode (Hamamatsu G8370-01) is an InGaS based, small-area, low-noise design with a high efficiency at 1064 nm.
+The chosen photodiode (Hamamatsu G8370-01) is an InGaS based, small-area, low-noise design with a high efficiency and low thermal sensitivity at \unit{1064}{nm}.
 Prior to use, the protective window is removed from the photodiode to prevent interference effects, as seen in Fig.~\ref{fig:cut_pd}.
-Further, to reduce the capacitance of the system, a reverse bias of $6.9\,$V is applied to the photodiode by a temperature-stabilized voltage reference (Linear Technology LM399).
-The trans-impedance circuit is shown in Fig.~\ref{fig:circuits}.
-It converts the photo-current supplied by the photodiode to a voltage signal using the low noise Texas Instruments OPA843 op-amp.
+Further, to reduce the capacitance of the system, a reverse bias of \unit{6.9}{V} is applied to the photodiode by a temperature-stabilized voltage reference (Linear Technology LM399H).
+The transimpedance circuit is shown in Fig.~\ref{fig:circuits}(a).
+It converts the photo current supplied by the photodiode to a voltage signal using a low-noise and high-bandwidth op-amp (Texas Instruments OPA843).
 To reduce electrical pickup and prevent ground loops, the electronic assembly is housed in a metal enclosure and mounted to the optical table using electrically insulating mica posts.
 
-Light is focused onto the photodiode using a $25.4\,$mm lens such that the beam at the photodiode is significantly smaller than the photodiode diameter, to prevent pointing fluctuations from registering as amplitude fluctuations.
+Light is focused onto the photodiode using an $f=\unit{25.4}{mm}$ lens such that the beam at the photodiode is significantly smaller than the photodiode diameter, to prevent pointing fluctuations from registering as amplitude fluctuations.
 An iris and interference filter (Semrock FF01-1020/LP25) are used to eliminate stray sources of light.
 
 
-\subsubsection{Digital to analog converter}
-The digital to analog converter (DAC, Texas Instruments DAC9881) connects the experimental digital control system to the analog control loop for the lattice.
+\subsubsection{Digital-to-analog converter}
+The digital-to-analog converter (DAC, Texas Instruments DAC9881) connects the experimental digital control system to the analog control loop for the lattice.
 By definition, an ideal control loop would translate any noise on the analog signal from the DAC to the laser light, meaning that a poorly designed DAC would inherently limit the lattice laser performance.
-The noise on the DAC, when it is programmed to output a constant voltage is shown in Fig.~\ref{fig:da_rin}, and is found to be roughly constant at a level of $-150$ dBc - more than acceptable.
+The noise on the DAC, when it is programmed to output a constant voltage is shown in Fig.~\ref{fig:da_rin}, and is found to be roughly constant at a level of \unit{-150}{dBc/Hz} --- more than acceptable.
 When the state of the DAC is changed, such as during a ramp, this noise level may be higher, due to the so-called ``glitch'' energy, as seen in the figure.
-The transient noise, while unfortunate, is mitigated by two factors: (1) it is only present when the lattice power is changing, which does not happen for most of the sequence, and a lattice at fixed power will have negligible RIN contributions. Further, (2) the loop filter eliminates the noise at higher frequencies.
+This transient noise, while unfortunate, is mitigated by two factors: (1) it is only present when the lattice power is changing, which does not happen for most of the sequence, and a lattice at fixed power will have negligible RIN contributions. Further, (2) the loop filter strongly reduces the noise at higher Fourier frequencies.
 
 \begin{figure}
   \begin{center}
     \includegraphics{Figure9.pdf}
-    \caption{\textbf{Relative intensity noise of the digital to analog converter} at a fixed output voltage and while changing values. To measure the transient RIN, a $20$ ms, triangle wave with a DC offset and modulation depth of $15$\% of the DC offset was produced by the device. The triangle wave accounts for the series of spurs at low frequencies that fall with increasing frequencies. At frequencies above approximately $4$ kHz, the spectrum is dominated by noise due to transient ``glitches'' that emerge when the device changes its output state.}\label{fig:da_rin}
+    \caption{\textbf{Relative intensity noise of the digital to analog converter} at a fixed output voltage and while changing values. To measure the transient RIN, a triangle wave with \unit{20}{ms} period, a DC offset, and a modulation depth of 15\% of the DC offset was produced by the device. The triangle wave accounts for the series of spurs at low frequencies that fall with increasing frequencies. At frequencies above approximately \unit{4}{kHz}, the spectrum is dominated by noise due to transient ``glitches'' that emerge when the device changes its output state.}\label{fig:da_rin}
   \end{center}
 \end{figure}
 
 
 \subsubsection{Loop filter}
 
-The connection between the actuation and monitoring mechanisms of the feedback system is the loop filter, which compares the \textit{set-point} signal, $v_s(t)$, supplied by the experimental control system and the monitoring signals $v_m(t)$, to adjust the actuation accordingly.
-We use a simple, purely integrating design based in three stages, as seen in Fig.~\ref{fig:circuits}, based on TI's OPA211 op-amp.
-The first stage computes and amplifies an error signal, $e(t)=v_m(t)-v_s(t)$, which is integrated by the second stage.
+The connection between the actuation and monitoring mechanisms of the feedback system is the loop filter, which compares the \emph{set-point} signal, $V_\mathrm{SP}(t)$, supplied by the experimental control system and the photodiode signals $V_\mathrm{PD}(t)$, to adjust the actuation accordingly.
+We use a simple, purely integrating design based in three stages, as seen in Fig.~\ref{fig:circuits}(c), based on a low-noise op-amp (Texas Instruments OPA211).
+The first stage computes and amplifies an error signal, $e(t)=V_\mathrm{SP}(t)-V_\mathrm{PD}(t)$, which is integrated by the second stage.
 The integral gain is set using a low-drift trim-pot.
-This is the case because within relevant frequency ranges, the AOM can be coarsely approximated by a pure time delay process (with delay given by the RF travel time across the crystal $\approx 1 \mu\mathrm{s}$).
-In this scenario, the $P$ term must be small to avoid instability at the $\pi$ phase shift point, and a pure $I$ controller is optimal~\cite{Skogestad2003}.
+This is the case because within relevant frequency ranges, the AOM can be coarsely approximated by a pure time delay process, given by the acoustic wave transit time of $\approx$\unit{1}{\mu{}s} across the active region of the AOM crystal.
+In this scenario, the proportional term must be small to avoid instability at the $\pi$ phase shift point, and a pure integral controller is optimal~\cite{Skogestad2003}.
 For debugging purposes, the loop filter features buffered photodiode monitor and error signal monitor outputs.
 
-The third stage of the loop filter is used to accommodate the fact that the actuation arm is nonlinear - the optical power transmitted by the AOM is proportional to the RF power incident on it $P_{\mathrm{rf}}\propto v_{if}^2$, where $v_{if}$ is the actuation signal supplied to the IF port of the mixer.
+The third stage of the loop filter is used to accommodate the fact that the actuation arm is nonlinear: the optical power transmitted by the AOM is proportional to the RF power incident on it $P_{\mathrm{rf}}\propto V_{IF}^2$, where $V_{IF}$ is the actuation signal supplied to the IF port of the mixer.
 In effect, if the rest of the feedback system was linear, this would correspond to a quadratically increasing gain until the AOM is saturated, which could lead to slow behavior at low signal levels and ringing at higher signal levels.
-Even worse, since the mixer is insensitive to the sign of the voltage applied, the gain is actually negative for negative voltages, resulting in an unstable system, which thus requires a current clamp.
-This stage linearizes the response by increasing the gain at low signal levels and suppressing it at high signal levels by using a diode (Digi-Key BAT54S) in the feedback arm.
-This can be seen by considering two extreme cases - far below the diode drop, the diode is an open circuit and the gain is set by $R_l$, where above the diode drop it is a closed circuit where the gain is set by the resistor $R_h$.
-Naturally, the voltage drop over the diode is chosen such that it is approximately half the maximum desired signal level of the photodiode ($3.3\,$V).
+Even worse, since the mixer is insensitive to the sign of the voltage applied, the gain is becomes negative for negative voltages, resulting in an unstable system.
+
+To achieve the desired functionality, the final op-amp stage linearizes the response by increasing the gain at low signal levels and suppressing it at high signal levels by including a fast Schottky diode (ON Semiconductor BAT54S) in the feedback arm.
+This can be seen by considering two extreme cases: far below the diode drop, the diode is an open circuit and the gain is set by $R_l$; above the diode drop it is a closed circuit where the gain is set by the resistor $R_h$.
+Naturally, the voltage drop across the diode is chosen such that it is approximately half the maximum desired signal level of the photodiode (\unit{3.3}{V}).
 Although a large improvement, the bandwidth still varies over the dynamic range of the loop, but only by approximately a factor of two, as seen in Fig.~\ref{fig:bandwidth}.
-Were it not for the linearization, the gain of the mixer would change by a factor of $10$ over a dynamic range spanning two orders of magnitude.
-Another function of the last stage is to clamp the voltage to be strictly $>0$, to prevent an unstable positive feedback behavior, which is done using diode clamp on the output arm~\cite{Horowitz2015}.
-Last of all, since the mixer is a current driven device, the last stage of the feedback loop uses TI's OPA627 op-amp which is able to supply tens of mA of current at an output impedance of $50\,\Omega$.
+Were it not for the linearization, the gain of the mixer would change by a factor of 10 over a dynamic range spanning two orders of magnitude.
+Another function of the last stage is to clamp the voltage to be strictly positive by including a diode clamp on the output to prevent unstable positive feedback behavior~\cite{Horowitz2015}.
+Finally, since the mixer is a current driven device, the last stage of the feedback loop uses the low-noise OPA627 (Texas Instruments) op-amp which is able to supply tens of mA of current into an output impedance of \unit{50}{\Omega}.
 
 \begin{figure}
   \begin{center}
     \includegraphics{Figure10.pdf}
-    \caption{\textbf{Loop bandwidth dependence on the set-point}. (a) shows the $3$ dB and $\pi$ phase shift points for the $X$ lattice. (b) shows the same for the $Y$ lattice.}\label{fig:bandwidth}
+    \caption{\textbf{Loop bandwidth dependence on the set-point}. (a) shows the \unit{3}{dB} and $\pi$ phase shift points for the $X$ lattice. (b) shows the same for the $Y$ lattice.}\label{fig:bandwidth}
   \end{center}
 \end{figure}
 
 \begin{figure*}
   \begin{center}
     \includegraphics{Figure11.pdf}
-    \caption{\textbf{Laser noise of the lattice system with and without additional low pass filters} (a) Closed loop laser made a fiber amplifier (different than the one in figure~\ref{fig:noises}. (b) Noise on the same system as (a), but with extra filters.}\label{fig:low_pass_noises}
+    \caption{\textbf{Laser noise of the lattice system with and without additional low pass filtering.} (a) Closed-loop low-power server using a different fiber amplifier than the one in Fig.~\ref{fig:noises}(d). (b) Noise on the same system as in panel (a), but with additional low-pass filters.}\label{fig:low_pass_noises}
   \end{center}
 \end{figure*}
 
-A common behavior of analog feedback systems with integration components is termed \textit{integral wind-up}~\cite{Bechhoefer2005}, and occurs when the feedback loop is manually broken, meaning that the actuator can no longer adjust the state of the controlled parameter.
-In this regime, the integrator accumulates a large positive or negative value, such that when control is restored, the system appears to briefly rail, before control is restored.
-In our case, \textit{integrator wind-up} occurs when the high-isolation RF switch is open during the state preparation procedure, and closed when the lattice is desired.
-Since the lattice must usually be applied to the atoms adiabatically, fast transients due to this windup can result in heating.
+A common undesired behavior of analog feedback systems with integral gain is \emph{integrator wind-up}~\cite{Bechhoefer2005}, which can occur when the feedback loop is manually broken, meaning that the actuator can no longer adjust the state of the controlled parameter.
+In this regime, the integrator accumulates a large positive or negative voltage, such that when control is restored, the system appears to briefly rail before control is restored.
+In our case, \emph{integrator wind-up} occurs when the high-isolation RF switch is open during the state preparation procedure, and closed when the optical lattice is desired.
+In most cases, the optical lattice must be turned on adiabatically, to avoid heating the trapped atoms due to fast transients resulting from integrator windup.
 To solve this issue, a bypass switch (Maxim MAX4503) is placed across the capacitor of the second stage of the feedback circuit, which siphons off the charge when the lattice is inactive.
 Even when the switch is closed, its resistance is nonzero (due to a protection resistor that limits the current that can pass through the switch), the conditions leading to integral windup in an unprotected system still lead to charge accumulation on the integral capacitor, albeit at a much reduced level.
-Thus, in addition to the switch, when the system is inactive, the set-point is set to within ($\approx 200\,\mu$V) of the dark signal from the photodiode, making the error signal very small.
+Thus, in addition to the switch, when the system is inactive, the set-point is set to the dark signal from the photodiode ($\approx$\unit{200}{\mu{}V}), making the error signal very small.
 
-To avoid a so-called ``servo bump'' in the noise spectrum, and because there is little need for fast, closed-loop control, the loop filter is tuned very conservatively, to a bandwidth of approximately $10\,$kHz over most of the range.
-However, a small amount of tuning can raise this to up to $\approx150$ kHz, which is limited by the acoustic wave propagation delay of the AOM.
+To avoid a so-called ``servo bump'' in the noise spectrum, and because there is little need for fast, closed-loop control, the loop filter is tuned very conservatively, to a bandwidth of approximately \unit{10}{kHz} over most of the range.
+However, a small amount of tuning can increase the bandwidth up to $\approx$\unit{150}{kHz}, which is limited by the propagation delay of the AOM.
 Although fast, closed-loop control is not available in the current configuration, the last stage of the loop filter features an adder connected to an optional ``feed-forward'' port.
 This port can be used to modulate the RF power at frequencies above the bandwidth.
 
-Although it is an essential part of the system, the loop filter is also one of its major limitations. Figure~\ref{fig:noises} shows the noise performance of the output of the fiber amplifiers in open loop as compared to the noise in closed loop. Although noise near DC is lowered (as expected from a closed loop system), noise outside the loop bandwidth is increased in the range of $10$ to $450$ kHz as seen in subfigures (c) and (d).
-This can be explained by the Johnson noise~\cite{Horowitz2015} on the $1$ k$\Omega$ input resistors, amplified by the amplification stages of the loop filter.
-The sharp drop off at the $450$ kHz point is due to a low-pass filter placed on the output of the loop filter, far above the maximum bandwidth set by the AOM.
-When this was determined to be a problem, we decided that a bandwidth of higher than $10\,$ kHz was not required in the foreseeable future.
-As a result, we added a first order low pass with a $3$ dB frequency of $10$ kHz leading to the improvement shown in Fig.~\ref{fig:low_pass_noises} (the fiber amplifier used to take this data was different from the one used for~\ref{fig:noises}, although their performance is comparable.
+Although it is an essential part of the system, the loop filter is also one of its major limitations. Figure~\ref{fig:noises} shows the noise performance of the output of the fiber amplifiers in open-loop compared to the noise in closed-loop. Although noise near DC is lowered (as expected from a closed-loop system), noise outside the loop bandwidth is increased in the range of 10 to \unit{450}{kHz} as seen in subfigures (c) and (d).
+This can be explained by the Johnson noise~\cite{Horowitz2015} on the \unit{1}{k\Omega} input resistors, amplified by the amplification stages of the loop filter.
+The sharp drop off at the \unit{450}{kHz} point is due to a low-pass filter placed on the output of the loop filter, far above the maximum bandwidth set by the AOM.
+When the broadband noise below \unit{450}{kHz} was determined to be a problem, we decided that a bandwidth of higher than \unit{10}{kHz} was not required in the foreseeable future.
+As a result, we added a first-order low pass with a \unit{3}{dB} frequency of \unit{10}{kHz} leading to the improvement shown in Fig.~\ref{fig:low_pass_noises}. The fiber amplifier used to take this data was different from the one used for~\ref{fig:noises}, although their performance is comparable.
 
 
 \subsection{Beam shaping}
 After the beam has passed through the feedback optics, it must be applied to the atoms. To that end, we use a $2f$ telescope of short focal length triplet collimator lenses to expand the beam, and then focus it with a long focal length singlet lens.
-We focus the lattice to a $70-90$\,$\mu$m waist at the position of the atoms.
-To verify that the waist is positioned correctly, we use a temporary mirror to redirect the beam away from the glass cell and onto a camera positioned in the plane corresponding to the position of the atoms.
-%The resulting beam at the atoms has an $m^2\leq1.4$.
+We focus the lattice to a \unit{70-90}{\mu{}m} waist at the position of the atoms.
+To verify that the waist is positioned correctly, we use a temporary mirror to redirect the beam away from the vacuum chamber (a glass cell) and onto a camera positioned in the plane corresponding to the position of the atoms.
 
 To prevent unwanted interference, the lattice beams enter the glass cell at an angle.
-Unfortunately, due to the angle of incidence, the beam contains both $S$ and $P$ polarizations, which are reflected differently, altering the polarization state of the beam.
+Unfortunately, due to the angle of incidence, the beam contains both $S$ and $P$ polarizations, which are reflected differently at the glass cell wall, thus altering the polarization state of the beam.
 Even worse, this happens on both the initial and retro-reflected pass through the glass cell.
-For this reason, we use a QWP and HWP to optimize the interference contrast of each lattice.
+For this reason, we use a combination of quarter waveplate (QWP) and half waveplate (HWP) to optimize the interference contrast of each lattice.
 This is done by optimizing the on-site trap frequency of lattice, measured using parametric heating.
 
 \section{Beam monitoring and alignment}
-Improved spatial resolution and control have given experimentalists the ability to use relatively few atoms~\cite{Preiss2015, Choi2016, Mazurenko2016} that are simultaneously addressed by multiple beams and held by multiple traps.
-Such experiments place stringent bounds on the requisite stability.
+Improved spatial resolution and control have given experimentalists the ability to use relatively few atoms~\cite{Preiss2015, Choi2016, Mazurenko2017} that are simultaneously addressed by multiple beams and held by multiple traps.
+Such experiments place stringent bounds on the required beam pointing stability.
 
-The absolute positions of lattice sites cannot be allowed to change by more than a small fraction ($\approx 10\%$) from experimental shot to shot.
-This is ensured via careful design of the optical assembly, since the phase of a retro-reflected lattice is set by the retro-reflecting mirror, which is placed approximately $3\,$cm from the atoms~\cite{Huber2014}.
+The absolute positions of lattice sites cannot be allowed to change by more than a small fraction ($\approx 10\%$) between experimental shots.
+This is ensured by careful design of the optical assembly, since the phase of a retro-reflected lattice is set by the retro-reflecting mirror, which is placed approximately \unit{5}{cm} from the atoms~\cite{Huber2014}.
 We have characterized the phase stability of the optical lattice by looking at a long sequence of densely populated images, and found that the phase varies by much less than one lattice site over the course of hours, as seen in Fig.~\ref{fig:averaged_mott}.
 
 \begin{figure*}
   \begin{center}
     \includegraphics{Figure12.pdf}
-    \caption{\textbf{Averaged images of Mott insulators}. a) Several Mott insulators were created over the course of approximately one hour, and the average image is shown\cite{Greif2016}. If the lattice fluctuated across more than a small fraction of a lattice site, the modulation contrast would be washed out. The absence of this effect means that the phase of the optical lattice is stable. b) shows an individual image of a Mott insulator.}\label{fig:averaged_mott}
+    \caption{\textbf{Averaged images of Mott insulators}. (a) Several Mott insulators were created over the course of approximately one hour, and the average image is shown~\cite{Greif2016}. If the lattice pattern would have fluctuated by more than a small fraction of a lattice site, the modulation contrast would have been washed out. The absence of this effect means that the phase of the optical lattice is stable. (b) shows an individual image of a Mott insulator.}\label{fig:averaged_mott}
   \end{center}
 \end{figure*}
 
 
 The position of the atomic cloud, however, is not determined by the phase of the lattice, but by the underlying harmonic confinement.
-In experiments where the entire cloud is addressed by beams auxiliary to the lattice (such as in~\cite{Mazurenko2016} or~\cite{Choi2016}), drift or fluctuation of the lattice position is important.
+In experiments where the entire cloud is addressed by beams auxiliary to the lattice (such as in Refs.~\cite{Choi2016,Mazurenko2017}), drift or fluctuation of the lattice position is important.
 
 The required positional stability of the underlying harmonic trap is achieved through a combination of passive stability and active monitoring.
-Passive stability is ensured by using stable optomechanics (largely from the Thorlabs Polaris line), mounted on short optical posts ($2$ in beam height relative to the floated optical table).
-To further improve stability, the beam is enclosed with $1\,$in aluminum tubes throughout its path and the entire setup is covered by metal plates.
+Passive stability is ensured by using stable optomechanics (largely from the Thorlabs Polaris line), mounted on short optical posts (\unit{2}{inch} beam height relative to the floated optical table).
+To limit sensitivity to air currents and further improve stability, the beam is enclosed with \unit{1}{inch} aluminum tubes throughout its path and the entire setup is covered by metal plates.
 As a final measure to isolate the experimental setup, the optical table is contained within an aluminum enclosure. As detailed in prior sections, care has been taken to minimize thermal lensing and drift in optics encountered by the lattice beam.
 
-Passive stability alone has been found to be insufficient to ensure smooth operation over many hours. Changes in weather conditions, load on the water-cooling systems and other external conditions can lead to a slow drift in the laser pointing.
-The situation is further complicated by the fact that opening the enclosure changes the thermal state of the system, meaning that manual alignment can induce misalignment.
+Generally, changes in environmental conditions (such as temperature and relative humidity), load on the water-cooling systems and other external conditions can lead to a slow drift in the laser pointing over long timescales.
+The situation is further complicated by the fact that opening the enclosure of the experiment changes the thermal state of the system.
 For these reasons, each lattice axis is fitted with a remotely actuated mirror, controlled by the experimental control software over the lab network, allowing for non-invasive, digital alignment of the system.
-The remote actuators are Newport brand ``Picomotors'' (model 8302), fitted into a customized $2$ in mirror mount.
-They work in a ``fire and forget'' manner, remaining passively stable when not in active use.
+The remote actuators are ``Picomotors'' (Newport 8302), fitted into a customized \unit{2}{inch} mirror mounts.
+They work in a ``fire-and-forget'' manner, remaining passively stable when not in active use.
 
 Changing external conditions can contaminate large datasets if the prepared state sensitively depends on laser pointing.
 To watch for this contamination, we have implemented an independent monitoring system to verify appropriate pointing of both lattice laser beams.
 This monitoring system could potentially allow us to eliminate (via post-selection) experimental realizations when the system was in an undesired state.
-A beam-sampler (Thorlabs BSF10-C) reflects a small portion of the beam shortly before it reaches the atoms and images it onto a camera located in the plane corresponding to the atomic system, producing a Gaussian image identical to that of the optical lattice.
+A beam-sampler (Thorlabs BSF10-C) reflects a small portion of the beam shortly before it reaches the atoms and images it onto a camera located in the plane corresponding to the atomic system, imaging a Gaussian beam identical to that of the optical lattice.
 Naturally, the position of the atoms is dictated by the light field of both the incoming and retro-reflected beams, while the monitoring camera only observes the position of the in-going beam.
-To verify that the monitor camera could predict the true position of the harmonic trap, the beam and the atoms were imaged simultaneously while a purposeful misalignment of the incoming beams was introduced.
+To verify that the monitor camera can predict the true position of the harmonic trap, the beam and the atoms were imaged simultaneously while a purposeful misalignment of the incoming beams was introduced.
 During this process, one of the lattice beams was adiabatically loaded, ensuring that the atoms settled to its center, prior to performing site-resolved imaging~\cite{Parsons2015}.
 
 Over the course of 250 sequential experimental realizations, we monitored the position of the beam on the camera and the position of the atoms.
 First, we characterized the passive stability of the optical axis along the transverse $x_t$ and longitudinal $x_l$ directions.
-Figure~\ref{fig:stability} a shows a histogram of displacements of atoms between subsequent experimental realizations, showing that the RMS displacement is $0.54(3)$($0.98(4)$) sites along the $x_t$($x_l$) directions.
-The difference between displacements along is a geometric effect consistent with the mechanical assembly of the experiment~\cite{Huber2014}.
-The distributions are centered within $1\sigma$ of zero along both directions ($-.03(4)$ and $0.01(5)$ sites for transverse and longitudinal, respectively).
+Figure~\ref{fig:stability}(a) shows a histogram of displacements of atoms between subsequent experimental realizations, showing that the RMS displacement is $0.54(3)$ [$0.98(4)$] sites along the $x_t$ [$x_l$] direction.
+The difference between displacements is a geometric effect consistent with the mechanical assembly of the experiment~\cite{Huber2014}.
+The distributions are centered within 1-$\sigma$ of zero along both directions: $-0.03(4)$ and $0.01(5)$ sites for transverse and longitudinal axes, respectively.
 If the trap followed a random walk with these step sizes, the experiment would be in trouble, since after only $100$ experimental shots, the trap would move by more than $10$ lattice sites.
-The situation is more fortunate, however, since subsequent steps are correlated, as shown in Fig.~\ref{fig:stability} (b).
-Once this correlation is taken into account, we estimate a drift of $8(1)\times 10^{-3}\mathrm{sites}/\mathrm{realization}$ in the transverse direction and $12(2)\times 10^{-3}\mathrm{sites}/\mathrm{realization}$ in the axial direction, compared to a beam waist of approximately $80$ $\mu$m ($\approx 140$ sites).
+The situation is more fortunate, however, since subsequent steps are correlated, as shown in Fig.~\ref{fig:stability}(b).
+Once this correlation is taken into account, we estimate a drift of \unit{8(1)\times 10^{-3}}{sites/realization} in the transverse direction and \unit{12(2)\times 10^{-3}}{sites/realization} in the axial direction, compared to a beam waist of $\approx$\unit{80}{\mu{}m} ($\approx$140 sites).
 
-\begin{figure*}
+\begin{figure}
   \begin{center}
-    \includegraphics{Figure13.pdf}
-    \caption{\textbf{Short term positional stability.} (a) A histogram of shot-to-shot step sizes along the transverse and longitudinal directions, with a Gaussian fit. (b) Correlations between the step size of subsequent shots. (c) Calibration data for the ``affine fit'' of the conversion from camera pixels to lattice dimentions. (d) Predicted location versus measured location along the transverse and longitudinal directions. (e,f) The measured position and predicted position of the atomic cloud, based on refitting the offset every $20$ experimental realizations.}\label{fig:stability}
+    \includegraphics[width=\columnwidth]{Figure13.pdf}
+    \caption{\textbf{Short term positional stability.} (a) A histogram of shot-to-shot step sizes along the transverse and longitudinal directions, with a Gaussian fit. (b) Correlations between the step size of subsequent shots. (c) Calibration data for the ``affine fit'' of the conversion from camera pixels to lattice dimensions. (d) Predicted versus measured location along the transverse and longitudinal directions. (e,f) Measured  and predicted position of the atomic cloud, based on refitting the offset every $20$ experimental realizations.}\label{fig:stability}
   \end{center}
-\end{figure*}
+\end{figure}
+
+\FIXME{} SB: I think I understand what you are doing, but the wording makes little sense: We cannot measure the atoms, so we measure the atoms? Need to make clear distinction between beam-monitoring camera and iXon.
 
 In a real experiment, we cannot directly measure the position of the atoms and must rely on the measurement performed by the camera, related by an affine transformation.
-To determine the parameters of the affine transform, we use the remote actuators to purposefully misalign the lattice beams for a small number of shots, and simultaneously measure the atomic positions and the camera reading, then perform a least-squares fit, shown in Fig.~\ref{fig:stability} (c).
+To determine the parameters of the affine transform, we use the remote actuators to purposefully misalign the lattice beams for a small number of shots, and simultaneously measure the atomic positions and the camera reading, then perform a least-squares fit, shown in Fig.~\ref{fig:stability}(c).
 
-Unfortunately, while this fit is acceptable for a short while ($\approx30\mathrm{ shots}$), the quality of the fit degrades over time, correspondingly degrading the predictive power.
-The most likely culprit is thermal drift of the camera, since a displacement of only a pixel caused the predicted position to change by approximately $1\,$site, and each camera pixel is about $3\,\mu$m accross.
-The camera housing is not engineered for low drift mounting, and the camera heats up by a few degrees Celcius, making a few $\mu$m drift very possible.
-To deal with this problem, we point out that the affine transform is composed of three distinct parts - the rotation, scaling and offset.
+Unfortunately, while this fit is acceptable for a short while ($\approx$ 30 shots), the quality of the fit degrades over time, correspondingly degrading its predictive power.
+The most likely culprit is thermal drift of the beam-monitoring camera, since a displacement of only a pixel caused the predicted position to change by approximately 1~site, and each camera pixel is about \unit{3}{\mu{}m} across.
+The camera housing is not engineered for low drift mounting, and the camera heats up by a few $^\circ$C, making a few $\mu$m drift very possible.
+To deal with this problem, we point out that the affine transform is composed of three distinct parts: the rotation, the scaling and the offset.
 Of these, only the offset is likely to drift with time.
-As a result, we developed a way of updating the calibration over time. To test this procedure, we analyzed the data set of camera measurements and atomic positions in the following way: we split the data set into sequential blocks of $20$ shots, each followed by a block of $8$ shots.
-The large blocks were treated as ``masked'' data, which we tried to predict, while the small blocks were treated as ``updating'' events used to update the calibration offsets.
-The results are shown in Fig.~\ref{fig:stability} (d-f), showing a large degree of tracking between the predicted positions and measured position - the average displacement between the predicted position and measured position was $0.7\,$lattice sites.
-
-The purpose of developing this system was twofold - to reduce measurement noise by filtering experimental shots that suffered any sort of positional fluctuation of either lattice beam, and to minimize the frequency of such events. As it stands, for the purpose of most measurements, the experiment can perform hundreds of cycles before the thermal drift becomes a problem.
-Further, if future experiments require the optical lattice to be more positionally stable than it is now, the monitoring and actuation system could be used in closed loop with no hardware changes to the experiment.
-Naturally, the transfer function of any such loop would have to be carefully engineered to account for the correlated behavior of the jumps and the timescale of the drift.
+As a result, we developed a method to update the calibration over time. To test this procedure, we analyze the data set of camera measurements and atomic positions in the following way: we split the data set into sequential blocks of $20$ shots, each followed by a block of $8$ shots.
+The large blocks are treated as ``masked'' data, which we try to predict, while the small blocks are treated as ``updating'' events used to update the calibration offsets.
+The results are shown in Fig.~\ref{fig:stability}(d-f), showing a large degree of tracking between the predicted positions and measured position. The average displacement between the predicted position and measured position is 0.7~lattice sites.
 
 \begin{figure}
 \begin{center}
     \includegraphics[width=\columnwidth]{Figure14.pdf}
-    \caption{\textbf{Long term stability over approximately nine months.} The lattice spacing $|\mathrm{v}_x|$ and $|\mathrm{v}_y|$ and the lattice angles $\theta_x$ and $\theta_y$ along the two lattice axes $x$ and $y$ are shown over the duration of almost 1 year. }\label{fig:long_term_stability}
+    \caption{\textbf{Long term stability over approximately ten months.} The lattice spacings $|\mathrm{v}_x|$ and $|\mathrm{v}_y|$ and the lattice angles $\theta_x$ and $\theta_y$ along the two lattice axes $x$ and $y$ (cf. Fig.~\ref{fig:averaged_mott}) are shown over a period of ten months.}\label{fig:long_term_stability}
   \end{center}
 \end{figure}
 
@@ -456,21 +443,12 @@ Naturally, the transfer function of any such loop would have to be carefully eng
 A benefit of site-resolved imaging is that every measurement of the atomic distribution is also a direct measurement of the underlying lattice structure.
 As discussed in the supplementary material of~\cite{Parsons2016, Greif2016}, the Fourier transform of an atomic distribution contains distinct peaks corresponding to the lattice structure, and these peaks can be used to extract the phase, relative angle, and spacing of the lattices.
 For this reason, we recorded a long-term measurement spanning almost one year to learn how these parameters change over time, see Fig.~\ref{fig:long_term_stability}.
-Several interesting features can be seen from the observed behavior.
-\begin{enumerate}
-  \item During the first few months the lattice spacing appears to have slowly varied over as much as $10\%$.
-    This might be caused by drifts of the optical system that required daily refocusing of the imaging system using an auxiliary lens, which simultaneously changed the magnification.
-  \item The imaging system was simplified in September 2016, causing a sudden change in the magnification.
-  \item The system has been more stable since then and the lattice spacing $|v|$ exhibits fractional fluctuations $\sigma_{|v|}/\mu_{|v|}\leq 0.005$.
-  \item Unlike magnification, which sensitively depends on the imaging system focus, the angle is unlikely to be affected by the imaging system unless the camera is mechanically rotated. We measure that in the spring of 2017, the relative angle of the lattices has exhibited fluctuations with an RMS of $0.06^\circ$.
-\end{enumerate}
-
-
+Several interesting features can be seen from the observed behavior. In the first few months the lattice spacing changed by around 10\%. Experimentally, this drift was accompanied by the necessity of refocussing the imaging system. The sudden jump in September 2016 was caused by a simplification of the imaging system. Afterwards, the lattice spacing seemed more stable (fractional changes of $\leq 0.005$). Unlike the lattice spacing, the angle is observed to be mostly unaffected and remains very stable (for example, an RMS of 0.06$^\circ$ in Spring 2017).
 
 \section{Conclusion}
-We have presented the design and specifications of an optical lattice system that has been successfully used for quantum gas microscopy of low temperature phases of the Hubbard model.
-In this design, key emphasis has been placed on the stability of the pointing and the intensity of the optical lattice, of particular importance to the underlying physics.
-To improve performance, the system can be upgraded in a variety of ways. For example, the Nufern fiber amplifiers can be replaced with a lower noise model. Or the analog feedback loop can be replaced by a low-noise digital version. Additionally, active stabilization of the laser pointing could be implemented in the future.
+We have presented the design and specifications of an optical lattice system that has been successfully used for quantum gas microscopy of low-temperature phases of the Hubbard model.
+In this design, key emphasis has been placed on the stability of the pointing and the intensity of the optical lattice, of particular importance to observe the underlying physics.
+To further improve the system's performance, the system can be upgraded in a variety of ways. For example, the Nufern fiber amplifiers can be replaced with a lower noise model. The analog feedback loop can be replaced by a low-noise digital version. Additionally, active stabilization of the laser pointing could be implemented in the future.
 
 \bibliography{LatticeOpticsV5}
 
