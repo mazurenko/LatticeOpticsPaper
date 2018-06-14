@@ -39,7 +39,7 @@
 \end{abstract}
 \maketitle
 
-Optical lattices holding arrays of ultracold atoms have become a powerful experimental platform for quantum simulations~\cite{Friedenauer2008, Kim2010, Struck2011, Simon2011, Yan2013, Drewes2016, Murmann2015}.
+Optical lattices holding arrays of ultracold atoms have become a powerful experimental platform for quantum simulations~\cite{Friedenauer2008, Kim2010, Struck2011, Simon2011, Yan2013, Greif2013, Drewes2016, Murmann2015}.
 The recent advent of quantum gas microscopy~\cite{Bakr2009, Sherson2010, Haller2015, Cheuk2015, Parsons2015, Edge2015, Omran2015, Greif2016, Cheuk2016, Parsons2016, Boll2016, Cheuk2016a, Brown2017} has enabled studies with unprecedented control over individual atoms in many-body systems governed by the Hubbard Hamiltonian~\cite{Hubbard1963}, resulting in extremely low energy scales~\cite{Mazurenko2017}.
 However, this progress has placed ever more stringent technical constraints on the lasers used to trap and manipulate the atomic systems.
 Even if the systems thermalize, heating rates can limit the interrogation time available to probe low-temperature states~\cite{Blatt2015}.
@@ -80,8 +80,9 @@ To avoid interference of the lattice beams, two of the beam paths pass through a
 
 \subsection{Fiber amplifier system}
 Quantum gas microscopy of Li$^6$ requires single site trap frequencies of approximately \unit{1}{MHz}~\cite{Parsons2015} to be in the Lamb-Dicke regime necessary for Raman sideband cooling.
-Such trap frequencies may only be attained using tightly focused, high-power beams.
-In practical terms, this requires approximately \unit{30}{W} per lattice axis, which we attain using Yb-doped fiber amplifiers (Nufern NuAmp SUB1174-34).
+
+Such trap frequencies may only be attained using tightly focused, high-power beams. 
+In practical terms, this requires approximately \unit{20}{W} per lattice axis for a beam waist of around $80 \mu\mathrm{m}$ and the four-fold enhancement in optical depth provided by the reflection from the superpolished substrate. We achieve such high laser powers using Yb-doped fiber amplifiers (Nufern NuAmp SUB1174-34).
 These amplifiers can amplify \unit{150}{mW} of seed light to up to approximately \unit{45}{W}. They use a length of doped fiber pumped with \unit{808}{nm} light from fiber coupled diode sources to amplify the \unit{1064}{nm} seed light.
 The amplification is performed using a two-stage design, where the stages are controlled and powered using separate power supplies and electronics.
 
@@ -283,7 +284,7 @@ The digital-to-analog converter (DAC, Texas Instruments DAC9881) connects the ex
 By definition, an ideal control loop would translate any noise on the analog signal from the DAC to the laser light, meaning that a poorly designed DAC would inherently limit the lattice laser performance.
 The noise on the DAC, when it is programmed to output a constant voltage is shown in Fig.~\ref{fig:da_rin}, and is found to be roughly constant at a level of \unit{-150}{dBc/Hz} --- more than acceptable.
 When the state of the DAC is changed, such as during a ramp, this noise level may be higher, due to the so-called ``glitch'' energy, as seen in the figure.
-This transient noise, while unfortunate, is mitigated by two factors: (1) it is only present when the lattice power is changing, which does not happen for most of the sequence, and a lattice at fixed power will have negligible RIN contributions. Further, (2) the loop filter strongly reduces the noise at higher Fourier frequencies.
+This transient noise is mitigated by two factors: (1) it is only present when the lattice power is changing, which does not happen for most of the sequence, and a lattice at fixed power will have negligible RIN contributions. Further, (2) the loop filter strongly reduces the noise at higher Fourier frequencies.
 
 \begin{figure}
   \begin{center}
@@ -346,7 +347,7 @@ Although it is an essential part of the system, the loop filter is also one of i
 This can be explained by the Johnson noise~\cite{Horowitz2015} on the \unit{1}{k\Omega} input resistors, amplified by the amplification stages of the loop filter.
 The sharp drop off at the \unit{450}{kHz} point is due to a low-pass filter placed on the output of the loop filter, far above the maximum bandwidth set by the AOM.
 When the broadband noise below \unit{450}{kHz} was determined to be a problem, we decided that a bandwidth of higher than \unit{10}{kHz} was not required in the foreseeable future.
-As a result, we added a first-order low pass with a \unit{3}{dB} frequency of \unit{10}{kHz} leading to the improvement shown in Fig.~\ref{fig:low_pass_noises}. The fiber amplifier used to take this data was different from the one used for~\ref{fig:noises}, although their performance is comparable.
+As a result, we added a first-order low pass with a \unit{3}{dB} frequency of \unit{10}{kHz} leading to the improvement shown in Fig.~\ref{fig:low_pass_noises}. The fiber amplifier used to take this data was different from the one used for Fig.~\ref{fig:noises}, although their performance is comparable.
 
 
 \subsection{Beam shaping}
