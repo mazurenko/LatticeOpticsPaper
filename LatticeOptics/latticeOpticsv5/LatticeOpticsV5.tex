@@ -365,9 +365,10 @@ This is done by optimizing the on-site trap frequency of lattice, measured using
 Improved spatial resolution and control have given experimentalists the ability to use relatively few atoms~\cite{Preiss2015, Choi2016, Mazurenko2017} that are simultaneously addressed by multiple beams and held by multiple traps.
 Such experiments place stringent bounds on the required beam pointing stability.
 
-The absolute positions of lattice sites cannot be allowed to change by more than a small fraction ($\approx 10\%$) between experimental shots.
-This is ensured by careful design of the optical assembly, since the phase of a retro-reflected lattice is set by the retro-reflecting mirror, which is placed approximately \unit{5}{cm} from the atoms~\cite{Huber2014}.
-We have characterized the phase stability of the optical lattice by looking at a long sequence of densely populated images, and found that the phase varies by much less than one lattice site over the course of hours, as seen in Fig.~\ref{fig:averaged_mott}.
+Several applications require the positions of lattice sites to not change by more than a small fraction ($\approx 10\%$) between experimental shots.
+In our setup this is ensured by careful design of the optical assembly, where the phase of the retro-reflected lattice is set by the retro-reflecting mirror, which is placed approximately \unit{5}{cm} from the atoms~\cite{Huber2014}.
+This phase determines the location of the sites of the optical lattice. 
+We have characterized the phase stability of the optical lattice by recording a long sequence of densely populated images with our imaging camera. We found that the phase varies by much less than one lattice site over the course of hours, as seen in Fig.~\ref{fig:averaged_mott}.
 
 \begin{figure*}
   \begin{center}
@@ -377,8 +378,9 @@ We have characterized the phase stability of the optical lattice by looking at a
 \end{figure*}
 
 
-The position of the atomic cloud, however, is not determined by the phase of the lattice, but by the underlying harmonic confinement.
-In experiments where the entire cloud is addressed by beams auxiliary to the lattice (such as in Refs.~\cite{Choi2016,Mazurenko2017}), drift or fluctuation of the lattice position is important.
+The position of the atomic cloud, however, is not determined by the phase difference of the retro-reflecting lattice beam, but by the underlying harmonic confinement.
+The stability of this confinement is governed by the pointing stability of the optical lattice laser beams. 
+In experiments where the entire cloud is addressed by beams auxiliary to the lattice, which can be used for example for enhanced entropy redistribution~\cite{Mazurenko2017}, reducing drifts and fluctuations of the lattice position is important.
 
 The required positional stability of the underlying harmonic trap is achieved through a combination of passive stability and active monitoring.
 Passive stability is ensured by using stable optomechanics (largely from the Thorlabs Polaris line), mounted on short optical posts (\unit{2}{inch} beam height relative to the floated optical table).
@@ -391,22 +393,16 @@ For these reasons, each lattice axis is fitted with a remotely actuated mirror, 
 The remote actuators are ``Picomotors'' (Newport 8302), fitted into a customized \unit{2}{inch} mirror mounts.
 They work in a ``fire-and-forget'' manner, remaining passively stable when not in active use.
 
-Changing external conditions can contaminate large datasets if the prepared state sensitively depends on laser pointing.
-To watch for this contamination, we have implemented an independent monitoring system to verify appropriate pointing of both lattice laser beams.
-This monitoring system could potentially allow us to eliminate (via post-selection) experimental realizations when the system was in an undesired state.
-A beam-sampler (Thorlabs BSF10-C) reflects a small portion of the beam shortly before it reaches the atoms and images it onto a camera located in the plane corresponding to the atomic system, imaging a Gaussian beam identical to that of the optical lattice.
-Naturally, the position of the atoms is dictated by the light field of both the incoming and retro-reflected beams, while the monitoring camera only observes the position of the in-going beam.
-To verify that the monitor camera can predict the true position of the harmonic trap, the beam and the atoms were imaged simultaneously while a purposeful misalignment of the incoming beams was introduced.
-During this process, one of the lattice beams was adiabatically loaded, ensuring that the atoms settled to its center, prior to performing site-resolved imaging~\cite{Parsons2015}.
-
-Over the course of 250 sequential experimental realizations, we monitored the position of the beam on the camera and the position of the atoms.
-First, we characterized the passive stability of the optical axis along the transverse $x_t$ and longitudinal $x_l$ directions.
-Figure~\ref{fig:stability}(a) shows a histogram of displacements of atoms between subsequent experimental realizations, showing that the RMS displacement is $0.54(3)$ [$0.98(4)$] sites along the $x_t$ [$x_l$] direction.
-The difference between displacements is a geometric effect consistent with the mechanical assembly of the experiment~\cite{Huber2014}.
-The distributions are centered within 1-$\sigma$ of zero along both directions: $-0.03(4)$ and $0.01(5)$ sites for transverse and longitudinal axes, respectively.
-If the trap followed a random walk with these step sizes, the experiment would be in trouble, since after only $100$ experimental shots, the trap would move by more than $10$ lattice sites.
+We characterized the passive stability of the optical lattice by monitoring the position over the course of 250 sequential experimental realizations. 
+To analyse the data we decomposed the recorded positions into the transverse $x_t$ and longitudinal $x_l$ components as compared to the optical axis (i.e. rotated by $45^\circ$ as compared to the lattice directions $x$ and $y$).
+During this measurement we found that the drift of the atom position is about $1-2$ lattice site, see red data in Fig.~\ref{fig:stability}(e+f).  
+For a more in-depth analysis, we also studied the histogram of displacements of atoms between subsequent experimental realizations, see Fig.~\ref{fig:stability}(a). 
+This shows a RMS displacement of $0.54(3)$ [$0.98(4)$] sites along the $x_t$ [$x_l$] direction.
+The difference between the displacements is a geometric consequence of the mechanical assembly of the experiment~\cite{Huber2014}.
+The distributions are centered within 1-$\sigma$ of zero along both directions: $-0.03(4)$ and $0.01(5)$ sites for transverse and longitudinal axes, respectively, indicating the absence of strong drift.
+If the trap followed a random walk with these step sizes, the optical assembly would have to be frequently realigned, since after only $100$ experimental shots the trap would move by more than $10$ lattice sites.
 The situation is more fortunate, however, since subsequent steps are correlated, as shown in Fig.~\ref{fig:stability}(b).
-Once this correlation is taken into account, we estimate a drift of \unit{8(1)\times 10^{-3}}{sites/realization} in the transverse direction and \unit{12(2)\times 10^{-3}}{sites/realization} in the axial direction, compared to a beam waist of $\approx$\unit{80}{\mu{}m} ($\approx$140 sites).
+Once this correlation is taken into account, we estimate an RMS drift of \unit{8(1)} [12(2)] {sites/ 1000 realizations} in the transverse [axial] direction, compared to a beam waist of $\approx$140 sites. 
 
 \begin{figure}
   \begin{center}
@@ -415,19 +411,20 @@ Once this correlation is taken into account, we estimate a drift of \unit{8(1)\t
   \end{center}
 \end{figure}
 
-\FIXME{} SB: I think I understand what you are doing, but the wording makes little sense: We cannot measure the atoms, so we measure the atoms? Need to make clear distinction between beam-monitoring camera and iXon.
+As an additional measure, we have implemented a monitoring system to independently verify appropriate pointing of the lattice laser beams.
+This is particularly useful when performing experiments where imaging the atoms does note allow determining the original center of the atoms in the harmonic trap. 
+Additionally, this beam-monitoring system could allow us to eliminate (via post-selection) experimental realizations when the system was in an undesired state -- or designing a feedback loop on the lattice beam pointing to ensure long-term stability. 
+A beam-sampler (Thorlabs BSF10-C) reflects a small portion of the beam shortly before it reaches the atoms and images it onto a camera located in the plane corresponding to the atomic system, imaging a Gaussian beam identical to that of the optical lattice.
+Naturally, the position of the atoms is dictated by the light field of both the incoming and retro-reflected beams, while the monitoring camera only observes the position of the in-going beam (this is found to not be a limitation in practice).
 
-In a real experiment, we cannot directly measure the position of the atoms and must rely on the measurement performed by the camera, related by an affine transformation.
-To determine the parameters of the affine transform, we use the remote actuators to purposefully misalign the lattice beams for a small number of shots, and simultaneously measure the atomic positions and the camera reading, then perform a least-squares fit, shown in Fig.~\ref{fig:stability}(c).
-
-Unfortunately, while this fit is acceptable for a short while ($\approx$ 30 shots), the quality of the fit degrades over time, correspondingly degrading its predictive power.
-The most likely culprit is thermal drift of the beam-monitoring camera, since a displacement of only a pixel caused the predicted position to change by approximately 1~site, and each camera pixel is about \unit{3}{\mu{}m} across.
-The camera housing is not engineered for low drift mounting, and the camera heats up by a few $^\circ$C, making a few $\mu$m drift very possible.
-To deal with this problem, we point out that the affine transform is composed of three distinct parts: the rotation, the scaling and the offset.
-Of these, only the offset is likely to drift with time.
-As a result, we developed a method to update the calibration over time. To test this procedure, we analyze the data set of camera measurements and atomic positions in the following way: we split the data set into sequential blocks of $20$ shots, each followed by a block of $8$ shots.
-The large blocks are treated as ``masked'' data, which we try to predict, while the small blocks are treated as ``updating'' events used to update the calibration offsets.
-The results are shown in Fig.~\ref{fig:stability}(d-f), showing a large degree of tracking between the predicted positions and measured position. The average displacement between the predicted position and measured position is 0.7~lattice sites.
+As a first step, we calibrated the beam-monitoring system by simultaneously recording the position of the atoms on the imaging camera (Andor iStar) and the lattice beam position on the beam-monitoring camera (Point Grey Chameleon). 
+By additionally varying the laser beam position and the lattice anisotropy we were able to obtain a reliable calibration, see Fig.~\ref{fig:stability} (c).
+However, we found that this calibration changes after a short while ($\approx$ 30 shots) and there is an offset between the recordings of the beam-monitoring camera and the atoms camera. 
+This is most likely caused by thermal drifts of the beam-monitoring camera housing: the camera heats up by a few $^\circ$C owing to the absence of active cooling. This can easily lead to a few $\mu$m drift due to the plastic mounting between the post holder mounted to the optical table and the CCD chip.
+While this could be easily fixed with an improved camera design, we implemented an alternative approach: by recalibrating the offset every 20 shots, this effect can be taken into account. 
+After correcting for this changing offset of the beam-monitoring camera, we find very good agreement between the recorded atom position with the imaging camera and the predicted atom position based on the beam-monitoring camera, see Fig.~\ref{fig:stability}(d-f).
+The average $L_1$ displacement between the predicted position and measured position is 0.7~lattice sites.
+The beam-monitoring system is thus sufficiently sensitive to detect lattice misalignments that are on the order of a few lattice sites or more, making it useful as a non-invasive check of the alignment of the experimental apparatus. 
 
 \begin{figure}
 \begin{center}
