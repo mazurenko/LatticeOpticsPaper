@@ -35,18 +35,18 @@
 
 \date{\today}
 \begin{abstract}
-  We describe the design and implementation of a stable high-power \unit{1064}{nm} laser system to generate optical lattices for experiments with ultracold quantum gases. The system is based on a low-noise laser amplified by an array of four heavily modified, high-power fiber amplifiers. The beam intensity is stabilized and controlled with a nonlinear feedback loop. Using real-time monitoring of the resulting optical lattice, we demonstrate a shot-to-shot stability of the lattice position at 1\% of the lattice spacing and a long-term (six month) stability of 0.5\% RMS of the lattice spacing itself.
+  We describe the design and implementation of a stable high-power \unit{1064}{nm} laser system to generate optical lattices for experiments with ultracold quantum gases. The system is based on a low-noise laser amplified by an array of four heavily modified, high-power fiber amplifiers. The beam intensity is stabilized and controlled with a nonlinear feedback loop. Using real-time monitoring of the resulting optical lattice, we demonstrate a shot-to-shot stability of the lattice position at 1.4\% of the lattice spacing and a long-term (six month) stability of 0.5\% RMS of the lattice spacing itself.
 \end{abstract}
 \maketitle
 
 Optical lattices holding arrays of ultracold atoms have become a powerful experimental platform for quantum simulations~\cite{Friedenauer2008, Kim2010, Struck2011, Simon2011, Yan2013, Greif2013, Drewes2016, Murmann2015}.
-The recent advent of quantum gas microscopy~\cite{Bakr2009, Sherson2010, Haller2015, Cheuk2015, Parsons2015, Edge2015, Omran2015, Greif2016, Cheuk2016, Parsons2016, Boll2016, Cheuk2016a, Brown2017} has enabled studies with unprecedented control over individual atoms in many-body systems governed by the Hubbard Hamiltonian~\cite{Hubbard1963}, resulting in extremely low energy scales~\cite{Mazurenko2017}.
+The recent advent of quantum gas microscopy~\cite{Bakr2009, Sherson2010, Haller2015, Cheuk2015, Parsons2015, Edge2015, Omran2015, Greif2016, Cheuk2016, Parsons2016, Boll2016, Cheuk2016a, Brown2017} has enabled studies with unprecedented control over individual atoms in many-body systems governed by the Hubbard Hamiltonian~\cite{Hubbard1963}, resulting in extremely low energy scales~\cite{Mazurenko2017, Chiu2018}.
 However, this progress has placed ever more stringent technical constraints on the lasers used to trap and manipulate the atomic systems.
 Even if the systems thermalize, heating rates can limit the interrogation time available to probe low-temperature states~\cite{Blatt2015}.
-In particular, experiments that rely on a small number of atoms held by multiple traps~\cite{Preiss2015, Choi2016, Mazurenko2017} place stringent requirements on the relative positional stability of the traps, to ensure that the operations performed by the traps have adequate fidelity.
+In particular, experiments that rely on a small number of atoms held by multiple traps~\cite{Preiss2015, Choi2016, Mazurenko2017, Chiu2018} place stringent requirements on the relative positional stability of the traps, to ensure that the operations performed by the traps have adequate fidelity.
 
 In this work we discuss major improvements to our high power optical lattice system~\cite{Blatt2015} and show levels of intensity noise below \unit{-115}{dBc/Hz} between \unit{1}{kHz} and \unit{3}{MHz} Fourier frequency.
-In addition to the intensity stability, we demonstrate a short-term (shot-to-shot) stability of the lattice position at 1\% of the optical lattice spacing, and a long-term (six month) relative stability of 0.5\% RMS of the lattice spacing itself.
+In addition to the intensity stability, we demonstrate a short-term (shot-to-shot) stability of the lattice position at 1.4\% of the optical lattice spacing, and a long-term (six month) relative stability of 0.5\% RMS of the lattice spacing itself.
 
 \begin{figure}[t]
   \begin{center}
@@ -81,7 +81,7 @@ To avoid interference of the lattice beams, two of the beam paths pass through a
 \subsection{Fiber amplifier system}
 Quantum gas microscopy of Li$^6$ requires single site trap frequencies of approximately \unit{1}{MHz}~\cite{Parsons2015} to be in the Lamb-Dicke regime necessary for Raman sideband cooling.
 
-Such trap frequencies may only be attained using tightly focused, high-power beams. 
+Such trap frequencies may only be attained using tightly focused, high-power beams.
 In practical terms, this requires approximately \unit{20}{W} per lattice axis for a beam waist of around $80 \mu\mathrm{m}$ and the four-fold enhancement in optical depth provided by the reflection from the superpolished substrate. We achieve such high laser powers using Yb-doped fiber amplifiers (Nufern NuAmp SUB1174-34).
 These amplifiers can amplify \unit{150}{mW} of seed light to up to approximately \unit{45}{W}. They use a length of doped fiber pumped with \unit{808}{nm} light from fiber coupled diode sources to amplify the \unit{1064}{nm} seed light.
 The amplification is performed using a two-stage design, where the stages are controlled and powered using separate power supplies and electronics.
@@ -391,22 +391,26 @@ For these reasons, each lattice axis is fitted with a remotely actuated mirror, 
 The remote actuators are ``Picomotors'' (Newport 8302), fitted into a customized \unit{2}{inch} mirror mounts.
 They work in a ``fire-and-forget'' manner, remaining passively stable when not in active use.
 
-Changing external conditions can contaminate large datasets if the prepared state sensitively depends on laser pointing.
-To watch for this contamination, we have implemented an independent monitoring system to verify appropriate pointing of both lattice laser beams.
-This monitoring system could potentially allow us to eliminate (via post-selection) experimental realizations when the system was in an undesired state.
-A beam-sampler (Thorlabs BSF10-C) reflects a small portion of the beam shortly before it reaches the atoms and images it onto a camera located in the plane corresponding to the atomic system, imaging a Gaussian beam identical to that of the optical lattice.
-Naturally, the position of the atoms is dictated by the light field of both the incoming and retro-reflected beams, while the monitoring camera only observes the position of the in-going beam.
-To verify that the monitor camera can predict the true position of the harmonic trap, the beam and the atoms were imaged simultaneously while a purposeful misalignment of the incoming beams was introduced.
-During this process, one of the lattice beams was adiabatically loaded, ensuring that the atoms settled to its center, prior to performing site-resolved imaging~\cite{Parsons2015}.
+Variation in external conditions can contaminate large datasets if the prepared state sensitively depends on laser pointing.
+To guard against such contamination, we have implemented an independent monitoring system to verify appropriate pointing of both lattice laser beams.
+This monitoring system allows us to eliminate (via post-selection) experimental realizations during which the system was in an undesired state.
+A beam-sampler (Thorlabs BSF10-C) reflects a small portion of the beam shortly before it reaches the atoms and images it onto a monitoring camera located in the plane corresponding to the atomic system, imaging a Gaussian beam corresponding to the optical lattice.
+Naturally, the position of the atoms is dictated by the light field of both the incoming and retroreflected beams, while the monitoring camera only observes the position of the incoming beam.
 
-Over the course of 250 sequential experimental realizations, we monitored the position of the beam on the camera and the position of the atoms.
-First, we characterized the passive stability of the optical axis along the transverse $x_t$ and longitudinal $x_l$ directions.
+In our experiments, the position of the Gaussian beam envelope of the optical lattice is impossible to determine from the site-resolved image of the atoms, because the atoms may not occupy the central part of the envelope depending on the specefics of the lattice loading procedure.
+In addition, the atomic distributions are governed by the sum of the incident lattices and thus cannot be used to reliably infer the degree of overlap between the lattice beams.
+Nevertheless, it is possible to adiabatically load a strongly anisotropic optical lattice by lowering the power of one of the lattice beams, resulting in an atomic distribution that closely matches the trap produced by the high-power beam~\cite{Parsons2015}.
+This procedure yields the correct position of the Gaussian beam envelope in the atom plane, which we can use to analyze each beam's passive stability and its relationship to the beam-monitoring camera.
+
+We first characterize the passive stability of the optical lattice along one dimension by monitoring its position over the course of 250 experimental realizations.
+We decompose the lattice position into the transverse $x_t$ and the longitudinal $x_l$ components with respect to the optical axis.
 Figure~\ref{fig:stability}(a) shows a histogram of displacements of atoms between subsequent experimental realizations, showing that the RMS displacement is $0.54(3)$ [$0.98(4)$] sites along the $x_t$ [$x_l$] direction.
-The difference between displacements is a geometric effect consistent with the mechanical assembly of the experiment~\cite{Huber2014}.
+The variation of the displacements is a geometric effect consistent with the mechanical assembly of the experiment~\cite{Huber2014}.
 The distributions are centered within 1-$\sigma$ of zero along both directions: $-0.03(4)$ and $0.01(5)$ sites for transverse and longitudinal axes, respectively.
-If the trap followed a random walk with these step sizes, the experiment would be in trouble, since after only $100$ experimental shots, the trap would move by more than $10$ lattice sites.
-The situation is more fortunate, however, since subsequent steps are correlated, as shown in Fig.~\ref{fig:stability}(b).
-Once this correlation is taken into account, we estimate a drift of \unit{8(1)\times 10^{-3}}{sites/realization} in the transverse direction and \unit{12(2)\times 10^{-3}}{sites/realization} in the axial direction, compared to a beam waist of $\approx$\unit{80}{\mu{}m} ($\approx$140 sites).
+If the trap had followed a random walk with these step sizes, the optical lattice would have to be realigned frequently, since after only $100$ experimental shots, the trap would have moved by more than $10$ lattice sites.
+However, the situation is more fortunate, since subsequent steps are correlated, as shown in Fig.~\ref{fig:stability}(b).
+Once this correlation is taken into account, we estimate an RMS drift of 8(1)~sites over 1000~realizations in the transverse direction and 12(2)~sites over 1000~realizations in the axial direction.
+This drift corresponds to an RMS displacement of $\unit{14(3)\times 10^{-3}}{sites / realization}$, compared to a beam waist of $\approx$\unit{80}{\mu{}m} ($\approx$140 sites).
 
 \begin{figure}
   \begin{center}
@@ -415,19 +419,21 @@ Once this correlation is taken into account, we estimate a drift of \unit{8(1)\t
   \end{center}
 \end{figure}
 
-\FIXME{} SB: I think I understand what you are doing, but the wording makes little sense: We cannot measure the atoms, so we measure the atoms? Need to make clear distinction between beam-monitoring camera and iXon.
 
-In a real experiment, we cannot directly measure the position of the atoms and must rely on the measurement performed by the camera, related by an affine transformation.
-To determine the parameters of the affine transform, we use the remote actuators to purposefully misalign the lattice beams for a small number of shots, and simultaneously measure the atomic positions and the camera reading, then perform a least-squares fit, shown in Fig.~\ref{fig:stability}(c).
+In general, we cannot extract the lattice position from the atomic distribution directly, but rely on the monitor camera picture, which is related to the lattice position in the atom plane by an affine transformation, consisting of a rotation, a scaling, and an offset.
+To determine the parameters of this affine transform, we use the remote actuators to purposely misalign the lattice beams and correlate the monitor camera image with the atom image obtained by fluorescence imaging~\cite{Parsons2015}.
+The corresponding least-squares fit is shown in Fig.~\ref{fig:stability}(c).
+The quality of this fit remains acceptable for $\approx$30 repetitions of the experiment, but it degrades for longer times.
+This effect is most likely due to thermal drift of the beam-monitoring camera, since a displacement of a one pixel (\unit{3}{\mu{}m}) on the monitoring camera is equivalent to a displacement of one lattice site in the atom plane.
+The most likely parameter of the affine transform susceptible to thermal drift over a few experimental cycles is the offset.
 
-Unfortunately, while this fit is acceptable for a short while ($\approx$ 30 shots), the quality of the fit degrades over time, correspondingly degrading its predictive power.
-The most likely culprit is thermal drift of the beam-monitoring camera, since a displacement of only a pixel caused the predicted position to change by approximately 1~site, and each camera pixel is about \unit{3}{\mu{}m} across.
-The camera housing is not engineered for low drift mounting, and the camera heats up by a few $^\circ$C, making a few $\mu$m drift very possible.
-To deal with this problem, we point out that the affine transform is composed of three distinct parts: the rotation, the scaling and the offset.
-Of these, only the offset is likely to drift with time.
-As a result, we developed a method to update the calibration over time. To test this procedure, we analyze the data set of camera measurements and atomic positions in the following way: we split the data set into sequential blocks of $20$ shots, each followed by a block of $8$ shots.
-The large blocks are treated as ``masked'' data, which we try to predict, while the small blocks are treated as ``updating'' events used to update the calibration offsets.
-The results are shown in Fig.~\ref{fig:stability}(d-f), showing a large degree of tracking between the predicted positions and measured position. The average displacement between the predicted position and measured position is 0.7~lattice sites.
+For this reason, we developed a procedure to periodically update the affine transform relating the beam-monitoring camera to the atom plane.
+We test this procedure, we analyze the data set of monitoring-camera measurements and atomic positions (shown in Fig.~\ref{fig:stability}) in the following way: we split the data set into sequential blocks of 20 shots, each followed by a block of 8 shots.
+We try to predict the larger blocks, by analyzing the smaller blocks to derive the updates to the affine transform.
+The results are shown in Fig.~\ref{fig:stability}(d-f) and display a large degree of tracking between the predicted and measured atom positions.
+The average taxicab distance between the predicted position and the measured position is 0.7~lattice sites.
+
+In conclusion: the beam-monitoring camera is sufficiently sensitive to detect lattice misalignments on the order of a few lattice sites, making it useful as a noninvasive check of the lattice position.
 
 \begin{figure}
 \begin{center}
@@ -437,15 +443,17 @@ The results are shown in Fig.~\ref{fig:stability}(d-f), showing a large degree o
 \end{figure}
 
 \section{Long-term stability of the lattice structure}
-A benefit of site-resolved imaging is that every measurement of the atomic distribution is also a direct measurement of the underlying lattice structure.
-As discussed in the supplementary material of~\cite{Parsons2016, Greif2016}, the Fourier transform of an atomic distribution contains distinct peaks corresponding to the lattice structure, and these peaks can be used to extract the phase, relative angle, and spacing of the lattices.
+A benefit of site-resolved imaging is that every measurement of the atomic distribution is also a direct measurement of the underlying lattice structure (except for the short-term and small-scale displacement discussed in the last section).
+As discussed in the supplementary material of~\cite{Parsons2016, Greif2016}, the Fourier transform of an atomic distribution contains distinct peaks corresponding to the lattice structure, and these peaks can be used to extract the relative angle and the spacing of the lattices.
 For this reason, we recorded a long-term measurement spanning almost one year to learn how these parameters change over time, see Fig.~\ref{fig:long_term_stability}.
 Several interesting features can be seen from the observed behavior. In the first few months the lattice spacing changed by around 10\%. Experimentally, this drift was accompanied by the necessity of refocussing the imaging system. The sudden jump in September 2016 was caused by a simplification of the imaging system. Afterwards, the lattice spacing seemed more stable (fractional changes of $\leq 0.005$). Unlike the lattice spacing, the angle is observed to be mostly unaffected and remains very stable (for example, an RMS of 0.06$^\circ$ in Spring 2017).
 
 \section{Conclusion}
 We have presented the design and specifications of an optical lattice system that has been successfully used for quantum gas microscopy of low-temperature phases of the Hubbard model.
 In this design, key emphasis has been placed on the stability of the pointing and the intensity of the optical lattice, of particular importance to observe the underlying physics.
-To further improve the system's performance, the system can be upgraded in a variety of ways. For example, the Nufern fiber amplifiers can be replaced with a lower noise model. The analog feedback loop can be replaced by a low-noise digital version. Additionally, active stabilization of the laser pointing could be implemented in the future.
+To further improve the system's performance, the system can be upgraded in a variety of ways. For example, the Nufern fiber amplifiers can be replaced with a lower noise model [such as the MOPA system shown in Fig.~\ref{fig:noises}(a)]. The nonlinear analog feedback loop can also be replaced by a lower-noise digital version.
+Active stabilization of the laser pointing can improve the pointing stability further.
+The high degree of lattice stability demonstrated here has already enabled first investigations of entropy redistribution schemes involving multiple traps that made it possible to observe antiferromagnetic ordering in two-dimensional Fermi gases~\cite{Mazurenko2017} and to engineer low-entropy quantum states~\cite{Chiu2018}.
 
 \bibliography{LatticeOpticsV5}
 
