@@ -35,7 +35,9 @@
 
 \date{\today}
 \begin{abstract}
-  We describe the design and implementation of a stable high-power \unit{1064}{nm} laser system to generate optical lattices for experiments with ultracold quantum gases. The system is based on a low-noise laser amplified by an array of four heavily modified, high-power fiber amplifiers. The beam intensity is stabilized and controlled with a nonlinear feedback loop. Using real-time monitoring of the resulting optical lattice, we demonstrate a shot-to-shot stability of the lattice position at 1.4\% of the lattice spacing and a long-term (six month) stability of 0.5\% RMS of the lattice spacing itself.
+We describe the design and implementation of a stable high-power \unit{1064}{nm} laser system to generate optical lattices for experiments with ultracold quantum gases. The system is based on a low-noise laser amplified by an array of four heavily modified, high-power fiber amplifiers. The beam intensity is stabilized and controlled with a nonlinear feedback loop. 
+%Using real-time monitoring of the resulting optical lattice, we demonstrate a shot-to-shot stability of the lattice position at 1.4\% of the lattice spacing and a long-term (six month) stability of 0.5\% RMS of the lattice spacing itself.
+Using real-time monitoring of the resulting optical lattice, we find the stability of the lattice site positions to be well below the lattice spacing for several hours. The pointing stability of the optical lattice beams is around one lattice spacing and the long-term (six month) relative stability of the lattice spacing itself is 0.5\% RMS.
 \end{abstract}
 \maketitle
 
@@ -50,7 +52,7 @@ In addition to the intensity stability, we demonstrate a short-term (shot-to-sho
 
 \begin{figure}[t]
   \begin{center}
-    \includegraphics[width=0.85\columnwidth]{Figure1.pdf}
+    \includegraphics[width=0.8\columnwidth]{Figure1.pdf}
     \caption{\textbf{High level overview} showing the major components of the lattice laser feedback system.}\label{fig:high_level}
   \end{center}
 \end{figure}
@@ -86,19 +88,6 @@ In practical terms, this requires approximately \unit{20}{W} per lattice axis fo
 These amplifiers can amplify \unit{150}{mW} of seed light to up to approximately \unit{45}{W}. They use a length of doped fiber pumped with \unit{808}{nm} light from fiber coupled diode sources to amplify the \unit{1064}{nm} seed light.
 The amplification is performed using a two-stage design, where the stages are controlled and powered using separate power supplies and electronics.
 
-\begin{figure*}[t]
-  \begin{center}
-    \includegraphics{Figure3.pdf}
-    \caption{\textbf{Optical layout} of the optical lattice system for beam shaping and modulation.}\label{fig:optical_layout}
-  \end{center}
-\end{figure*}
-
-The high optical powers supplied by the fiber amplifiers raise two engineering difficulties:
-\begin{enumerate}
-  \item The fiber amplification process itself is susceptible to many technical noise sources, such as acoustic coupling of the fiber to the environment and electrical design of the amplifier;
-  \item Stimulated Brillouin scattering (SBS) places a hard lower bound on the relative intensity noise (RIN) floor~\cite{Agrawal2013}.
-\end{enumerate}
-
 The NuAmp suffers from several technical problems.
 It is controlled via a USB interface, which complicates communications with an array of these devices.
 Worse yet, it is suspected of causing ground loops which add noise and interference to the analog systems.
@@ -112,6 +101,11 @@ This fan adds noise at acoustic frequencies and degrades pointing stability by i
 To reduce acoustic coupling and reduce switching power supply noise, both power supplies were removed from the fiber amplifier chassis, and the low-power supply was replaced by a linear power supply (Acopian A24MT350M).
 Further, a high current low-pass filter (MPE DS26387) was added to the high-power supply (Lumina LDD-600-60-10-5VP/M).
 
+The high optical powers supplied by the fiber amplifiers raise two engineering difficulties:
+\begin{enumerate}
+  \item The fiber amplification process itself is susceptible to many technical noise sources, such as acoustic coupling of the fiber to the environment and electrical design of the amplifier;
+  \item Stimulated Brillouin scattering (SBS) places a hard lower bound on the relative intensity noise (RIN) floor~\cite{Agrawal2013}.
+\end{enumerate}
 
 These upgrades serve to suppress many of the noise spurs measured in the fiber amplifier RIN.
 The effects can be seen when comparing Fig.~\ref{fig:noises}(a) and (b), particularly in the region of approximately \unit{10}{kHz} Fourier frequency.
@@ -141,6 +135,13 @@ The free-space propagation of the fiber amplifier output presents several techni
   \item The positional fluctuations of the waist at the atoms cannot be allowed to exceed a few microns between experimental realizations.
   \item By construction, the beam is retro-reflected, threatening the lifetime of the amplifier.
   \end{enumerate}
+
+\begin{figure*}[t]
+  \begin{center}
+    \includegraphics{Figure3.pdf}
+    \caption{\textbf{Optical layout} of the optical lattice system for beam shaping and modulation.}\label{fig:optical_layout}
+  \end{center}
+\end{figure*}
 
 To address these challenges, we use a carefully engineered optical system shown in Fig.~\ref{fig:optical_layout}.
 This system collimates and polarizes the beam, controls its intensity and ensures good pointing stability.
@@ -393,8 +394,6 @@ For these reasons, each lattice axis is fitted with a remotely actuated mirror, 
 The remote actuators are ``Picomotors'' (Newport 8302), fitted into a customized \unit{2}{inch} mirror mounts.
 They work in a ``fire-and-forget'' manner, remaining passively stable when not in active use.
 
-\FIXME{}: begin Sebastian's version
-{\color{red}
 Variation in external conditions can contaminate large datasets if the prepared state sensitively depends on laser pointing.
 To guard against such contamination, we have implemented an independent monitoring system to verify appropriate pointing of both lattice laser beams.
 This monitoring system allows us to eliminate (via post-selection) experimental realizations during which the system was in an undesired state.
@@ -415,20 +414,6 @@ If the trap had followed a random walk with these step sizes, the optical lattic
 However, the situation is more fortunate, since subsequent steps are correlated, as shown in Fig.~\ref{fig:stability}(b).
 Once this correlation is taken into account, we estimate an RMS drift of 8(1)~sites over 1000~realizations in the transverse direction and 12(2)~sites over 1000~realizations in the axial direction.
 This drift corresponds to an RMS displacement of $\unit{14(3)\times 10^{-3}}{sites / realization}$, compared to a beam waist of $\approx$\unit{80}{\mu{}m} ($\approx$140 sites).
-}
-\FIXME{}: Begin Daniel's version
-{\color{green}
-We characterized the passive stability of the optical lattice by monitoring the position over the course of 250 sequential experimental realizations.
-To analyse the data we decomposed the recorded positions into the transverse $x_t$ and longitudinal $x_l$ components as compared to the optical axis (i.e. rotated by $45^\circ$ as compared to the lattice directions $x$ and $y$).
-During this measurement we found that the drift of the atom position is about $1-2$ lattice site, see red data in Fig.~\ref{fig:stability}(e+f).
-For a more in-depth analysis, we also studied the histogram of displacements of atoms between subsequent experimental realizations, see Fig.~\ref{fig:stability}(a).
-This shows a RMS displacement of $0.54(3)$ [$0.98(4)$] sites along the $x_t$ [$x_l$] direction.
-The difference between the displacements is a geometric consequence of the mechanical assembly of the experiment~\cite{Huber2014}.
-The distributions are centered within 1-$\sigma$ of zero along both directions: $-0.03(4)$ and $0.01(5)$ sites for transverse and longitudinal axes, respectively, indicating the absence of strong drift.
-If the trap followed a random walk with these step sizes, the optical assembly would have to be frequently realigned, since after only $100$ experimental shots the trap would move by more than $10$ lattice sites.
-The situation is more fortunate, however, since subsequent steps are correlated, as shown in Fig.~\ref{fig:stability}(b).
-Once this correlation is taken into account, we estimate an RMS drift of \unit{8(1)} [12(2)] {sites/ 1000 realizations} in the transverse [axial] direction, compared to a beam waist of $\approx$140 sites.
-}
 
 \begin{figure}
   \begin{center}
@@ -437,14 +422,20 @@ Once this correlation is taken into account, we estimate an RMS drift of \unit{8
   \end{center}
 \end{figure}
 
-\FIXME{}: Begin Sebastian's version
-{\color{red}
 In general, we cannot extract the lattice position from the atomic distribution directly, but rely on the monitor camera picture, which is related to the lattice position in the atom plane by an affine transformation, consisting of a rotation, a scaling, and an offset.
 To determine the parameters of this affine transform, we use the remote actuators to purposely misalign the lattice beams and correlate the monitor camera image with the atom image obtained by fluorescence imaging~\cite{Parsons2015}.
 The corresponding least-squares fit is shown in Fig.~\ref{fig:stability}(c).
 The quality of this fit remains acceptable for $\approx$30 repetitions of the experiment, but it degrades for longer times.
 This effect is most likely due to thermal drift of the beam-monitoring camera, since a displacement of a one pixel (\unit{3}{\mu{}m}) on the monitoring camera is equivalent to a displacement of one lattice site in the atom plane.
 The most likely parameter of the affine transform susceptible to thermal drift over a few experimental cycles is the offset.
+
+\begin{figure}
+\begin{center}
+    \includegraphics[width=\columnwidth]{Figure14.pdf}
+    \caption{\textbf{Long term stability over approximately ten months.} The lattice spacings $|\mathrm{v}_x|$ and $|\mathrm{v}_y|$ and the lattice angles $\theta_x$ and $\theta_y$ along the two lattice axes $x$ and $y$ (cf. Fig.~\ref{fig:averaged_mott}) are shown over a period of ten months.}\label{fig:long_term_stability}
+  \end{center}
+\end{figure}
+
 
 For this reason, we developed a procedure to periodically update the affine transform relating the beam-monitoring camera to the atom plane.
 We test this procedure, we analyze the data set of monitoring-camera measurements and atomic positions (shown in Fig.~\ref{fig:stability}) in the following way: we split the data set into sequential blocks of 20 shots, each followed by a block of 8 shots.
@@ -453,31 +444,7 @@ The results are shown in Fig.~\ref{fig:stability}(d-f) and display a large degre
 The average taxicab distance between the predicted position and the measured position is 0.7~lattice sites.
 
 In conclusion: the beam-monitoring camera is sufficiently sensitive to detect lattice misalignments on the order of a few lattice sites, making it useful as a noninvasive check of the lattice position.
-}
-\FIXME{}: Begin Daniel's version
-{\color{green}
-As an additional measure, we have implemented a monitoring system to independently verify appropriate pointing of the lattice laser beams.
-This is particularly useful when performing experiments where imaging the atoms does note allow determining the original center of the atoms in the harmonic trap.
-Additionally, this beam-monitoring system could allow us to eliminate (via post-selection) experimental realizations when the system was in an undesired state -- or designing a feedback loop on the lattice beam pointing to ensure long-term stability.
-A beam-sampler (Thorlabs BSF10-C) reflects a small portion of the beam shortly before it reaches the atoms and images it onto a camera located in the plane corresponding to the atomic system, imaging a Gaussian beam identical to that of the optical lattice.
-Naturally, the position of the atoms is dictated by the light field of both the incoming and retro-reflected beams, while the monitoring camera only observes the position of the in-going beam (this is found to not be a limitation in practice).
 
-As a first step, we calibrated the beam-monitoring system by simultaneously recording the position of the atoms on the imaging camera (Andor iStar) and the lattice beam position on the beam-monitoring camera (Point Grey Chameleon).
-By additionally varying the laser beam position and the lattice anisotropy we were able to obtain a reliable calibration, see Fig.~\ref{fig:stability} (c).
-However, we found that this calibration changes after a short while ($\approx$ 30 shots) and there is an offset between the recordings of the beam-monitoring camera and the atoms camera.
-This is most likely caused by thermal drifts of the beam-monitoring camera housing: the camera heats up by a few $^\circ$C owing to the absence of active cooling. This can easily lead to a few $\mu$m drift due to the plastic mounting between the post holder mounted to the optical table and the CCD chip.
-While this could be easily fixed with an improved camera design, we implemented an alternative approach: by recalibrating the offset every 20 shots, this effect can be taken into account.
-After correcting for this changing offset of the beam-monitoring camera, we find very good agreement between the recorded atom position with the imaging camera and the predicted atom position based on the beam-monitoring camera, see Fig.~\ref{fig:stability}(d-f).
-The average $L_1$ displacement between the predicted position and measured position is 0.7~lattice sites.
-The beam-monitoring system is thus sufficiently sensitive to detect lattice misalignments that are on the order of a few lattice sites or more, making it useful as a non-invasive check of the alignment of the experimental apparatus.
-}
-
-\begin{figure}
-\begin{center}
-    \includegraphics[width=\columnwidth]{Figure14.pdf}
-    \caption{\textbf{Long term stability over approximately ten months.} The lattice spacings $|\mathrm{v}_x|$ and $|\mathrm{v}_y|$ and the lattice angles $\theta_x$ and $\theta_y$ along the two lattice axes $x$ and $y$ (cf. Fig.~\ref{fig:averaged_mott}) are shown over a period of ten months.}\label{fig:long_term_stability}
-  \end{center}
-\end{figure}
 
 \section{Long-term stability of the lattice structure}
 A benefit of site-resolved imaging is that every measurement of the atomic distribution is also a direct measurement of the underlying lattice structure (except for the short-term and small-scale displacement discussed in the last section).
