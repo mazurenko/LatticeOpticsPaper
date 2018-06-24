@@ -1,0 +1,65 @@
+# -*- mode: Org; mode: visual-line -*-
+# Time-stamp: "2018-06-22 11:34:32 sb"
+
+#  file       cover_letter.org
+#  copyright  (c) Sebastian Blatt 2018
+
+Dear Editor,
+
+we would like to submit our paper "Implementation of a stable, high-power optical lattice for quantum gas microscopy" for consideration as a Research Article in Physical Review Applied.
+
+In this paper, we provide a detailed review of the high-power laser technology that enabled  our recent advances in quantum gas microscopy of fermions in optical lattices, such as the creation of antiferromagnetic states with very low entropies. We explain in detail the optical, the mechanical, and the electronic components that enabled these developments, and we present new data that demonstrates unprecedented short-term (hours) as well as long-term (6 months) stability of our optical lattices.
+
+We believe that the methods we developed to obtain such highly-stable, low-noise, and high-power optical lattices have applications in many other quantum optics experiments and technologies requiring long coherence times and low entropies. To make our techniques available to the broadest possible audience, we would like to publish our results in Physical Review Applied.
+
+With best regards,
+
+Sebastian Blatt on behalf of the authors
+
+
+We suggest the following list of referees
+
+Prof. Stefan Kuhr
+Department of Physics
+University of Strathclyde
+107 Rottenrow East
+Glasgow G4 0NG
+United Kingdom
+email: stefan.kuhr@strath.ac.uk
+phone: +44 141 548 3364
+
+Prof. Joseph H. Thywissen
+Department of Physics
+University of Toronto
+60 St. George St.
+Toronto, Ontario, M5S 1A7
+Canada
+email: jht@physics.utoronto.ca
+phone: +1 416 978-2941
+
+Prof. Selim Jochim
+Universität Heidelberg
+Physikalisches Institut
+Im Neuenheimer Feld 226
+69120 Heidelberg
+Germany
+email: jochim@uni-heidelberg.de
+phone: +49 6221 54 19472
+
+Dr. Andrea Alberti
+Institut für Angewandte Physik
+Universität Bonn
+Wegelerstr. 8
+53115 Bonn
+Germany
+email: alberti@iap.uni-bonn.de
+phone: +49 228 73 3471
+
+Dr. Thomas Lompe
+Institut für Laserphysik
+Universität Hamburg
+Luruper Chaussee 149, Building 69
+22761 Hamburg
+Germany
+email: tlompe@physik.uni-hamburg.de
+phone: +49 40 8998 5264
