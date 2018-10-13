@@ -22,13 +22,18 @@ all: $(targets) $(subs)
 %.pdf: %.tex $(subs)
 	@echo "pdflatex: $< -> $@"
 	@pdflatex $<
-    #@bibtex $(project)
+	#@bibtex $(project)
 	@pdflatex $<
 	@pdflatex $<
 	@-rm $(foreach t,aux log blg ilg ind bbl idx loc soc,$(<:.tex=.$(t))) \
 			$(project)Notes.bib
 
-.PHONY: clean $(subs)
+diff:
+	@echo "latexdiff ../submission_pr_applied/$(project).tex $(project).tex > $(project)_diff.tex"
+	@latexdiff ../submission_pr_applied/$(project).tex  $(project).tex  > $(project)_diff.tex
+	@pdflatex $(project)_diff.tex
+
+.PHONY: clean diff $(subs)
 
 
 clean :
