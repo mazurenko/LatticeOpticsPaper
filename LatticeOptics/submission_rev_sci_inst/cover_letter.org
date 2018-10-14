@@ -1,12 +1,12 @@
 # -*- mode: Org; mode: visual-line -*-
-# Time-stamp: "2018-10-11 13:29:08 sb"
+# Time-stamp: "2018-10-14 16:41:06 sb"
 
 #  file       cover_letter.org
 #  copyright  (c) Sebastian Blatt 2018
 
 Dear Editor,
 
-we would like to submit our paper "Implementation of a stable, high-power optical lattice for quantum gas microscopy" for consideration as a Research Article in Physical Review Applied.
+we would like to submit our paper "Implementation of a stable, high-power optical lattice for quantum gas microscopy" for consideration in Review of Scientific Instruments.
 
 In this paper, we provide a detailed review of the high-power laser technology that enabled  our recent advances in quantum gas microscopy of fermions in optical lattices, such as the creation of antiferromagnetic states with very low entropies. We explain in detail the optical, the mechanical, and the electronic components that enabled these developments, and we present new data that demonstrates unprecedented short-term (hours) as well as long-term (6 months) stability of our optical lattices.
 
