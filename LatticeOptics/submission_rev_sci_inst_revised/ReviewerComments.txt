@@ -1,0 +1,141 @@
+> ------------------------------------------------------------------------------
+> Manuscript #A182335:
+>
+>
+> Reviewer Comments:
+> Reviewer #1 Evaluations:
+> Recommendation: Publish after minor revision
+> Technically sound: Y
+> New ideas: Y
+> Just a variation of known device or technique: Y
+> Appropriate journal: Y
+> Proper context with related work: Y
+> Clear explanation: Y
+> Adequate references: Y
+> Suitable title: Y
+> Adequate abstract: Y
+> Significant numerical quantities: Y
+> Clear figures with captions: Y
+> Excessive text or figures: Y
+> English satisfactory: Y
+> Regular Article vs Note: Regular Article
+>
+> Reviewer #1 (Remarks):
+>
+> In the manuscript entitled "Implementation of a stable, high-power optical lattice for quantum gas microscopy," the authors A. Mazurenko et al. give a thorough account of the optical-lattice setup that is used at Harvard University to probe through a quantum-gas microscope the many-body physics of ultracold Lithium. The optical-lattice setup represents state-of-the art in the field, and it is important to explore antiferromagnetic ordering and, in general, to study Fermi-Hubbard Hamiltonians.
+>
+> Deep optical-lattice potentials are necessary for single-site-resolved imaging of ultracold atoms; this is especially the case for Lithium atoms, since these atoms are light and have correspondingly a relatively large recoil energy. Such deep optical lattices require high intensities in the order of several watts. At the same time, it is important to ensure a high intensity stability, especially when the laser power is reduced (typically a factor 1000 or more) to access the tunneling regime, where interesting interaction physics takes place. The challenge consists in achieving a relative RMS stability in the range [1e-4, 1e-5] in the shallow lattice, corresponding to [1e-6, 1e-8] of the overall laser intensity. The authors achieve the required high power (1) by using commercial fiber amplifiers, which (2) they adapt to low-noise operation, and (3) stabilize their laser intensity through two independent control loops designed specifically for the needs of shallow and deep latt
+> ices.
+>
+> I would like to commend the authors for the clear presentation of the technical details underlying their complex setup. In spite of the rather technical topic handled here, the manuscript offers the reader a pleasant reading, and provide the necessary background information through suitable citations.
+>
+> The manuscript shares many new insights with the reader. In my opinion, particular relevant and novel is the realization of low-intensity-noise optical lattices using commercial high-power fiber amplifiers, which have been significantly "modified" to suppress spurious noise. With some positive thinking, this manuscript could even influence the manufacturers to produce a high-stability version of their fiber amplifiers, following the authors' example.
+>
+> Some other parts of the manuscript are not exactly state of the art. For example, the intensity stabilization circuitry could be improved using low-noise digital electronics circuitry, achieving better compensation of the nonlinearity of the actuator (e.g. using look-up tables) and better control of integrator (e.g. using sample-and-hold techniques to avoid the integral windup). The nonlinear correction to the their control loop, which is realized using a Schottky diode, for the compensation of nonlinearities of the AOM actuator is presented as original. However, years ago I have already seen such a "trick" employed in the photodiode electronics developed at the MPQ. Since I have never been affiliated with MPQ, I am not sure who should be credited for this development. Nonetheless I think that the authors should add a footnote giving the credits to previous work.
+>
+> In genereal, the intensity stability in the range [-135,-115] dBc/Hz for the bandwidth [1kHz,1MHz] is not exceptional. However, the real merit here is that it is achieved starting from a relatively noisy (but perhaps more affordable) fiber amplifier. The authors themselves show that even better stability can be achieved with Mephisto MOPA laser without almost requiring any active stabilization.
+>
+> Concerning the intensity stabilization electronics of the low-intensity lattice, it is somehow disappointing that it only reaches 10 kHz bandwith. With a shotnoise limit at -160 dBz/Hz, one could have expected that there is enough signal to noise to achieve much larger bandwidth. In fact, the reader is guided through a detailed explanation how the different elements are judiciously chosen to allow MHz bandwidth. Unfortunately, for some reasons, the overall servo loop was found to inject more noise above 10 kHz. The authors explain that it originates from Johnson noise on the 1 k&#x03A9; input resistors. However, it remains unclear to me what the "input resistor" is. Perhaps the transimpedance? Furthermore, I have the feeling that 1 k&#x03A9; generally comes with little low Johnson noise.
+>
+> That being sad, I believe that the paper represents a very valuable contribution to ultracold atom community. I much appreciate the choice of the authors to give a full account of the entire setup, without neglecting important details. Hence, I do not hesitate to recommend the paper for publication. I only have few minor questions and comments, which the authors should possibly address.
+>
+> === Questions and comments (in order of appearance in the manuscript) ===
+>
+> - I did not understand the statement in the last sentence of the abstract. They report on a short-term pointing stability of about one lattice site. This seems too big instability to me. In the text, other values at around 1% of the lattice site.
+>
+There are 3 notions of stability that matter - the lattice spacing, the lattice position and the position of the underlying harmonic trap. The number the reviewer is referring to is belongs to the underlying harmonic trap. This corresponds to O(1%) of the waist of the beam. 
+We have clarified.
+
+> In addition, "relative stability of the lattice spacing itself is 0.5% RMS" seems to me confusing. One reads it as 0.5% of an RMS. Probably the authors meant a relative RMS stability of 0.5%.
+We concur that this is indeed a better formulation.
+
+>
+> - The level of -115 dBc/Hz seems very remarkable in relation to the utilization of fiber amplifiers. Using other laser systems, it is not uncommon to reach <-150 dBc/Hz in the same bandwidth. I would encourage the authors to make a comment right from the beginning helping the reader realize what is expected for a good intensity stability, and how to gauge the result obtained here with respect to other laser systems.
+While we agree with this point, we point out that the specifications for the unmodified laser amplifier and the Mephisto MOPA were reported for exactly this purpose.
+
+>
+> - In Fig. 2(b), it seems that the high-power intensity stabilization makes no difference. Was that measured with an out-of-loop photodiode? It seems that the closed-loop noise spectral density is even higher at low frequencies, where instead one should expect a clear improvement. It seems that the high-power digital feedback offers no advantage with respect to a pure feedforward driving based on a lookup table.
+>
+These measurements were carried out with an out of loop photodiode, however, please note that the RIN plot minimum is nearly out of band with respect to the high power loop. However, we disagree with the point that a lookup system could do better. For the Raman sideband cooling to work, the laser power must be within a particular range for the majority of the cooling/imaging time - 100's of ms. 
+The purpose of the loop is to ensure stabiltity at those scales without introducing excessive noise at all higher frequencies. The figure in question demonstrates the latter.
+
+> - Concerning Fig.2(c), it is said that it is an open-loop characterization. The authors also say that it includes "an additional low-pass filtering stage to limit the loop bandwidth." Thus, it is not clear how the low-pass filter should affect these results if there is no loop here. Perhaps the remark about the low pass filtering belong to Fig.2(d)?
+>
+We apologize for the oversight. The reference to the low pass was a mistake. Panels (c) and (d) mean to compare open and closed loop performance of the unmodified loop, and the addition of an extra filter is characterized in fig 11. The caption has been fixed. 
+
+> - Resistors seem to be missing from Fig.6(c). Before and after the integrator stage there should be resistors. Otherwise I do not see how the circuit can run stably, since the virtual ground principle cannot be realized.
+>
+FIXME:...
+
+> - Where the authors say "we use an all-custom loop based on a TeO_2 AOM", what do they mean by "all-custom"? I suggest to remove this expression, since the english is not so clear, and their approach using an AOM is rather standard in the field of ultracold atoms, and it is also quite widespread practice to develop the electronics in-house for such an application.
+>
+Clarified to 'nonlinear', referring to the electronics.
+
+> - "To prevent damage to the low-power photodiode when the system is at its highest powers, a shutter (Stanford Research Systems SR475) blocks the light when the high-power loop is in use." tends to repeat what has been said in the previous page. Perhaps this sentence can be merged with the previous one.
+>
+We agree.
+
+> - "...giving a total isolation exceeding 90 dB." Do the authors mean a total isolation of the RF power or of the laser intensity? Probably the former.
+>
+That is correct and has been fixed.
+
+> - I am not exactly sure why Fig.7 has been shown. What is its goal? Phase-stability value of -90 dBc/Hz at 100 kHz is not so impressive if compared with modern DDS chips like AD9915, where almost -160 dBc/Hz is reachable. Probably for the authors' application, a good but not exceptional stability of -90 dBc/Hz suffice. Moreover, I would say that Fig. 7(b) should be plotted with a different vertical scale to allow the reader to see the details. And why are there jumps between different scanning decades? Were the different scans properly corrected by the resolution bandwidth of the spectrum analyzer before stitching them together?
+>
+We agree with the reviewer that this is not an essential figure. The reviewer is completely correct that for our application, this is not exceptional, but sufficient. We have removed the figure. FIXME: fix all figure references!!!
+FIXME: What numbers to cite?
+
+> - "... an InGaS based," It cannot be sulphur. There is probably a typo as it is "InGaAs".
+>
+Yes. 
+
+> - "uses the low-noise OPA627 (Texas Instruments) op-amp which is able to supply tens of mA of current into an output impedance of 50 &#x03A9;." Did they authors mean "current into a input impedance of 50 &#x03A9;"? Or "through an output impedance of 50 &#x03A9;"? Probably both. Whereas, to me, "into an output impedance" makes no sense.
+>
+Yes, corrected.
+
+> - "... input resistors, amplified by the amplification stages of the loop filter." As I have already remarked it, I could not figure out what the input resistor is. The transimpedance? Or the resistor after V_SP?
+>
+FIXME: FIGURE FIXING
+
+> - "If the trap had followed a random walk with these step sizes, the optical lattice would have to be realigned frequently, since after only 100 experimental shots, the trap would have moved by more than 10 lattice sites. However, the situation is more fortunate, since subsequent steps are correlated, ... "
+>
+> If the authors are interested, they could (optionally) run a detrended fluctuation analysis to determine the Hurst exponent H. Values 0<H<1 correspond to stationary fractional Gaussian noise, while for 1<H<2 one has fractional Brownian motion. Besides Wikipedia, an introduction to the topic can be found in
+>
+> N. Scafetta and B. J. West, "Multiscaling comparative analysis of time series and geophysical phenomena," Complexity 10, 51 (2005)
+This is an interesting idea, FIXME: What to do here?
+>
+>
+> Reviewer #2 Evaluations:
+> Recommendation: Publish as is
+> Technically sound: Y
+> New ideas: Y
+> Just a variation of known device or technique: N
+> Appropriate journal: Y
+> Proper context with related work: Y
+> Clear explanation: Y
+> Adequate references: Y
+> Suitable title: Y
+> Adequate abstract: Y
+> Significant numerical quantities: Y
+> Clear figures with captions: Y
+> Excessive text or figures: N
+> English satisfactory: Y
+> Regular Article vs Note: Regular Article
+>
+> Reviewer #2 (Remarks):
+>
+> In this work, the authors present the design and the implementation of a stable high-power 1064 nm laser system set up to generate optical lattices for the manipulation of ultracold atomic samples.
+>
+> The paper is very well written and all the technical advancements are explained in great the details. This work provide an excellent reference for others laboratories dealing with ultracold atoms, not only in optical lattices.
+>
+>  I think that it meets all the criteria for the publication. I do not have major comments.
+>
+> I would just ask the authors to address the following curiosity: in the conclusions they mention about the possibility of stabilizing actively the beam pointing. May the authors expand this concept? How are they planning to implement this beam stabilization?
+>
+> Best Regards
+>
+>
+>
+>
+> -------------------------------------------------------------------------------
+>
+> <br><br>This email message and any files transmitted with it contain confidential information. If you are not the intended recipient please notify the sender, delete this email and any attachments from your system, and destroy any copies you have made, electronic or otherwise.<br>
