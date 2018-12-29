@@ -241,9 +241,9 @@ Let us now consider every part of this signal chain individually.
 The local oscillator (LO) RF source is a custom-built printed circuit board (PCB), schematically shown in Fig.~\ref{fig:circuits}(b), that implements a phase locked loop (PLL) based on the ADF4002 IC and a low-phase-noise voltage-controlled oscillator (VCO, Crystek CVCO55CL-0060-0110), preamplified with a low-noise amplifier (Minicircuits PSA4-5043+).
 The PLL is locked to the \unit{10}{MHz} frequency reference distributed throughout the lab to ensure absolute frequency stability.
 In addition to PLL functionality, the board also contains two digitally-controlled, high-isolation RF switches, giving a total RF isolation exceeding \unit{90}{dB}.
-This device allows us to drive the AOM with a single, clean tone.
+This device allows us to drive the AOM with a single, clean tone ($<$\unit{90}{dBc/Hz} at \unit{200}{kHz} away from the carrier).
 %The spectrum and relative intensity noise of the PLL can be found in Fig.~\ref{fig:pll}.
-Vitally, the spectrum of the PLL exhibits phase noise comparable to that of a typical VCO but without the slow frequency drift characteristic to these devices.
+Thus, the spectrum of the PLL exhibits phase noise comparable to that of a typical VCO but without the slow frequency drift characteristic to these devices.
 Elimination of the carrier drift is worth the added phase noise because any drift of the frequency affects the pointing of the laser beam passing through the AOM, which would misalign the optical lattice.
 
 %\begin{figure}
@@ -347,7 +347,7 @@ This port can be used to modulate the RF power at frequencies above the bandwidt
 
 Although it is an essential part of the system, the loop filter is also one of its major limitations. Figure~\ref{fig:noises} shows the noise performance of the output of the fiber amplifiers in open-loop compared to the noise in closed-loop.
 Noise near DC is lowered (as expected from a closed-loop system), noise outside the loop bandwidth is increased in the range of 10 to \unit{450}{kHz} as seen in subfigures (c) and (d).
-This can be explained by the Johnson noise~\cite{Horowitz2015} on the \unit{1}{k\Omega} input resistors, amplified by the amplification stages of the loop filter.
+This can be explained by the Johnson noise~\cite{Horowitz2015} on the \unit{1}{k\Omega} op-amp input resistors, amplified by the amplification stages of the loop filter.
 The sharp drop off at the \unit{450}{kHz} point is due to a low-pass filter placed on the output of the loop filter, far above the maximum bandwidth set by the AOM.
 When the broadband noise below \unit{450}{kHz} was determined to be a problem, we decided that a bandwidth of higher than \unit{10}{kHz} was not required in the foreseeable future.
 As a result, we added a first-order low pass with a \unit{3}{dB} frequency of \unit{10}{kHz} leading to the improvement shown in Fig.~\ref{fig:low_pass_noises}. The fiber amplifier used to take this data was different from the one used for Fig.~\ref{fig:noises}, although their performance is comparable.

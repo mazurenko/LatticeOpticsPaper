@@ -32,6 +32,8 @@
 > The manuscript shares many new insights with the reader. In my opinion, particular relevant and novel is the realization of low-intensity-noise optical lattices using commercial high-power fiber amplifiers, which have been significantly "modified" to suppress spurious noise. With some positive thinking, this manuscript could even influence the manufacturers to produce a high-stability version of their fiber amplifiers, following the authors' example.
 >
 > Some other parts of the manuscript are not exactly state of the art. For example, the intensity stabilization circuitry could be improved using low-noise digital electronics circuitry, achieving better compensation of the nonlinearity of the actuator (e.g. using look-up tables) and better control of integrator (e.g. using sample-and-hold techniques to avoid the integral windup). The nonlinear correction to the their control loop, which is realized using a Schottky diode, for the compensation of nonlinearities of the AOM actuator is presented as original. However, years ago I have already seen such a "trick" employed in the photodiode electronics developed at the MPQ. Since I have never been affiliated with MPQ, I am not sure who should be credited for this development. Nonetheless I think that the authors should add a footnote giving the credits to previous work.
+FIXME: WHO DO WE CITE???
+
 >
 > In genereal, the intensity stability in the range [-135,-115] dBc/Hz for the bandwidth [1kHz,1MHz] is not exceptional. However, the real merit here is that it is achieved starting from a relatively noisy (but perhaps more affordable) fiber amplifier. The authors themselves show that even better stability can be achieved with Mephisto MOPA laser without almost requiring any active stabilization.
 >
@@ -65,7 +67,7 @@ We apologize for the oversight. The reference to the low pass was a mistake. Pan
 
 > - Resistors seem to be missing from Fig.6(c). Before and after the integrator stage there should be resistors. Otherwise I do not see how the circuit can run stably, since the virtual ground principle cannot be realized.
 >
-FIXME:...
+We appreciate the comment. This is correct. 
 
 > - Where the authors say "we use an all-custom loop based on a TeO_2 AOM", what do they mean by "all-custom"? I suggest to remove this expression, since the english is not so clear, and their approach using an AOM is rather standard in the field of ultracold atoms, and it is also quite widespread practice to develop the electronics in-house for such an application.
 >
@@ -81,8 +83,7 @@ That is correct and has been fixed.
 
 > - I am not exactly sure why Fig.7 has been shown. What is its goal? Phase-stability value of -90 dBc/Hz at 100 kHz is not so impressive if compared with modern DDS chips like AD9915, where almost -160 dBc/Hz is reachable. Probably for the authors' application, a good but not exceptional stability of -90 dBc/Hz suffice. Moreover, I would say that Fig. 7(b) should be plotted with a different vertical scale to allow the reader to see the details. And why are there jumps between different scanning decades? Were the different scans properly corrected by the resolution bandwidth of the spectrum analyzer before stitching them together?
 >
-We agree with the reviewer that this is not an essential figure. The reviewer is completely correct that for our application, this is not exceptional, but sufficient. We have removed the figure. FIXME: fix all figure references!!!
-FIXME: What numbers to cite?
+We agree with the reviewer that this is not an essential figure. The reviewer is completely correct that for our application, this is not exceptional, but sufficient. We have removed the figure and only cite the relevant numbers.
 
 > - "... an InGaS based," It cannot be sulphur. There is probably a typo as it is "InGaAs".
 >
@@ -94,7 +95,7 @@ Yes, corrected.
 
 > - "... input resistors, amplified by the amplification stages of the loop filter." As I have already remarked it, I could not figure out what the input resistor is. The transimpedance? Or the resistor after V_SP?
 >
-FIXME: FIGURE FIXING
+Clarified to mean the op-amp input resistors, not the transimpedance gain resistor.
 
 > - "If the trap had followed a random walk with these step sizes, the optical lattice would have to be realigned frequently, since after only 100 experimental shots, the trap would have moved by more than 10 lattice sites. However, the situation is more fortunate, since subsequent steps are correlated, ... "
 >
@@ -103,6 +104,7 @@ FIXME: FIGURE FIXING
 > N. Scafetta and B. J. West, "Multiscaling comparative analysis of time series and geophysical phenomena," Complexity 10, 51 (2005)
 This is an interesting idea, FIXME: What to do here?
 >
+We concur with the reviewer that this is a valuable future analysis. However, we feel that to do this effect justice and understand the fractional random walk fully more data should be taken.
 >
 > Reviewer #2 Evaluations:
 > Recommendation: Publish as is
@@ -133,6 +135,8 @@ This is an interesting idea, FIXME: What to do here?
 >
 > Best Regards
 >
+
+We thank the reviewer for the favorable feedback. While we agree that live, active stabilization would be an amazing technical upgrade, the note in the conclusion merely referred to a less ambitious goal. Since we receive, as a matter of course, one positional measurement per experimental cycle, one could imagine a slow feedback process based on these measurements. It would necessarily be limited to one update every cycle, but that is more than fast enough to catch thermal drifts.
 >
 >
 >

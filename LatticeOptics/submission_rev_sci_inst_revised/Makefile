@@ -29,7 +29,7 @@ all: $(targets) $(subs)
 			$(project)Notes.bib
 
 diff:
-	@echo "latexdiff ../submission_pr_applied/$(project).tex $(project).tex > $(project)_diff.tex"
+	@echo "latexdiff ../submission_rev_sci_inst/$(project).tex $(project).tex > $(project)_diff.tex"
 	@latexdiff ../submission_pr_applied/$(project).tex  $(project).tex  > $(project)_diff.tex
 	@pdflatex $(project)_diff.tex
 
