@@ -65,7 +65,7 @@ We apologize for the oversight. The reference to the low pass was a mistake. Pan
 
 > - Resistors seem to be missing from Fig.6(c). Before and after the integrator stage there should be resistors. Otherwise I do not see how the circuit can run stably, since the virtual ground principle cannot be realized.
 >
-FIXME:...
+We appreciate the correction. The offending op-amp was included by mistake. The figure has been corrected to agree with our schematics.
 
 > - Where the authors say "we use an all-custom loop based on a TeO_2 AOM", what do they mean by "all-custom"? I suggest to remove this expression, since the english is not so clear, and their approach using an AOM is rather standard in the field of ultracold atoms, and it is also quite widespread practice to develop the electronics in-house for such an application.
 >
