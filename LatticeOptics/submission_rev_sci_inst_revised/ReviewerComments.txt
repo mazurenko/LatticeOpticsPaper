@@ -102,7 +102,6 @@ Clarified to mean the op-amp input resistors, not the transimpedance gain resist
 > If the authors are interested, they could (optionally) run a detrended fluctuation analysis to determine the Hurst exponent H. Values 0<H<1 correspond to stationary fractional Gaussian noise, while for 1<H<2 one has fractional Brownian motion. Besides Wikipedia, an introduction to the topic can be found in
 >
 > N. Scafetta and B. J. West, "Multiscaling comparative analysis of time series and geophysical phenomena," Complexity 10, 51 (2005)
-This is an interesting idea, FIXME: What to do here?
 >
 We concur with the reviewer that this is a valuable future analysis. However, we feel that to do this effect justice and understand the fractional random walk fully more data should be taken.
 >
