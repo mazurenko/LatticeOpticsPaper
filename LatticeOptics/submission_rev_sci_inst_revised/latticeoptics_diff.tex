@@ -1,7 +1,7 @@
 %DIF 1c1
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL ../submission_pr_applied/latticeoptics.tex   Sat Dec 29 13:41:05 2018
-%DIF ADD latticeoptics.tex                            Sat Dec 29 13:41:05 2018
+%DIF DEL ../submission_pr_applied/latticeoptics.tex   Sat Oct 13 12:48:14 2018
+%DIF ADD latticeoptics.tex                            Sat Dec 29 15:17:48 2018
 %DIF < \documentclass[twocolumn,aps,pra,preprintnumbers,bibnotes]{revtex4-1}
 %DIF -------
 \documentclass[twocolumn,aip,rsi,reprint,bibnotes]{revtex4-1} %DIF > 
@@ -88,8 +88,7 @@ The optical system is engineered to be passively stable in terms of pointing, bu
 
 In the following we give an in-depth technical description of the optical lattice setup we developed. We start with the laser system itself which includes the seed laser, amplification and optical setup for controlling the laser beams. In the next section we provide a detailed description of the two-stage laser power feedback system. In the last two sections we conduct a performance analysis of the short- and long-term stability of the optical lattices produced by this system.
 \DIFaddbegin \DIFadd{Naturally, the laser system presented here is tailored to suit the experiment's specific lattice geometry~\mbox{%DIFAUXCMD
-\cite{Huber2014}
-}%DIFAUXCMD
+\cite{Huber2014} }%DIFAUXCMD
 and exact requirements.
 We expect, however, that both the specific engineering choices and the general design practices detailed in this work will be widely applicable to experimentalists working with low-noise and stable optical lattices used for quantum many-body physics, precision measurement, and quantum engineering.
 }\DIFaddend 
@@ -111,17 +110,14 @@ To avoid interference of the lattice beams, two of the beam paths pass through a
 
 \subsection{Fiber amplifier system}
 Quantum gas microscopy of \DIFdelbegin \DIFdel{Li}\DIFdelend $^6$\DIFdelbegin \DIFdel{requires single site }\DIFdelend \DIFaddbegin \DIFadd{Li requires single-site }\DIFaddend trap frequencies of approximately \unit{1}{MHz} \DIFdelbegin \DIFdel{~\mbox{%DIFAUXCMD
-\cite{Parsons2015}
-}%DIFAUXCMD
+\cite{Parsons2015} }%DIFAUXCMD
 }\DIFdelend to be in the Lamb-Dicke regime necessary for Raman sideband cooling\DIFaddbegin \DIFadd{~\mbox{%DIFAUXCMD
-\cite{Parsons2015}
-}%DIFAUXCMD
+\cite{Parsons2015}}%DIFAUXCMD
 }\DIFaddend .
 
 Such trap frequencies may only be attained using tightly focused, high-power beams.
 In practical terms, this requires approximately \unit{20}{W} per lattice axis for a beam waist of around \DIFdelbegin \DIFdel{$80 \mu\mathrm{m}$ }\DIFdelend \DIFaddbegin \unit{80}{\mu m} \DIFaddend and the four-fold enhancement in \DIFdelbegin \DIFdel{optical }\DIFdelend \DIFaddbegin \DIFadd{lattice }\DIFaddend depth provided by the reflection from the superpolished substrate\DIFaddbegin \DIFadd{~\mbox{%DIFAUXCMD
-\cite{Huber2014}
-}%DIFAUXCMD
+\cite{Huber2014}}%DIFAUXCMD
 }\DIFaddend . We achieve such high laser powers using Yb-doped fiber amplifiers (Nufern NuAmp SUB1174-34).
 These amplifiers can amplify \unit{150}{mW} of seed light to up to approximately \unit{45}{W}. They use a length of doped fiber pumped with \unit{808}{nm} light from fiber coupled diode sources to amplify the \unit{1064}{nm} seed light.
 The amplification is performed using a two-stage design, where the stages are controlled and powered using separate power supplies and electronics.
@@ -141,14 +137,18 @@ Further, a high current low-pass filter (MPE DS26387) was added to the high-powe
 
 \DIFdelbegin \DIFdel{The high optical powers supplied by the fiber amplifiers raise two engineering difficulties:
 }%DIFDELCMD < \begin{enumerate}
+ \begin{enumerate} %DIFAUXCMD
 %DIFDELCMD <   \item %%%
+\item%DIFAUXCMD
 \DIFdel{The fiber amplification process itself is susceptible to many technical noise sources, such as acoustic coupling of the fiber to the environment and electrical design of the amplifier;
   }%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
 \DIFdel{Stimulated Brillouin scattering (SBS) places a hard lower bound on the relative intensity noise (RIN) floor~\mbox{%DIFAUXCMD
-\cite{Agrawal2013}
-}%DIFAUXCMD
+\cite{Agrawal2013}}%DIFAUXCMD
 .
-}%DIFDELCMD < \end{enumerate}
+}
+ \end{enumerate} %DIFAUXCMD
+%DIFDELCMD < \end{enumerate}
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
@@ -159,13 +159,12 @@ The figure is based on fiber amplifiers from a relatively new batch, which even 
 This is not the case for certain older batches, where the spur is approximately \unit{30}{dB} above the background.
 
 The \DIFaddbegin \DIFadd{high optical powers supplied by the fiber amplifiers raise two engineering difficulties:
-}\begin{enumerate}
+} \begin{enumerate} 
   \item \DIFadd{The fiber amplification process itself is susceptible to many technical noise sources, such as acoustic coupling of the fiber to the environment and electrical design of the amplifier;
   }\item \DIFadd{Stimulated Brillouin scattering (SBS) places a hard lower bound on the relative intensity noise (RIN) floor~\mbox{%DIFAUXCMD
-\cite{Agrawal2013}
-}%DIFAUXCMD
+\cite{Agrawal2013}}%DIFAUXCMD
 .
-}\end{enumerate}
+} \end{enumerate} 
 
 \DIFadd{The }\DIFaddend SBS noise is fundamental to the fiber amplifier architecture and cannot be entirely avoided. However, since it is a function of fiber length and optical power~\cite{Agrawal2013}, it can be minimized. To this end, we use custom-ordered amplifiers with a \unit{50}{cm} long output fiber, compared to the standard length of a few meters.
 In addition, we use the lowest pump diode current that yields enough power to perform imaging.
@@ -183,12 +182,12 @@ Experimentally, we have found that more power can be gained by running the ampli
 
 \subsection{Optical system}
 The free-space propagation of the fiber amplifier output presents several technical challenges and constraints:
-\begin{enumerate}
+ \begin{enumerate} 
   \item The high optical power poses a significant danger to users and equipment.
   \item The high optical power is sufficient to induce substantial thermal lensing in some optics.
   \item The positional fluctuations of the waist at the atoms cannot be allowed to exceed a few microns between experimental realizations.
   \item By construction, the beam is retro-reflected, threatening the lifetime of the amplifier.
-  \end{enumerate}
+   \end{enumerate} 
 
 \begin{figure*}[t]
   \begin{center}
@@ -215,10 +214,10 @@ Actuation of the power is performed after the optical isolators, such that the f
 \section{Feedback System}
 
 After the beam has been cleaned up and isolated, it is important to consider two aspects of the desired experiment:
-\begin{enumerate}
+ \begin{enumerate} 
 \item The lattice power must be continuously tunable from around \unit{10}{\mu{}W} to around \unit{20}{W}, corresponding to lattice depths in the approximate range of \DIFdelbegin \DIFdel{$10^-3$ }\DIFdelend \DIFaddbegin \DIFadd{$10^{-3}$ }\DIFaddend to $2 \times 10^3 E_R$, where $E_R$ is the geometric recoil energy corresponding to the lattice spacing~\cite{Blatt2015}.
 \item The location of the minimum Gaussian beam waist must be accurately positioned to overlap the other lattices and dipole traps present in the experiment, and must remain aligned for the duration of the data collection process (hours to days).
-\end{enumerate}
+ \end{enumerate} 
 To satisfy the first of these requirements, a two-stage feedback system is implemented.
 Two stages are used because the experiment typically operates in one of two regimes, which we term \emph{detection} and \emph{interaction}.
 In the interaction phase of the experiment, the lattice is relatively shallow ($\approx \unit{100}{mW}$, corresponding to depths of $\approx 10 E_R$), which allows atoms to tunnel and interact with each other.
@@ -267,14 +266,13 @@ The high-power feedback used in the \emph{imaging} phase of the experiment is ex
 Even if the loop was \DIFdelbegin \DIFdel{exceedingly }\DIFdelend noisy, the heating would be entirely compensated by the simultaneous Raman cooling~\cite{Parsons2015}.
 
 In contrast, the low-power loop that controls the lattice laser during the \emph{interaction} phase of the experiment is critically important:
-\begin{enumerate}
+ \begin{enumerate} 
   \item Its effect on the RIN can limit the system temperature \DIFaddbegin \DIFadd{and dominate heating rates, limiting the amount of time available for atom interaction~\mbox{%DIFAUXCMD
-\cite{Blatt2015}
-}%DIFAUXCMD
+\cite{Blatt2015}}%DIFAUXCMD
 }\DIFaddend .
   \item It \DIFdelbegin \DIFdel{can affect the pointing}\DIFdelend \DIFaddbegin \DIFadd{needs to avoid varying the beam pointing because the trap position matters during this phase of the experiment}\DIFaddend .
   \item It must have closed-loop bandwidths \DIFdelbegin \DIFdel{of }\DIFdelend $\geq\unit{1}{kHz}$, and open-loop modulation bandwidths $\geq \unit{100}{kHz}$.
-\end{enumerate}
+ \end{enumerate} 
 To this end, we use an \DIFdelbegin \DIFdel{all-custom }\DIFdelend \DIFaddbegin \DIFadd{nonlinear feedback }\DIFaddend loop based on a TeO$_2$ AOM (Gooch \& Housego AOMO 3080-198), where the power of the RF supplied to the AOM is used to actuate the fast, low-power feedback loop.
 The AOM was chosen for its low thermal lensing and easily-accessible RF powers.
 It is mounted on a monolithic, water-cooled flexure mount that allows optimization of the AOM efficiency, while remaining stable over years of operation.
@@ -305,9 +303,9 @@ In addition to PLL functionality, the board also contains two digitally-controll
 %DIFDELCMD < %%%
 \DIFdel{We need to maintain the relatively low phase-noise characteristics of the VCO to prevent phase- to amplitude-noise conversion in the AOM , which partially downconverts the VCO phase noise to RIN at acoustic frequencies.
 The spectrum and relative intensity noise of the PLL can be found in Fig.~\ref{fig:pll}.
-}\DIFdelend \DIFaddbegin \DIFadd{This device allows us to drive the AOM with a single, clean tone.
+Vitally}\DIFdelend \DIFaddbegin \DIFadd{This device allows us to drive the AOM with a single, clean tone ($<$}\unit{90}{dBc/Hz} \DIFadd{at }\unit{200}{kHz} \DIFadd{away from the carrier).
 %DIF > The spectrum and relative intensity noise of the PLL can be found in Fig.~\ref{fig:pll}.
-}\DIFaddend Vitally, the spectrum of the PLL exhibits phase noise comparable to that of a typical VCO \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{but }\DIFaddend without the slow frequency drift characteristic to these devices.
+Thus}\DIFaddend , the spectrum of the PLL exhibits phase noise comparable to that of a typical VCO \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{but }\DIFaddend without the slow frequency drift characteristic to these devices.
 Elimination of the carrier drift is worth the added phase noise \DIFdelbegin \DIFdel{, however, }\DIFdelend because any drift of the frequency affects the pointing of the laser beam passing through the AOM, which would misalign the optical lattice.
 
 \DIFdelbegin %DIFDELCMD < \begin{figure}
@@ -316,9 +314,9 @@ Elimination of the carrier drift is worth the added phase noise \DIFdelbegin \DI
 %DIFDELCMD <     %%%
 %DIFDELCMD < \caption{%
 {%DIFAUXCMD
-\textbf{\DIFdel{PLL performance}} %DIFAUXCMD
-\DIFdel{(a) The spectrum of the PLL, exhibiting phase noise of better than $-90$ dBc/Hz at $100$~kHz away from the carrier. (b) The RIN of the local oscillator based on the PLL. The noise level is seen to be at or below the noise floor of the measurement device.}}%DIFAUXCMD
-%DIFDELCMD < \label{fig:pll}
+\textbf{\DIFdelFL{PLL performance}} %DIFAUXCMD
+\DIFdelFL{(a) The spectrum of the PLL, exhibiting phase noise of better than $-90$ dBc/Hz at $100$~kHz away from the carrier. (b) The RIN of the local oscillator based on the PLL. The noise level is seen to be at or below the noise floor of the measurement device.}}%DIFAUXCMD
+%DIFDELCMD < %DIFDELCMD < \label{fig:pll}%%%
 %DIFDELCMD <   \end{center}
 %DIFDELCMD < \end{figure}
 %DIFDELCMD < %%%
@@ -423,7 +421,7 @@ This port can be used to modulate the RF power at frequencies above the bandwidt
 
 Although it is an essential part of the system, the loop filter is also one of its major limitations. Figure~\ref{fig:noises} shows the noise performance of the output of the fiber amplifiers in open-loop compared to the noise in closed-loop.
 \DIFdelbegin \DIFdel{Although noise }\DIFdelend \DIFaddbegin \DIFadd{Noise }\DIFaddend near DC is lowered (as expected from a closed-loop system), noise outside the loop bandwidth is increased in the range of 10 to \unit{450}{kHz} as seen in subfigures (c) and (d).
-This can be explained by the Johnson noise~\cite{Horowitz2015} on the \unit{1}{k\Omega} input resistors, amplified by the amplification stages of the loop filter.
+This can be explained by the Johnson noise~\cite{Horowitz2015} on the \unit{1}{k\Omega} \DIFaddbegin \DIFadd{op-amp }\DIFaddend input resistors, amplified by the amplification stages of the loop filter.
 The sharp drop off at the \unit{450}{kHz} point is due to a low-pass filter placed on the output of the loop filter, far above the maximum bandwidth set by the AOM.
 When the broadband noise below \unit{450}{kHz} was determined to be a problem, we decided that a bandwidth of higher than \unit{10}{kHz} was not required in the foreseeable future.
 As a result, we added a first-order low pass with a \unit{3}{dB} frequency of \unit{10}{kHz} leading to the improvement shown in Fig.~\ref{fig:low_pass_noises}. The fiber amplifier used to take this data was different from the one used for Fig.~\ref{fig:noises}, although their performance is comparable.
@@ -439,8 +437,7 @@ Unfortunately, due to the angle of incidence, the beam contains both $S$ and $P$
 Even worse, this happens on both the initial and retro-reflected pass through the glass cell.
 For this reason, we use a combination of quarter waveplate (QWP) and half waveplate (HWP) to optimize the interference contrast of each lattice \DIFaddbegin \DIFadd{axis}\DIFaddend .
 This is done by optimizing the on-site trap frequency of lattice, measured using \DIFdelbegin \DIFdel{parametric heating}\DIFdelend \DIFaddbegin \DIFadd{lattice-modulation spectroscopy~\mbox{%DIFAUXCMD
-\cite{Blatt2015}
-}%DIFAUXCMD
+\cite{Blatt2015}}%DIFAUXCMD
 }\DIFaddend .
 
 \section{Beam monitoring and alignment}
