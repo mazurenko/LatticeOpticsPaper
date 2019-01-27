@@ -1,5 +1,5 @@
 # -*- mode: Org; mode: visual-line; mode: visual-fill-column -*-
-# Time-stamp: "2019-01-10 10:52:23 sb"
+# Time-stamp: "2019-01-27 16:19:12 sb"
 
 #  file       referee_comments.org
 #  copyright  (c) Sebastian Blatt 2019
@@ -54,7 +54,7 @@ XXX
 
 > In addition, "relative stability of the lattice spacing itself is 0.5% RMS" seems to me confusing. One reads it as 0.5% of an RMS. Probably the authors meant a relative RMS stability of 0.5%.
 
-We have adapted the referee's formulation.
+We have adopted the referee's formulation.
 
 
 > - The level of -115 dBc/Hz seems very remarkable in relation to the utilization of fiber amplifiers. Using other laser systems, it is not uncommon to reach <-150 dBc/Hz in the same bandwidth. I would encourage the authors to make a comment right from the beginning helping the reader realize what is expected for a good intensity stability, and how to gauge the result obtained here with respect to other laser systems.
@@ -74,7 +74,7 @@ However, since the LIGO project cares mostly about a small Fourier frequency win
 
 Our analog feedback loop has to produce acceptable performance over a rather large window in frequency space, as we demonstrated in Ref. [25]. For this reason, we were very conservative in tuning the loop, but still eat noise over 10 kHz for *all* set points. Clearly there is room for improvement in our system, but getting good performance over such a large region in Fourier space and for all values of the setpoint of a nonlinear circuit may be asking for too much.
 
-To make the above points more clear and to give more credit to the large body of work from the LIGO community, we have modified the introdution.
+To make the above points more clear and to give more credit to the large body of work from the LIGO community, we have modified the introduction.
 
 
 > - In Fig. 2(b), it seems that the high-power intensity stabilization makes no difference. Was that measured with an out-of-loop photodiode? It seems that the closed-loop noise spectral density is even higher at low frequencies, where instead one should expect a clear improvement. It seems that the high-power digital feedback offers no advantage with respect to a pure feedforward driving based on a lookup table.

@@ -1,8 +1,8 @@
 # -*- mode: Makefile -*-
-# Time-stamp: "2018-06-22 12:09:34 sb"
+# Time-stamp: "2019-01-27 17:35:53 sb"
 
 #  file       Makefile
-#  copyright  (c) Sebastian Blatt 2015, 2016, 2017, 2018
+#  copyright  (c) Sebastian Blatt 2015 -- 2019
 
 project := latticeoptics
 targets := $(project).pdf
@@ -22,7 +22,7 @@ all: $(targets) $(subs)
 %.pdf: %.tex $(subs)
 	@echo "pdflatex: $< -> $@"
 	@pdflatex $<
-	#@bibtex $(project)
+	@bibtex $(project)
 	@pdflatex $<
 	@pdflatex $<
 	@-rm $(foreach t,aux log blg ilg ind bbl idx loc soc,$(<:.tex=.$(t))) \
