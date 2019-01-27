@@ -1,0 +1,149 @@
+# -*- mode: Org; mode: visual-line; mode: visual-fill-column -*-
+# Time-stamp: "2019-01-10 10:52:23 sb"
+
+#  file       referee_comments.org
+#  copyright  (c) Sebastian Blatt 2019
+
+Dear Dr. Lang,
+
+thank you for the speedy review and decision process. We have modified our manuscript according to the referees' comments and detail all changes below.
+
+With best regards,
+
+Sebastian Blatt
+
+* General comments
+
+We are glad to hear that both reviewers enjoyed reading our paper and are indebted especially to Referee #1 for the many constructive suggestions he or she provided. We have modified our manuscript accordingly.
+
+Please find attached our responses to the referees' questions and comments as well as a detailed list of changes to the text. Thank you for your help in improving our paper.
+
+Sincerely,
+
+The Authors
+
+* Reviewer #1
+
+[...] The nonlinear correction to the their control loop, which is realized using a Schottky diode, for the compensation of nonlinearities of the AOM actuator is presented as original. However, years ago I have already seen such a "trick" employed in the photodiode electronics developed at the MPQ. Since I have never been affiliated with MPQ, I am not sure who should be credited for this development. Nonetheless I think that the authors should add a footnote giving the credits to previous work.
+
+We completely agree with the referee in that the nonlinear op-amp circuit using a Schottky diode is not a new idea. In fact, we looked up the idea in Horowitz and Hill (Ref. [34]). To prevent giving the wrong impression, we have changed the text to also cite Ref. [34] in the corresponding sentence.
+
+One of the coauthors currently works at MPQ where a very similar nonlinear feedback loop is frequently used. We inquired with both the technical support people and the group leaders.
+
+XXX
+
+
+> In genereal, the intensity stability in the range [-135,-115] dBc/Hz for the bandwidth [1kHz,1MHz] is not exceptional. However, the real merit here is that it is achieved starting from a relatively noisy (but perhaps more affordable) fiber amplifier. The authors themselves show that even better stability can be achieved with Mephisto MOPA laser without almost requiring any active stabilization.
+
+
+> Concerning the intensity stabilization electronics of the low-intensity lattice, it is somehow disappointing that it only reaches 10 kHz bandwith. With a shotnoise limit at -160 dBz/Hz, one could have expected that there is enough signal to noise to achieve much larger bandwidth. In fact, the reader is guided through a detailed explanation how the different elements are judiciously chosen to allow MHz bandwidth. Unfortunately, for some reasons, the overall servo loop was found to inject more noise above 10 kHz. The authors explain that it originates from Johnson noise on the 1 kOhm input resistors. However, it remains unclear to me what the "input resistor" is. Perhaps the transimpedance? Furthermore, I have the feeling that 1 kOhm generally comes with little low Johnson noise.
+
+Need to say something here about the noise gain. Would require knowledge of the feedback resistors. Should be in figure.
+
+XXX
+
+
+
+> - I did not understand the statement in the last sentence of the abstract. They report on a short-term pointing stability of about one lattice site. This seems too big instability to me. In the text, other values at around 1% of the lattice site.
+
+There are 3 notions of stability that matter - the lattice spacing, the lattice position and the position of the underlying harmonic trap. The number the reviewer is referring to is belongs to the underlying harmonic trap. This corresponds to O(1%) of the waist of the beam.
+We have clarified.
+
+XXX
+
+
+> In addition, "relative stability of the lattice spacing itself is 0.5% RMS" seems to me confusing. One reads it as 0.5% of an RMS. Probably the authors meant a relative RMS stability of 0.5%.
+
+We have adapted the referee's formulation.
+
+
+> - The level of -115 dBc/Hz seems very remarkable in relation to the utilization of fiber amplifiers. Using other laser systems, it is not uncommon to reach <-150 dBc/Hz in the same bandwidth. I would encourage the authors to make a comment right from the beginning helping the reader realize what is expected for a good intensity stability, and how to gauge the result obtained here with respect to other laser systems.
+
+We thank the referee for pointing out this missed opportunity to put our work in a broader context.
+
+Unfortunately, we were not able to find laser systems with RIN that is better than -150 dBc/Hz between 1 kHz and 1 MHz Fourier frequency and would be grateful if the referee could point us to the corresponding literature. It is our understanding that the NPRO lasers are the most intensity-stable lasers currently available. The seed laser used in this work (an Innolight Mephisto with 2 W output) shows a RIN of -140 dBc/Hz at 1 kHz Fourier frequency. According to the original specification, this should decrease to -155 dBc/Hz at 1 MHz Fourier frequency. As shown in Fig. 2a, this is not the case, and the laser after a few years of operation exhibits -145 dBc/Hz at 1 MHz.
+
+To clear up this point, we added references to current papers about similar systems used for gravitational wave detection. The most useful comparison can be drawn with relatively recent papers from the Advanced LIGO community
+
+  Kwee et al. Opt. Express 20, 10617 (2012)
+  Basu et al. Opt. Lett. 37, 2862 (2012)
+
+where an NPRO seed laser in a MOPA configuration reaches -128 dBc/Hz around 10 kHz Fourier frequency. To improve its performance the authors use an even more elaborate active feedback system than ours. When we started constructing the laser system around 2011, we were inspired by the ideas developed for LIGO.
+
+However, since the LIGO project cares mostly about a small Fourier frequency window between 10 Hz and 1 kHz, it is difficult to find data on their RIN (in the actively stabilized case) in the region we care very much about: between 10 kHz and 1 MHz, where the relaxation oscillation peak of the NPRO laser lies.
+
+Our analog feedback loop has to produce acceptable performance over a rather large window in frequency space, as we demonstrated in Ref. [25]. For this reason, we were very conservative in tuning the loop, but still eat noise over 10 kHz for *all* set points. Clearly there is room for improvement in our system, but getting good performance over such a large region in Fourier space and for all values of the setpoint of a nonlinear circuit may be asking for too much.
+
+To make the above points more clear and to give more credit to the large body of work from the LIGO community, we have modified the introdution.
+
+
+> - In Fig. 2(b), it seems that the high-power intensity stabilization makes no difference. Was that measured with an out-of-loop photodiode? It seems that the closed-loop noise spectral density is even higher at low frequencies, where instead one should expect a clear improvement. It seems that the high-power digital feedback offers no advantage with respect to a pure feedforward driving based on a lookup table.
+
+These measurements were carried out with an out of loop photodiode. However, please note that the RIN plot minimum is nearly out of band with respect to the high power loop.
+We disagree with the point that a lookup system could do better. For the Raman sideband cooling to work, the laser power must be within a particular range for the majority of the cooling/imaging time - 100's of ms.
+The purpose of the loop is to ensure stabiltity at those scales without introducing excessive noise at all higher frequencies. The figure in question demonstrates the latter.
+
+
+> - Concerning Fig.2(c), it is said that it is an open-loop characterization. The authors also say that it includes "an additional low-pass filtering stage to limit the loop bandwidth." Thus, it is not clear how the low-pass filter should affect these results if there is no loop here. Perhaps the remark about the low pass filtering belong to Fig.2(d)?
+
+We apologize for the oversight. The reference to the low pass was a mistake. Panels (c) and (d) mean to compare open and closed loop performance of the unmodified loop, and the addition of an extra filter is characterized in Fig 11. The caption has been fixed.
+
+
+> - Resistors seem to be missing from Fig.6(c). Before and after the integrator stage there should be resistors. Otherwise I do not see how the circuit can run stably, since the virtual ground principle cannot be realized.
+
+Thank you for finding this important mistake, we appreciate the comment. The circuit diagram of Fig. 6 is of course strongly simplified and the input resistors to the integrator and buffer stage got lost in the process. We have fixed the figure.
+
+
+> - Where the authors say "we use an all-custom loop based on a TeO_2 AOM", what do they mean by "all-custom"? I suggest to remove this expression, since the english is not so clear, and their approach using an AOM is rather standard in the field of ultracold atoms, and it is also quite widespread practice to develop the electronics in-house for such an application.
+
+We agree and have changed the expression "all-custom" to "nonlinear", referring to the electronics.
+
+
+> - "To prevent damage to the low-power photodiode when the system is at its highest powers, a shutter (Stanford Research Systems SR475) blocks the light when the high-power loop is in use." tends to repeat what has been said in the previous page. Perhaps this sentence can be merged with the previous one.
+
+This has been fixed.
+
+> - "...giving a total isolation exceeding 90 dB." Do the authors mean a total isolation of the RF power or of the laser intensity? Probably the former.
+
+That is correct and has been fixed.
+
+
+> - I am not exactly sure why Fig.7 has been shown. What is its goal? Phase-stability value of -90 dBc/Hz at 100 kHz is not so impressive if compared with modern DDS chips like AD9915, where almost -160 dBc/Hz is reachable. Probably for the authors' application, a good but not exceptional stability of -90 dBc/Hz suffice. Moreover, I would say that Fig. 7(b) should be plotted with a different vertical scale to allow the reader to see the details. And why are there jumps between different scanning decades? Were the different scans properly corrected by the resolution bandwidth of the spectrum analyzer before stitching them together?
+
+We agree with the reviewer that this is not an essential figure. The reviewer is completely correct that for our application, this is not exceptional, but sufficient. We have removed the figure and only cite the relevant numbers.
+
+
+> - "... an InGaS based," It cannot be sulphur. There is probably a typo as it is "InGaAs".
+
+Fixed.
+
+
+> - "uses the low-noise OPA627 (Texas Instruments) op-amp which is able to supply tens of mA of current into an output impedance of 50 Ohm." Did they authors mean "current into a input impedance of 50 Ohm"? Or "through an output impedance of 50 Ohm"? Probably both. Whereas, to me, "into an output impedance" makes no sense.
+
+Yes, corrected.
+
+> - "... input resistors, amplified by the amplification stages of the loop filter." As I have already remarked it, I could not figure out what the input resistor is. The transimpedance? Or the resistor after V_SP?
+
+Clarified to mean the op-amp input resistors, not the transimpedance gain resistor.
+
+
+> - "If the trap had followed a random walk with these step sizes, the optical lattice would have to be realigned frequently, since after only 100 experimental shots, the trap would have moved by more than 10 lattice sites. However, the situation is more fortunate, since subsequent steps are correlated, ... "
+>
+> If the authors are interested, they could (optionally) run a detrended fluctuation analysis to determine the Hurst exponent H. Values 0<H<1 correspond to stationary fractional Gaussian noise, while for 1<H<2 one has fractional Brownian motion. Besides Wikipedia, an introduction to the topic can be found in
+>
+> N. Scafetta and B. J. West, "Multiscaling comparative analysis of time series and geophysical phenomena," Complexity 10, 51 (2005)
+
+We thank the reviewer for pointing out this interesting analysis method and we agree that it would be worthwhile to apply it to our data. The method seems to be very similar to standard analyses of time series done in the frequency standards community, where the Allan variance is typically used to characterize a clock's frequency stability (linear drifts are often removed before doing such an analysis). Here, one can identify different noise processes by the power-law exponent of the Allan deviation as a function of averaging time. A very good introduction to this field can be found in the NIST technical note 1337 (available online)
+
+  NIST TN1337: Characterization of Clocks and Oscillators
+  D.B. Sullivan, D.W. Allan, DA. Howe, F.L. Walls
+
+However, we feel that to do this effect justice and understand the underlying stochastic process, more data should be taken. We would like to reserve this for a future project.
+
+
+* Reviewer #2
+
+> I would just ask the authors to address the following curiosity: in the conclusions they mention about the possibility of stabilizing actively the beam pointing. May the authors expand this concept? How are they planning to implement this beam stabilization?
+
+
+We thank the reviewer for the favorable feedback. While we agree that live, active stabilization would be an amazing technical upgrade, the note in the conclusion merely referred to a less ambitious goal. Since we receive, as a matter of course, one positional measurement per experimental cycle, one could imagine a slow feedback process based on these measurements. It would necessarily be limited to one update every cycle, but that is more than fast enough to catch thermal drifts.

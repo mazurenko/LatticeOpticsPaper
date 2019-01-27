@@ -316,7 +316,7 @@ Although a large improvement, the bandwidth still varies over the dynamic range 
 Were it not for the linearization, the gain of the mixer would change by a factor of 10 over a dynamic range spanning two orders of magnitude.
 The loop transfer function is sensitive to the specific tuning parameters of the nonlinear controller resulting in slightly different transfer functions for the two axes, although both exhibit approximately constant behavior over the desired range of setpoints.
 Another function of the last stage is to clamp the voltage to be strictly positive by including a diode clamp on the output to prevent unstable positive feedback behavior~\cite{Horowitz2015}.
-Finally, since the mixer is a current driven device, the last stage of the feedback loop uses the low-noise OPA627 (Texas Instruments) op-amp which is able to supply tens of mA of current into an output impedance of \unit{50}{\Omega}.
+Finally, since the mixer is a current driven device, the last stage of the feedback loop uses the low-noise OPA627 (Texas Instruments) op-amp which is able to supply tens of mA of current into an input impedance of \unit{50}{\Omega}.
 
 \begin{figure}
   \begin{center}
