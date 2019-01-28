@@ -1,5 +1,5 @@
 # -*- mode: Org; mode: visual-line; mode: visual-fill-column -*-
-# Time-stamp: "2019-01-27 16:19:12 sb"
+# Time-stamp: "2019-01-28 13:26:26 sb"
 
 #  file       referee_comments.org
 #  copyright  (c) Sebastian Blatt 2019
@@ -26,11 +26,13 @@ The Authors
 
 [...] The nonlinear correction to the their control loop, which is realized using a Schottky diode, for the compensation of nonlinearities of the AOM actuator is presented as original. However, years ago I have already seen such a "trick" employed in the photodiode electronics developed at the MPQ. Since I have never been affiliated with MPQ, I am not sure who should be credited for this development. Nonetheless I think that the authors should add a footnote giving the credits to previous work.
 
-We completely agree with the referee in that the nonlinear op-amp circuit using a Schottky diode is not a new idea. In fact, we looked up the idea in Horowitz and Hill (Ref. [34]). To prevent giving the wrong impression, we have changed the text to also cite Ref. [34] in the corresponding sentence.
+We completely agree with the referee that the nonlinear op-amp circuit using a Schottky diode is not a new idea. In fact, we looked up the idea in Horowitz and Hill v2 in 2011, who themselves got it from an unspecified op-amp application note in the 1980s. To prevent giving the wrong impression, we have changed the text to also cite Horowitz and Hill (the new Ref. [36]) in the corresponding sentence. On a side note: the linearization of such a feedback loop can also be done digitally by combining a logarithmic photodetector with an exponential amplifier, a technique that has been used in the Greiner group for many years. In 2011, we decided to try the analog version because we thought that it might lead to lower noise and higher bandwidth. It turns out, however, that both techniques share the same issue: the linearization decreases the bandwidth dramatically (see comment about bandwidth below).
 
-One of the coauthors currently works at MPQ where a very similar nonlinear feedback loop is frequently used. We inquired with both the technical support people and the group leaders.
+One of the coauthors currently works at MPQ where a similar nonlinear AOM compensation based on a Schottky diode is frequently used. We traced back the idea of using a Schottky diode in the MPQ circuit by at least ten years. However, there does not seem to have been a publication or thesis that we can cite.
 
-XXX
+We have modified the sentence as follows:
+
+"To achieve the desired functionality, the final op-amp stage linearizes the response by increasing the gain at low signal levels and suppressing it at high signal levels by including a fast Schottky diode (ON Semiconductor BAT54S) in the feedback arm~\cite{HorowitzHill}."
 
 
 > In genereal, the intensity stability in the range [-135,-115] dBc/Hz for the bandwidth [1kHz,1MHz] is not exceptional. However, the real merit here is that it is achieved starting from a relatively noisy (but perhaps more affordable) fiber amplifier. The authors themselves show that even better stability can be achieved with Mephisto MOPA laser without almost requiring any active stabilization.
@@ -46,15 +48,16 @@ XXX
 
 > - I did not understand the statement in the last sentence of the abstract. They report on a short-term pointing stability of about one lattice site. This seems too big instability to me. In the text, other values at around 1% of the lattice site.
 
-There are 3 notions of stability that matter - the lattice spacing, the lattice position and the position of the underlying harmonic trap. The number the reviewer is referring to is belongs to the underlying harmonic trap. This corresponds to O(1%) of the waist of the beam.
-We have clarified.
+There are 3 notions of stability that matter - the lattice spacing, the lattice position, and the position of the underlying harmonic trap. The number the reviewer is referring to refers to the underlying harmonic trap, which is the hardest to control. A stability of one lattice site  corresponds to a position stability of ~1% of the beam waist.
 
-XXX
+We have changed the last sentence of the abstract to
+
+"The position of the harmonic trap produced by the Gaussian envelope of the lattice beams is stable to about one lattice spacing and the long-term (six-month) relative RMS stability of the lattice spacing itself is 0.5\%."
 
 
 > In addition, "relative stability of the lattice spacing itself is 0.5% RMS" seems to me confusing. One reads it as 0.5% of an RMS. Probably the authors meant a relative RMS stability of 0.5%.
 
-We have adopted the referee's formulation.
+We have adopted the referee's formulation (see above).
 
 
 > - The level of -115 dBc/Hz seems very remarkable in relation to the utilization of fiber amplifiers. Using other laser systems, it is not uncommon to reach <-150 dBc/Hz in the same bandwidth. I would encourage the authors to make a comment right from the beginning helping the reader realize what is expected for a good intensity stability, and how to gauge the result obtained here with respect to other laser systems.
@@ -63,25 +66,32 @@ We thank the referee for pointing out this missed opportunity to put our work in
 
 Unfortunately, we were not able to find laser systems with RIN that is better than -150 dBc/Hz between 1 kHz and 1 MHz Fourier frequency and would be grateful if the referee could point us to the corresponding literature. It is our understanding that the NPRO lasers are the most intensity-stable lasers currently available. The seed laser used in this work (an Innolight Mephisto with 2 W output) shows a RIN of -140 dBc/Hz at 1 kHz Fourier frequency. According to the original specification, this should decrease to -155 dBc/Hz at 1 MHz Fourier frequency. As shown in Fig. 2a, this is not the case, and the laser after a few years of operation exhibits -145 dBc/Hz at 1 MHz.
 
-To clear up this point, we added references to current papers about similar systems used for gravitational wave detection. The most useful comparison can be drawn with relatively recent papers from the Advanced LIGO community
-
-  Kwee et al. Opt. Express 20, 10617 (2012)
-  Basu et al. Opt. Lett. 37, 2862 (2012)
-
-where an NPRO seed laser in a MOPA configuration reaches -128 dBc/Hz around 10 kHz Fourier frequency. To improve its performance the authors use an even more elaborate active feedback system than ours. When we started constructing the laser system around 2011, we were inspired by the ideas developed for LIGO.
+The most useful comparison with another system can be drawn by looking at relatively recent papers from the Advanced LIGO community, where an NPRO seed laser in a MOPA configuration reaches -128 dBc/Hz around 10 kHz Fourier frequency. To improve its performance the authors use a much more elaborate active feedback system than ours. When we started constructing the laser system around 2011, we were inspired by the ideas developed for LIGO.
 
 However, since the LIGO project cares mostly about a small Fourier frequency window between 10 Hz and 1 kHz, it is difficult to find data on their RIN (in the actively stabilized case) in the region we care very much about: between 10 kHz and 1 MHz, where the relaxation oscillation peak of the NPRO laser lies.
 
 Our analog feedback loop has to produce acceptable performance over a rather large window in frequency space, as we demonstrated in Ref. [25]. For this reason, we were very conservative in tuning the loop, but still eat noise over 10 kHz for *all* set points. Clearly there is room for improvement in our system, but getting good performance over such a large region in Fourier space and for all values of the setpoint of a nonlinear circuit may be asking for too much.
 
-To make the above points more clear and to give more credit to the large body of work from the LIGO community, we have modified the introduction.
+To make the above points more clear and to give more credit to the large body of work from the LIGO community, we have added the following paragraph to the introduction:
+
+"For context, typical high-power, low-noise 1064 nm laser systems are based on amplification of a seed laser with either a fiber or a solid-state amplifier. For example, the laser system used for gravitational wave detection at advanced LIGO exceeds -150 dBc/Hz in the 10 Hz -- 1 kHz frequency range for a constant output power~\cite{kwee12}.
+In this work, we achieve -120 dBc/Hz intensity stability in the 1 kHz -- 2 MHz frequency range, and maintain this performance over six orders of magnitude in output power. Our modifications to the fiber amplifier hardware allow us to rival and exceed the noise performance of state-of-the-art commercial fiber amplifiers~\cite{guiraud16}."
+
+We added two references that show the RIN of the advanced LIGO laser
+
+  Kwee et al. Opt. Express 20, 10617 (2012)
+
+and the RIN of the most modern commercial fiber-amplifier-based system
+
+  Guiraud et al. Opt. Lett. 41, 4040 (2016)
+
 
 
 > - In Fig. 2(b), it seems that the high-power intensity stabilization makes no difference. Was that measured with an out-of-loop photodiode? It seems that the closed-loop noise spectral density is even higher at low frequencies, where instead one should expect a clear improvement. It seems that the high-power digital feedback offers no advantage with respect to a pure feedforward driving based on a lookup table.
 
-These measurements were carried out with an out of loop photodiode. However, please note that the RIN plot minimum is nearly out of band with respect to the high power loop.
+These measurements were carried out with an out-of-loop photodiode. However, please note that the RIN plot minimum is nearly out of band with respect to the high power loop.
 We disagree with the point that a lookup system could do better. For the Raman sideband cooling to work, the laser power must be within a particular range for the majority of the cooling/imaging time - 100's of ms.
-The purpose of the loop is to ensure stabiltity at those scales without introducing excessive noise at all higher frequencies. The figure in question demonstrates the latter.
+The purpose of the loop is to ensure stability at those scales without introducing excessive noise at all higher frequencies. The figure in question demonstrates the latter.
 
 
 > - Concerning Fig.2(c), it is said that it is an open-loop characterization. The authors also say that it includes "an additional low-pass filtering stage to limit the loop bandwidth." Thus, it is not clear how the low-pass filter should affect these results if there is no loop here. Perhaps the remark about the low pass filtering belong to Fig.2(d)?
@@ -91,7 +101,7 @@ We apologize for the oversight. The reference to the low pass was a mistake. Pan
 
 > - Resistors seem to be missing from Fig.6(c). Before and after the integrator stage there should be resistors. Otherwise I do not see how the circuit can run stably, since the virtual ground principle cannot be realized.
 
-Thank you for finding this important mistake, we appreciate the comment. The circuit diagram of Fig. 6 is of course strongly simplified and the input resistors to the integrator and buffer stage got lost in the process. We have fixed the figure.
+Thank you for finding this important mistake, we appreciate the comment. The circuit diagram of Fig. 6 is of course strongly simplified and the input resistors to the integrator and buffer stage got lost in the process. We have fixed the figure to include all important resistors.
 
 
 > - Where the authors say "we use an all-custom loop based on a TeO_2 AOM", what do they mean by "all-custom"? I suggest to remove this expression, since the english is not so clear, and their approach using an AOM is rather standard in the field of ultracold atoms, and it is also quite widespread practice to develop the electronics in-house for such an application.
@@ -138,7 +148,7 @@ We thank the reviewer for pointing out this interesting analysis method and we a
   NIST TN1337: Characterization of Clocks and Oscillators
   D.B. Sullivan, D.W. Allan, DA. Howe, F.L. Walls
 
-However, we feel that to do this effect justice and understand the underlying stochastic process, more data should be taken. We would like to reserve this for a future project.
+However, we feel that to do this effect justice and to understand the underlying stochastic process, more data should be taken. We would like to reserve this for a future project.
 
 
 * Reviewer #2

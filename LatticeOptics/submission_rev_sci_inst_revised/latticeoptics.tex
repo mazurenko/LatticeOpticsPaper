@@ -34,7 +34,8 @@
 \date{\today}
 \begin{abstract}
 We describe the design and implementation of a stable high-power \unit{1064}{nm} laser system to generate optical lattices for experiments with ultracold quantum gases. The system is based on a low-noise laser amplified by an array of four heavily modified, high-power fiber amplifiers. The beam intensity is stabilized and controlled with a nonlinear feedback loop.
-Using real-time monitoring of the resulting optical lattice, we find the stability of the lattice site positions to be well below the lattice spacing over the course of hours. The stability of the underlying harmonic trap produced by the optical lattice beams is around one lattice spacing and the long-term (six month) relative RMS stability of the lattice spacing itself is 0.5\%.
+Using real-time monitoring of the resulting optical lattice, we find the stability of the lattice site positions to be well below the lattice spacing over the course of hours.
+The position of the harmonic trap produced by the Gaussian envelope of the lattice beams is stable to about one lattice spacing and the long-term (six-month) relative RMS stability of the lattice spacing itself is 0.5\%.
 \end{abstract}
 \maketitle
 
@@ -47,7 +48,9 @@ In particular, experiments that rely on a small number of atoms held by multiple
 In this work we discuss major improvements to our high power optical lattice system~\cite{Blatt2015} and show levels of intensity noise below \unit{-115}{dBc/Hz} between \unit{1}{kHz} and \unit{3}{MHz} Fourier frequency.
 In addition to the intensity stability, we demonstrate a short-term (shot-to-shot) stability of the lattice position at 1.4\% of the optical lattice spacing, and a long-term (six month) relative stability of 0.5\% RMS of the lattice spacing itself.
 
-For context, typical high-power, low-noise \unit{1064}{nm} laser systems are based amplifying a seed laser with either a fiber or solid-state amplifier. Solid-state amplifiers can attain impressive performance. For example, the laser system used for gravitational wave detection at advanced LIGO exceeds \unit{-150}{dBc/Hz} in the \unit{10}{Hz} - \unit{1}{kHz} frequency range for a constant output power~\cite{kwee12}. In this work, we achieve \unit{-120}{dBc/Hz} intensity stability in the \unit{1}{kHz} - \unit{2}{MHz} frequency range, and maintain this performance over six orders of magnitude in output power. Our modifications to the fiber amplifier hardware allow us to rival and exceed the power and noise performance of more modern commercial fiber amplifiers~\cite{guiraud16}.
+For context, typical high-power, low-noise \unit{1064}{nm} laser systems are based on amplification of a seed laser with either a fiber or a solid-state amplifier.
+For example, the laser system used for gravitational wave detection at advanced LIGO exceeds \unit{-150}{dBc/Hz} in the \unit{10}{Hz} -- \unit{1}{kHz} frequency range for a constant output power~\cite{kwee12}.
+In this work, we achieve \unit{-120}{dBc/Hz} intensity stability in the \unit{1}{kHz} -- \unit{2}{MHz} frequency range, and maintain this performance over six orders of magnitude in output power. Our modifications to the fiber amplifier hardware allow us to rival and exceed the noise performance of state-of-the-art commercial fiber amplifiers~\cite{guiraud16}.
 
 \begin{figure}[t]
   \begin{center}
@@ -311,7 +314,7 @@ The third stage of the loop filter is used to accommodate the fact that the actu
 In effect, if the rest of the feedback system was linear, this would correspond to a quadratically increasing gain until the AOM is saturated, which leads to slow behavior at low signal levels and ringing at higher signal levels.
 Even worse, since the mixer is insensitive to the sign of the voltage applied, the gain is negative for negative voltages, resulting in an unstable system.
 
-To achieve the desired functionality, the final op-amp stage linearizes the response by increasing the gain at low signal levels and suppressing it at high signal levels by including a fast Schottky diode (ON Semiconductor BAT54S) in the feedback arm.
+To achieve the desired functionality, the final op-amp stage linearizes the response by increasing the gain at low signal levels and suppressing it at high signal levels by including a fast Schottky diode (ON Semiconductor BAT54S) in the feedback arm~\cite{Horowitz2015}.
 This can be seen by considering two extreme cases: far below the diode drop, the diode is an open circuit and the gain is set by $R_l$; above the diode drop it is a closed circuit where the gain is set by the resistor $R_h$.
 Naturally, the voltage drop across the diode is chosen such that it is approximately half the maximum desired signal level of the photodiode (\unit{3.3}{V}).
 Although a large improvement, the bandwidth still varies over the dynamic range of the loop, but only by approximately a factor of two, as seen in Fig.~\ref{fig:bandwidth}.
