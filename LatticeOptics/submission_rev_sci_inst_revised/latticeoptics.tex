@@ -352,7 +352,7 @@ This port can be used to modulate the RF power at frequencies above the bandwidt
 
 Although it is an essential part of the system, the loop filter is also one of its major limitations. Figure~\ref{fig:noises} shows the noise performance of the output of the fiber amplifiers in open-loop compared to the noise in closed-loop.
 Noise near DC is lowered (as expected from a closed-loop system), noise outside the loop bandwidth is increased in the range of 10 to \unit{450}{kHz} as seen in subfigures (c) and (d).
-This can be explained by the Johnson noise~\cite{Horowitz2015} on the \unit{1}{k\Omega} op-amp input resistors, amplified by the amplification stages of the loop filter.
+This can be explained by the noise gain of the op-amp circuits in combination with the speed limitations of the nonlinear output stage~\cite{Horowitz2015}.
 The sharp drop off at the \unit{450}{kHz} point is due to a low-pass filter placed on the output of the loop filter, far above the maximum bandwidth set by the AOM.
 When the broadband noise below \unit{450}{kHz} was determined to be a problem, we decided that a bandwidth of higher than \unit{10}{kHz} was not required in the foreseeable future.
 As a result, we added a first-order low pass with a \unit{3}{dB} frequency of \unit{10}{kHz} leading to the improvement shown in Fig.~\ref{fig:low_pass_noises}. The fiber amplifier used to take this data was different from the one used for Fig.~\ref{fig:noises}, although their performance is comparable.

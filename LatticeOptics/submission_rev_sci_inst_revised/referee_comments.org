@@ -1,5 +1,5 @@
 # -*- mode: Org; mode: visual-line; mode: visual-fill-column -*-
-# Time-stamp: "2019-01-28 13:26:26 sb"
+# Time-stamp: "2019-01-29 19:06:52 sb"
 
 #  file       referee_comments.org
 #  copyright  (c) Sebastian Blatt 2019
@@ -40,10 +40,13 @@ We have modified the sentence as follows:
 
 > Concerning the intensity stabilization electronics of the low-intensity lattice, it is somehow disappointing that it only reaches 10 kHz bandwith. With a shotnoise limit at -160 dBz/Hz, one could have expected that there is enough signal to noise to achieve much larger bandwidth. In fact, the reader is guided through a detailed explanation how the different elements are judiciously chosen to allow MHz bandwidth. Unfortunately, for some reasons, the overall servo loop was found to inject more noise above 10 kHz. The authors explain that it originates from Johnson noise on the 1 kOhm input resistors. However, it remains unclear to me what the "input resistor" is. Perhaps the transimpedance? Furthermore, I have the feeling that 1 kOhm generally comes with little low Johnson noise.
 
-Need to say something here about the noise gain. Would require knowledge of the feedback resistors. Should be in figure.
+To clarify which part of the circuit contributes most to the observed noise spectra, we have created a SPICE model of the feedback loop. As the referee states, the signal bandwidth of the servo transfer function is limited by the integrator. Unfortunately, the signal bandwidth is (in general) not the same as the noise bandwidth. The op-amp input voltage noise, input current noise, the Johnson noise of all resistors, and the 1/f flicker noise of the Schottky diodes contribute to the output noise. In general, the input voltage noise transfer function (1 + Z2/Z1) of an inverting amplifier with source (feedback) impedance Z1 (Z2) is different than its signal transfer function -Z2/Z1. The SPICE model can account for all of the above contributions and we find that the circuit produces a noise spectrum which is white between 1 kHz and 500 kHz. The noise spectrum also exhibits a peak around 1 MHz and then falls off. The low-pass filter between the output of the loop filter and the IF port of the mixer cuts off this spectrum around 450 kHz as can be seen from the closed-loop traces in Fig. 2d. In contrast to the noise transfer function, the signal transfer function of the full servo decays as an integrator that leads to the noise-eating behavior below 10 kHz in Fig. 2D.
 
-XXX
+However, the signal bandwidth is not (in principle) limited by the integrator because we could just use a different RC combination. Instead, the signal bandwidth is limited by the transfer function of the nonlinear output stage. In our model, the signal bandwidth of the output stage shows two plateaus. The first plateau extends from DC to around ~10 kHz, where the gain drops to the second plateau, before it falls off around 1 MHz. These two plateaus correspond to the two different gains between which the Schottky diode in the feedback arm interpolates. Even though we use a high-speed Schottky diode, placing this nonlinear element in the op amp feedback arm makes the circuit inherently slow. This is an effect that can be seen in all active rectifier circuits: they are much slower than the diode speed suggests.
 
+With this in mind, we have changed the wording in the corresponding paragraph to:
+
+"This can be explained by the noise gain of the op-amp circuits in combination with the speed limitations of the nonlinear output stage~\cite{Horowitz2015}."
 
 
 > - I did not understand the statement in the last sentence of the abstract. They report on a short-term pointing stability of about one lattice site. This seems too big instability to me. In the text, other values at around 1% of the lattice site.
