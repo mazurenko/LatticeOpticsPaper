@@ -1,5 +1,5 @@
 # -*- mode: Makefile -*-
-# Time-stamp: "2019-01-27 17:35:53 sb"
+# Time-stamp: "2019-01-30 10:34:08 sb"
 
 #  file       Makefile
 #  copyright  (c) Sebastian Blatt 2015 -- 2019
@@ -22,7 +22,7 @@ all: $(targets) $(subs)
 %.pdf: %.tex $(subs)
 	@echo "pdflatex: $< -> $@"
 	@pdflatex $<
-	@bibtex $(project)
+#	@bibtex $(project)
 	@pdflatex $<
 	@pdflatex $<
 	@-rm $(foreach t,aux log blg ilg ind bbl idx loc soc,$(<:.tex=.$(t))) \
