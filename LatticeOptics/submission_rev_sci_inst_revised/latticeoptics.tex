@@ -50,7 +50,7 @@ In addition to the intensity stability, we demonstrate a short-term (shot-to-sho
 
 For context, typical high-power, low-noise \unit{1064}{nm} laser systems are based on amplification of a seed laser with either a fiber or a solid-state amplifier.
 For example, the laser system used for gravitational wave detection at advanced LIGO exceeds \unit{-150}{dBc/Hz} in the \unit{10}{Hz} -- \unit{1}{kHz} frequency range for a constant output power~\cite{kwee12}.
-In this work, we achieve \unit{-120}{dBc/Hz} intensity stability in the \unit{1}{kHz} -- \unit{2}{MHz} frequency range, and maintain this performance over six orders of magnitude in output power. Our modifications to the fiber amplifier hardware allow us to rival and exceed the noise performance of state-of-the-art commercial fiber amplifiers~\cite{guiraud16}.
+In this work, we achieve approximately \unit{-120}{dBc/Hz} intensity stability in the \unit{1}{kHz} -- \unit{2}{MHz} frequency range, and maintain this performance over six orders of magnitude in output power. Our modifications to the fiber amplifier hardware allow us to rival and exceed the noise performance of state-of-the-art commercial fiber amplifiers~\cite{guiraud16}.
 
 \begin{figure}[t]
   \begin{center}
@@ -246,7 +246,7 @@ Let us now consider every part of this signal chain individually.
 The local oscillator (LO) RF source is a custom-built printed circuit board (PCB), schematically shown in Fig.~\ref{fig:circuits}(b), that implements a phase locked loop (PLL) based on the ADF4002 IC and a low-phase-noise voltage-controlled oscillator (VCO, Crystek CVCO55CL-0060-0110), preamplified with a low-noise amplifier (Minicircuits PSA4-5043+).
 The PLL is locked to the \unit{10}{MHz} frequency reference distributed throughout the lab to ensure absolute frequency stability.
 In addition to PLL functionality, the board also contains two digitally-controlled, high-isolation RF switches, giving a total RF isolation exceeding \unit{90}{dB}.
-This device allows us to drive the AOM with a single, clean tone ($<$\unit{90}{dBc/Hz} at \unit{200}{kHz} away from the carrier).
+This device allows us to drive the AOM with a single, clean tone ($<$\unit{-90}{dBc/Hz} at \unit{200}{kHz} away from the carrier).
 %The spectrum and relative intensity noise of the PLL can be found in Fig.~\ref{fig:pll}.
 Thus, the spectrum of the PLL exhibits phase noise comparable to that of a typical VCO but without the slow frequency drift characteristic to these devices.
 Elimination of the carrier drift is worth the added phase noise because any drift of the frequency affects the pointing of the laser beam passing through the AOM, which would misalign the optical lattice.
